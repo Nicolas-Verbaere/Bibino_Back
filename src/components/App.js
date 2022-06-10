@@ -1,7 +1,3 @@
-import logo from "../assets/img/logo_bibino.png";
-import iconProfil from "../assets/img/icone_profil.png";
-
-
 import Main from './Main/Main'
 
 // import composant
