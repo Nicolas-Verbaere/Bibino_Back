@@ -3,6 +3,7 @@ import imgApropos from "../assets/img/articleapropos.jpg";
 
 // import composant
 import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
 
 // import style
 import './App.scss';
@@ -39,14 +40,7 @@ function App() {
         </article>
       </main>
 
-      <footer className="footer">
-        <p className="footer-copyright">Copyright © 2022 Bibino - Tous droits réservés</p>
-        <div className="footer_container">
-          <a className="footer_container-link" href="#">Contact</a>
-          <a className="footer_container-link" href="#">A propos</a>
-        </div>
-
-      </footer>
+      <Footer />
     </div>
   );
 }
