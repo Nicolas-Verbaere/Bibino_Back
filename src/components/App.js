@@ -51,9 +51,12 @@ function App() {
       </main>
 
       <footer className="footer">
-        <p>Copyright</p>
-        <a href="#">Contact</a>
-        <a href="#">A propos</a>
+        <p className="footer-copyright">Copyright © 2022 Bibino - Tous droits réservés</p>
+        <div className="footer_container">
+          <a className="footer_container-link" href="#">Contact</a>
+          <a className="footer_container-link" href="#">A propos</a>
+        </div>
+
       </footer>
     </div>
   );
