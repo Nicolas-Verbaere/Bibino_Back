@@ -2,7 +2,7 @@
 @import '../../style/vars';
 
 .main {
-    padding: 10px 15px 10px 15px;
+    padding: 10px 50px 10px 50px;
   
   
   &_article {
@@ -16,12 +16,9 @@
   
   }
   
-  &_article:hover, &_article_rightside-title:hover{
+  &_article:hover{
     box-shadow: 1px 1px 3px 1px $color-green-medium;
-  
-    // &_article_rightside-title:hover {
-    //   color: $color-green-medium;
-    // }
+
   }
   
   &_article-img {
@@ -47,5 +44,24 @@
   
   &_article_rightside-content {
     line-height: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+
+  .main{
+    padding: 10px 15px 10px 15px;
+  }
+  
+  .main_article{
+    flex-direction: column;
+    &-img {
+      width: 100%;
+      padding-left: 0px;
+      padding: 1px;
+    }
+    &_rightside {
+      width: 100%;
+    }
   }
 }
