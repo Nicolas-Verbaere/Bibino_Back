@@ -1,27 +1,16 @@
-import logo from "../assets/img/logo_bibino.png";
-import iconProfil from "../assets/img/icone_profil.png";
+// import img
 import imgApropos from "../assets/img/articleapropos.jpg";
 
+// import composant
+import Header from "./Header/Header";
+
+// import style
 import './App.scss';
 
 function App() {
   return (
     <div className="App">
-      <header className="header">
-        <section className="top_header">
-          {/* <figcaption className="top_header_logo">
-            <img className="top_header_logo-png" src={logo} alt="" />
-            <h1 className="top_header_logo-title">Bibino</h1>
-          </figcaption> */}
-          <img className="top_header-logo" src={logo} alt="" />
-          <h1 className="top_header-title">Bibino</h1>         
-          <img className="top_header-profil" src={iconProfil} alt="profil"></img>
-        </section>
-        <nav className="nav_header">
-          <a className="nav_header-link" href="#">Bières</a>
-          <a className="nav_header-link" href="#">Bières du moment</a>
-        </nav>
-      </header>
+      <Header />
 
       <main className="main">
         <article className="main_article">
