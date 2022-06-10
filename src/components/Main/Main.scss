@@ -1,0 +1,51 @@
+// CSS MAIN
+@import '../../style/vars';
+
+.main {
+    padding: 10px 15px 10px 15px;
+  
+  
+  &_article {
+    background-color: #E7E7E7;
+    min-height: 300px;
+    margin: 50px 0;
+    border: 1px solid $color-junction;
+    display: flex;
+    border-radius: 4px;
+    box-shadow: 0.1px 0.1px 1px 1px $color-green-medium;
+  
+  }
+  
+  &_article:hover, &_article_rightside-title:hover{
+    box-shadow: 1px 1px 3px 1px $color-green-medium;
+  
+    // &_article_rightside-title:hover {
+    //   color: $color-green-medium;
+    // }
+  }
+  
+  &_article-img {
+    width: 50%;
+    object-fit: contain;
+    padding-left: 1px;
+  }
+  
+  &_article_rightside {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 20px
+  }
+  
+  &_article_rightside-title{
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $color-text-orange;
+    text-shadow:  0.5px 0.5px $color-green-dark
+  }
+  
+  &_article_rightside-content {
+    line-height: 1.5rem;
+  }
+}
