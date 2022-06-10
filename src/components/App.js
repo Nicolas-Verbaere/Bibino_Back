@@ -4,22 +4,17 @@ import iconProfil from "../assets/img/icone_profil.png";
 
 import Main from './Main/Main'
 
+// import composant
+import Header from "./Header/Header";
+
+// import style
 import './App.scss';
 
 const App = () => {
   return (
     <div className="App">
-      <header className="header">
-        <section className="top_header">
-          <img className="top_header-logo" src={logo} alt="" />
-          <h1 className="top_header-title">Bibino</h1>         
-          <img className="top_header-profil" src={iconProfil} alt="profil"></img>
-        </section>
-        <nav className="nav_header">
-          <a className="nav_header-link" href="#">Bières</a>
-          <a className="nav_header-link" href="#">Bières du moment</a>
-        </nav>
-      </header>
+
+      <Header />
 
       <Main/>
 
