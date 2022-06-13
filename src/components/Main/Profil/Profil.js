@@ -1,5 +1,8 @@
 import './Profil.scss';
 
+import Review from './Review/Review';
+
+
 function Profil() {
     return (
         <>
@@ -8,17 +11,10 @@ function Profil() {
                 <h1 className="profil-pseudo">PSEUDO</h1>
             </section>
 
-            <section>
-                <h1>Ici, vous pouvez gérer vos reviews.</h1>
-                <section>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
+            <section className="profil_reviews">
+                <h1 className="profil_reviews-title">Ici, vous pouvez gérer vos reviews.</h1>
+                <section className="profil_reviews_list">
+                  <Review />
                 </section>
             </section>
         </>
