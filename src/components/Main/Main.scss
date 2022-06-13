@@ -18,8 +18,12 @@
   
   &_article:hover{
     box-shadow: 1px 1px 3px 1px $color-green-medium;
-
+    // changement de couleur du titre des article au :hover de l'article
+    & > .main_article_rightside > .main_article_rightside-title{
+      color: $color-green-medium;
+    }
   }
+
   
   &_article-img {
     width: 50%;
@@ -46,6 +50,10 @@
     line-height: 1.5rem;
   }
 }
+
+// .main_article:hover > .main_article_rightside > .main_article_rightside-title{
+//   color: $color-green-medium;
+// }
 
 @media screen and (max-width: 900px) {
 
