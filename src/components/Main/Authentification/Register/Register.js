@@ -45,7 +45,7 @@ const Register = () => {
             id: 4,
             name: 'password',
             type: 'password',
-            placeholder: 'Mor de Passe',
+            placeholder: 'Mot de Passe',
             errorMessage:
                 'Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!',
             label: 'Mot de Passe',
