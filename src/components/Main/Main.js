@@ -8,9 +8,7 @@ import Profil from './Profil/Profil';
 
 import './Main.scss';
 
-import './Main.scss';
-
-function Main() {
+function Main({}) {
     return (
         <main className="main">
             <Routes>
@@ -24,9 +22,10 @@ function Main() {
                     }
                 />
                 <Route path="/formulaire" element={<Form />} />
-                <Route path="/profil" element={<Profil />} />
+                <Route path="/profil" element={<Profil alias="Moi" />} />
             </Routes>
         </main>
     );
 }
+
 export default React.memo(Main);
