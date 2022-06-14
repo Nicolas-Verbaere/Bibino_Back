@@ -2,6 +2,7 @@ import './Profil.scss';
 
 import Review from './Review/Review';
 
+
 function Profil() {
     return (
         <>
@@ -11,11 +12,9 @@ function Profil() {
             </section>
 
             <section className="profil_reviews">
-                <h1 className="profil_reviews-title">
-                    Ici, vous pouvez gérer vos reviews.
-                </h1>
+                <h1 className="profil_reviews-title">Ici, vous pouvez gérer vos reviews.</h1>
                 <section className="profil_reviews_list">
-                    <Review />
+                  <Review />
                 </section>
             </section>
         </>

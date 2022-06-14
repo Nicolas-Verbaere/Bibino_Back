@@ -1,22 +1,23 @@
-import Main from './Main/Main';
+import Main from './Main/Main'
 
 // import composant
-import Header from './Header/Header';
-import Footer from './Footer/Footer';
+import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
 
 // import style
 import './App.scss';
 
 const App = () => {
-    return (
-        <div className="App">
-            <Header />
+  return (
+    <div className="App">
 
-            <Main />
+      <Header />
 
-            <Footer />
-        </div>
-    );
-};
+      <Main/>
+
+      <Footer />
+    </div>
+  );
+}
 
 export default App;
