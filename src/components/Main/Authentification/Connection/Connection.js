@@ -4,43 +4,60 @@ import { useState } from 'react';
 import '../Form.scss';
 import FormInput from '../FormInput';
 
+import axios from 'axios';
+
 const Connexion = () => {
     const [values, setValues] = useState({
-        pseudo: '',
         email: '',
-        birthday: '',
-        password: '',
-        confirmPassword: ''
+        password: ''
     });
 
+    async function requestsConnexion() {
+        try {
+            const response = await axios.get(
+                'https://bibinov1.herokuapp.com/user'
+            );
+            console.log(
+                'methode find',
+                response.data.find((user) => user.email === values.email)
+            );
+            return response.data;
+        } catch (err) {
+            console.error(err);
+            throw err;
+        }
+    }
+
     const inputsConnection = [
-        {
-            id: 1,
-            name: 'pseudo',
-            type: 'text',
-            placeholder: 'Pseudo',
-            errorMessage:
-                "Pseudo should be 3-16 characters and shouldn't include any special character!",
-            label: 'Pseudo',
-            pattern: '^[A-Za-z0-9]{3,16}$',
-            required: true
-        },
         {
             id: 2,
             name: 'email',
             type: 'email',
             placeholder: 'Email',
-            errorMessage: 'It should be a valid email address!',
+            errorMessage: 'Adresse mail invalide',
             label: 'Email',
+            required: true
+        },
+        {
+            id: 4,
+            name: 'password',
+            type: 'password',
+            placeholder: 'Mot de Passe',
+            errorMessage:
+                'Le mot de passe doit contenir au minimum 8 caractères, un caractère spécial, une lettre majuscule, une lettre minuscule et un nombre.',
+            label: 'Mot de Passe',
+            pattern: `^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$`,
             required: true
         }
     ];
     const handleSubmit = (e) => {
         e.preventDefault();
+        requestsConnexion();
     };
 
     const onChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });
+        console.log(e.target.value);
     };
 
     return (
@@ -55,10 +72,12 @@ const Connexion = () => {
                         onChange={onChange}
                     />
                 ))}
-                <button>Identifiez-vous</button>
+
+                <button type="submit">Identifiez-vous</button>
                 <button>Mot de passe oublié?</button>
             </form>
         </section>
     );
 };
+
 export default React.memo(Connexion);
