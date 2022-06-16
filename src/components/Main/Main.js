@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 
 import ArticleAPropos from './ArticleAPropos/ArticleAPropos';
 import ArticleTopBeers from './ArticleTopBeers/ArticleTopBeers';
@@ -20,7 +20,8 @@ function Main({ user, userReviews }) {
                     path="/"
                     element={
                         <>
-                            <ArticleAPropos />
+                            <Link to="/a-propos"><ArticleAPropos /></Link>
+                            
                             <ArticleTopBeers />
                             <ArticleTopBeers />
                         </>
