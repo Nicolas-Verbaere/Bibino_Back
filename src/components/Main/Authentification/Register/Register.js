@@ -4,11 +4,13 @@ import { useState } from 'react';
 import '../Form.scss';
 import FormInput from '../FormInput';
 
+import axios from 'axios';
+
 const Register = () => {
     const [values, setValues] = useState({
-        pseudo: '',
+        alias: '',
         email: '',
-        birthday: '',
+        date_of_birth: '',
         password: '',
         confirmPassword: ''
     });
@@ -16,13 +18,13 @@ const Register = () => {
     const inputsRegister = [
         {
             id: 1,
-            name: 'pseudo',
+            name: 'alias',
             type: 'text',
             placeholder: 'Pseudo',
             errorMessage:
-                "Pseudo should be 3-16 characters and shouldn't include any special character!",
+                'Votre pseudo doit contenir au minimum 3 caractères et au maximum 20',
             label: 'Pseudo',
-            pattern: '^[A-Za-z0-9]{3,16}$',
+            pattern: `^.{3,20}[^"]$`,
             required: true
         },
         {
@@ -30,13 +32,13 @@ const Register = () => {
             name: 'email',
             type: 'email',
             placeholder: 'Email',
-            errorMessage: 'It should be a valid email address!',
+            errorMessage: 'Adresse mail invalide',
             label: 'Email',
             required: true
         },
         {
             id: 3,
-            name: 'birthday',
+            name: 'date_of_birth',
             type: 'date',
             placeholder: 'Date de naissance',
             label: 'Date de naissance'
@@ -47,9 +49,9 @@ const Register = () => {
             type: 'password',
             placeholder: 'Mot de Passe',
             errorMessage:
-                'Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!',
+                'Le mot de passe doit contenir au minimum 8 caractères, un caractère spécial, une lettre majuscule, une lettre minuscule et un nombre.',
             label: 'Mot de Passe',
-            pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
+            pattern: `^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$`,
             required: true
         },
         {
@@ -57,15 +59,34 @@ const Register = () => {
             name: 'confirmPassword',
             type: 'password',
             placeholder: 'Confirmation',
-            errorMessage: "Passwords don't match!",
+            errorMessage: 'Mot de passe ne correspond pas',
             label: 'Confirmation',
             pattern: values.password,
             required: true
         }
     ];
 
+    function addUser() {
+        axios
+            .post('https://bibinov1.herokuapp.com/user', {
+                alias: values.alias,
+                email: values.email,
+                date_of_birth: values.date_of_birth,
+                password: values.password,
+                confirmPassword: values.confirmPassword
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+    console.log(values.date_of_birth);
+
     const handleSubmit = (e) => {
         e.preventDefault();
+        addUser();
     };
 
     const onChange = (e) => {

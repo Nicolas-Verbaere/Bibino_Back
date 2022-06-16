@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -6,10 +7,12 @@ import Main from './Main/Main'
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 
+
 // import style
 import './App.scss';
 
 const App = () => {
+
   const [user, setUser] = useState([]);
   const [userReviews, setUserReviews] = useState([]);
 
@@ -56,9 +59,10 @@ const App = () => {
 
       <Main user={user} userReviews={userReviews} />
 
-      <Footer />
-    </div>
-  );
-}
+
+            <Footer />
+        </div>
+    );
+};
 
 export default App;
