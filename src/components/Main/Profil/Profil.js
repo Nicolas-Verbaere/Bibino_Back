@@ -37,7 +37,6 @@ Profil.propTypes = {
     userReviews: PropTypes.arrayOf(
         PropTypes.shape({ 
             reviewid: PropTypes.number.isRequired,
-            beerid: PropTypes.number.isRequired,
             name: PropTypes.string.isRequired,
             alcohol_level: PropTypes.number.isRequired,
             brewery: PropTypes.string.isRequired,
