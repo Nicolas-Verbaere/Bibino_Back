@@ -8,8 +8,11 @@ import Profil from './Profil/Profil';
 
 import './Main.scss';
 
-function Main() {
-    //   {forms}
+
+import './Main.scss';
+
+function Main({ user, userReviews }) {
+
     return (
         <main className="main">
             <Routes>
@@ -19,13 +22,15 @@ function Main() {
                         <>
                             <ArticleAPropos />
                             <ArticleTopBeers />
+                            <ArticleTopBeers />
                         </>
                     }
                 />
 
                 <Route path="/formulaire" element={<Form />} />
 
-                <Route path="/profil" element={<Profil />} />
+                <Route path="/profil" element={<Profil user={user} userReviews={userReviews} />} />
+
             </Routes>
         </main>
     );
