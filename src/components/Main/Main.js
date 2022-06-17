@@ -5,17 +5,16 @@ import ArticleAPropos from './ArticleAPropos/ArticleAPropos';
 import ArticleTopBeers from './ArticleTopBeers/ArticleTopBeers';
 import Form from './Authentification/Form';
 import Profil from './Profil/Profil';
-
-import './Main.scss';
+import Contact from './Contact/Contact';
 
 import './Main.scss';
 
 function Main() {
     return (
-        <main className="main">
+        <main className='main'>
             <Routes>
                 <Route
-                    path="/"
+                    path='/'
                     element={
                         <>
                             <ArticleAPropos />
@@ -23,8 +22,9 @@ function Main() {
                         </>
                     }
                 />
-                <Route path="/formulaire" element={<Form />} />
-                <Route path="/profil" element={<Profil />} />
+                <Route path='/formulaire' element={<Form />} />
+                <Route path='/profil' element={<Profil />} />
+                <Route path='/contact' element={<Contact />} />
             </Routes>
         </main>
     );

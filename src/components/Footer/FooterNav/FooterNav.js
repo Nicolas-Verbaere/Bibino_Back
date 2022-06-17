@@ -4,14 +4,14 @@ import './FooterNav.scss';
 
 function Footer() {
     return (
-        <nav className="footer_container">
-            <a className="footer_container-link" href="/contact">
+        <nav className='footer_container'>
+            <a className='footer_container-link' href='/contact'>
                 Contact
             </a>
-            <Link to="/a-propos">
-                <a className="footer_container-link" href="/a-propos">
+            <Link to='/a-propos'>
+                <p className='footer_container-link' href='/a-propos'>
                     A propos
-                </a>
+                </p>
             </Link>
         </nav>
     );
