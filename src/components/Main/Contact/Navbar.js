@@ -1,33 +1,18 @@
-import { Link, useMatch, useResolvedPath } from 'react-router-dom';
+import React from 'react';
+import { Link, Outlet } from 'react-router-dom';
 
-export default function Navbar() {
+const Navbar = () => {
     return (
-        <nav className='nav'>
-            <Link to='/'></Link>
-            <ul>
-                <CustomLink to='/contact/PbTechnique'>
-                    Problémes Techiques
-                </CustomLink>
-                <CustomLink to='/contact/SuggestionBiere'>
-                    Suggestion Bières
-                </CustomLink>
-                <CustomLink to='/contact/SuggestionBHistoire'>
+        <div>
+            <nav>
+                <Link to='/contact/PbTechnique'>Problémes Techiques</Link>
+                <Link to='/contact/SuggestionBiere'>Suggestion Bières</Link>
+                <Link to='/contact/SuggestionBHistoire'>
                     Suggestion Bière'Histoires
-                </CustomLink>
-            </ul>
-        </nav>
+                </Link>
+            </nav>
+            <Outlet />
+        </div>
     );
-}
-
-function CustomLink({ to, children, ...props }) {
-    const resolvedPath = useResolvedPath(to);
-    const isActive = useMatch({ path: resolvedPath.pathname, end: true });
-
-    return (
-        <li className={isActive ? 'active' : ''}>
-            <Link to={to} {...props}>
-                {children}
-            </Link>
-        </li>
-    );
-}
+};
+export default React.memo(Navbar);
