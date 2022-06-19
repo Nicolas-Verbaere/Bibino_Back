@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-//import './Form.scss';
+import './Contact.scss';
 
 import Navbar from './Navbar';
 import PbTechnique from './PbTechnique/PbTechnique';
@@ -12,13 +12,20 @@ const Contact = () => {
     return (
         <div className='container'>
             <Navbar />
-            <Routes>
-                <Route path='/contact/PbTechnique' element={<PbTechnique />} />
+
+            <Routes className='nav'>
                 <Route
+                    className='nav-link'
+                    path='/contact/PbTechnique'
+                    element={<PbTechnique />}
+                />
+                <Route
+                    className='nav-link'
                     path='/contact/SuggestionBiere'
                     element={<SuggestionBiere />}
                 />
                 <Route
+                    className='nav-link'
                     path='/contact/SuggestionBHistoire'
                     element={<SuggestionBHistoire />}
                 />
