@@ -3,20 +3,43 @@
 .container{
 
 margin: 0px 0px;
-width: 300px;
+width: 100%;
 height: 100%;
 }
 
-.nav{
-position: relative;
-top :0px;
-display: flex;
+// .section_right{
+//    ;
+// }
 
+// .nav{
+// position: relative;
+// top :0px;
+// display: flex-wrap;
+// background-color: #877c7c;
+// width: 20vw;
+
+
+
+// &_link{
+//         flex-direction: column;
+        
+     
+//     }
+
+// }
+
+ul{
+    margin:0;
+    padding:0;
+    width: 20vw;
+  
 
 }
-.nav-link{
-        flex-direction: column;
-        color: white;
-        background-color: #877c7c;
-    }
 
+li{
+   display: block; 
+}
+
+p{
+    text-align: justify;
+}

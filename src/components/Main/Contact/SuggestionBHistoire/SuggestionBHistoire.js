@@ -1,51 +1,53 @@
-import React, { useEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 
-//import './Form.scss';
+import FormInput from '../FormInput';
 
-const SuggestionBHistoire = ({ focusOnMount }) => {
-    const form_SuggestionBHistoire = useRef(null);
-    const [messageValue, setMessageValue] = useState('');
+import '../Contact.scss';
 
-    function handleSubmit(event) {
-        event.prenventDefault();
-        setMessageValue('');
-    }
-    useEffect(() => {
-        if (focusOnMount) {
-            form_SuggestionBHistoire.current.focus();
+const SuggestionBHistoire = () => {
+    const [values, setValues] = useState({
+        name: ''
+    });
+
+    const inputsNewBeer = [
+        {
+            id: 1,
+            name: 'name',
+            type: 'text',
+            placeholder: 'Text',
+            label: '',
+            required: true
         }
-    }, []);
+    ];
+
+    const handleSubmit = (e) => {
+        setValues({ ...values, [e.target.name]: e.targer.value });
+    };
+    const onChange = (e) => {
+        setValues({ ...values, [e.target.name]: e.target.value });
+    };
 
     return (
-        <div className='section_right'>
-            <h1>Contact</h1>
-            <h2>Raconte-moi une histoire ?</h2>
-
+        <section className='section_right'>
             <form onSubmit={handleSubmit}>
+                <h1>Contact</h1>
+                <h2>Raconte-moi une histoire ?</h2>
                 <p>
                     Vous avez une histoire sur une bière a nous raconter? Merci
                     de nous la suggerer en replissant le formulaire ci-dessous
                 </p>
-                <input
-                    type='text'
-                    placeholder=''
-                    ref={form_SuggestionBHistoire}
-                    value={messageValue}
-                    onChange={(e) => setMessageValue(e.target.value)}></input>
-                <imput type='submit' value='Envoyer' />
+                {inputsNewBeer.map((input) => (
+                    <FormInput
+                        key={input.id}
+                        {...input}
+                        value={values[input.name]}
+                        onChange={onChange}
+                    />
+                ))}
                 <button>Envoyer</button>
             </form>
-        </div>
+        </section>
     );
-};
-
-SuggestionBHistoire.propTypes = {
-    focusOnMount: PropTypes.bool
-};
-
-SuggestionBHistoire.defaultProps = {
-    focusOnMount: true
 };
 
 export default React.memo(SuggestionBHistoire);

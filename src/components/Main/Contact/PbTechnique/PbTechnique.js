@@ -1,51 +1,53 @@
-import React, { useEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 
-//import './Form.scss';
+import FormInput from '../FormInput';
 
-const PbTechnique = ({ focusOnMount }) => {
-    const form_PbTechnique = useRef(null);
-    const [messageValue, setMessageValue] = useState('');
+import '../Contact.scss';
 
-    function handleSubmit(event) {
-        event.prenventDefault();
-        setMessageValue('');
-    }
-    useEffect(() => {
-        if (focusOnMount) {
-            form_PbTechnique.current.focus();
+const SuggestionBHistoire = () => {
+    const [values, setValues] = useState({
+        name: ''
+    });
+
+    const inputsNewBeer = [
+        {
+            id: 1,
+            name: 'name',
+            type: 'text',
+            placeholder: 'Text',
+            label: '',
+            required: true
         }
-    }, []);
+    ];
+
+    const handleSubmit = (e) => {
+        setValues({ ...values, [e.target.name]: e.targer.value });
+    };
+    const onChange = (e) => {
+        setValues({ ...values, [e.target.name]: e.target.value });
+    };
 
     return (
-        <div className='section_right'>
-            <h1>Contact</h1>
-            <h2>Oups! I beer it again ?</h2>
-
+        <section className='section_right'>
             <form onSubmit={handleSubmit}>
+                <h1>Contact</h1>
+                <h2>Oups! I beer it again ?</h2>
                 <p>
                     Merci beaucoup de nous signaler les problémes techniques
                     constater sur Bibino.fr'
                 </p>
-                <input
-                    type='text'
-                    placeholder=''
-                    ref={form_PbTechnique}
-                    value={messageValue}
-                    onChange={(e) => setMessageValue(e.target.value)}></input>
-                <imput type='submit' value='Envoyer' />
+                {inputsNewBeer.map((input) => (
+                    <FormInput
+                        key={input.id}
+                        {...input}
+                        value={values[input.name]}
+                        onChange={onChange}
+                    />
+                ))}
                 <button>Envoyer</button>
             </form>
-        </div>
+        </section>
     );
 };
 
-PbTechnique.propTypes = {
-    focusOnMount: PropTypes.bool
-};
-
-PbTechnique.defaultProps = {
-    focusOnMount: true
-};
-
-export default React.memo(PbTechnique);
+export default React.memo(SuggestionBHistoire);
