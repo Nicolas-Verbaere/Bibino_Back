@@ -14,6 +14,9 @@ function HeaderTop() {
                 <h1 className="top_header-title">Bibino</h1>
             </Link>
 
+            
+
+            {localStorage.getItem('userLoggedToken') ? 
             <Link to="/profil">
                 <img
                     className="top_header-profil"
@@ -21,6 +24,14 @@ function HeaderTop() {
                     alt="profil"
                 ></img>
             </Link>
+            :
+            <Link to="/formulaire">
+                <img
+                    className="top_header-profil"
+                    src={iconProfil}
+                    alt="profil"
+                ></img>
+            </Link>}
         </section>
     );
 }
