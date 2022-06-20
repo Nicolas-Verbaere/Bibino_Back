@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
 
 import { useState } from 'react';
 import '../Form.scss';
@@ -6,11 +7,15 @@ import FormInput from '../FormInput';
 
 import axios from 'axios';
 
+
 const Connexion = () => {
+    const [isLogged, setIsLogged] = useState(false);
     const [values, setValues] = useState({
         email: '',
         password: ''
     });
+
+
 
     function connection() {
         axios.post('https://bibinov1.herokuapp.com/login', {
@@ -18,8 +23,9 @@ const Connexion = () => {
             password: values.password
           })
           .then(function (response) {
-            console.log(`consolelog de response axios, ${response.data}`);
+            console.log(`consolelog de response axios, ${response.data.token}`);
             localStorage.setItem('userLoggedToken', `${response.data.token}`);
+            setIsLogged(true);
           })
           .catch(function (error) {
             console.log(error);
@@ -59,6 +65,7 @@ const Connexion = () => {
     };
 
     return (
+
         <section className="connection">
             <form onSubmit={handleSubmit}>
                 <h1>Connexion</h1>
@@ -74,6 +81,7 @@ const Connexion = () => {
                 <button type="submit">Identifiez-vous</button>
                 <button>Mot de passe oublié?</button>
             </form>
+            { isLogged && <Navigate to={"/profil"} />}
         </section>
     );
 };

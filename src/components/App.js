@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import jwt_decode from "jwt-decode";
 
 // import composant
 import Main from './Main/Main'
@@ -16,11 +17,18 @@ const App = () => {
   const [user, setUser] = useState([]);
   const [userReviews, setUserReviews] = useState([]);
 
+  // décodage du token pour dynamiser le getUser par l'id
+  const userToken = localStorage.getItem('userLoggedToken');
+  const userTokenDecoded = jwt_decode(userToken);
+  console.log(userTokenDecoded);
+  
+  
   function getUser() {
-    axios.get('https://bibinov1.herokuapp.com/user/1')
+    
+    axios.get(`https://bibinov1.herokuapp.com/user/${userTokenDecoded.id}`)
     .then(function (response) {
       // en cas de réussite de la requête
-      console.log('consolelog user', response.data);
+      // console.log('consolelog user', response.data);
       setUser(response.data);
     })
     .catch(function (error) {
@@ -33,11 +41,12 @@ const App = () => {
   }
 
   function getUserReviews(){
-    axios.get('https://bibinov1.herokuapp.com/user/1/user-review')
+
+    axios.get(`https://bibinov1.herokuapp.com/user/${userTokenDecoded.id}/review`)
     .then(function (response) {
       // en cas de réussite de la requête
-      console.log('consolelog then userReviews', response.data);
-      setUserReviews(response.data);
+      console.log('consolelog then userReviews', response.data[0]);
+      setUserReviews(response.data[0]);
     })
     .catch(function (error) {
       // en cas d’échec de la requête
@@ -49,6 +58,8 @@ const App = () => {
   }
 
   useEffect(() => {
+    
+    console.log(localStorage.getItem('userLoggedToken'));
     getUser();
     getUserReviews();
   }, []);

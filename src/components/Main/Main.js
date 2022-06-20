@@ -31,7 +31,7 @@ function Main({ user, userReviews }) {
 
                 <Route path="/formulaire" element={<Form />} />
 
-                <Route path="/profil" element={<Profil user={user} userReviews={userReviews} />} />
+                 <Route path="/profil" element={<Profil user={user} userReviews={userReviews} />} />
 
             </Routes>
         </main>
