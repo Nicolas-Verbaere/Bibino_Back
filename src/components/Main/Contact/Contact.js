@@ -8,7 +8,6 @@ import SuggestionBiere from './SuggestionBiere/SuggestionBiere';
 import SuggestionBHistoire from './SuggestionBHistoire/SuggestionBHistoire';
 
 const Contact = () => {
-    console.log('contact');
     return (
         <div className='container'>
             <Navbar />

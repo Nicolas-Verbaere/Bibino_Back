@@ -46,6 +46,7 @@ const SuggestionBiere = () => {
             id: 4,
             name: 'percent_alcool',
             type: 'number',
+            step: '.1',
             placeholder: '°Alcool',
             label: "Degré d'alcool de la bière",
             required: true
@@ -71,7 +72,9 @@ const SuggestionBiere = () => {
             name: 'rating',
             type: 'number',
             placeholder: 'Notation',
-            label: 'Note/5',
+            label: 'Note: Houblon/5',
+            min: '0',
+            max: '5',
             required: true
         },
         {
