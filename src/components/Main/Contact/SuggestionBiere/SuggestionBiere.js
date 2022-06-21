@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-import FormInput from '../FormInput';
+// import FormInput from '../FormInput';
 
 import '../Contact.scss';
 
 const SuggestionBiere = () => {
+    const [style, setStyle] = useState([]);
+    const [contry, setContry] = useState([]);
+    const [color, setColor] = useState([]);
+    const [brewery, setBrewery] = useState([]);
     const [values, setValues] = useState({
         name: '',
-        colour: '',
+        color: '',
         style: '',
         percent_alcool: '',
         country: '',
@@ -16,84 +21,73 @@ const SuggestionBiere = () => {
         notice: '' //avis
     });
 
-    const inputsNewBeer = [
-        {
-            id: 1,
-            name: 'name',
-            type: 'text',
-            placeholder: 'Nom',
-            label: 'Nom de la bière',
-            required: true
-        },
-        {
-            id: 2,
-            name: 'colour',
-            type: 'checkbox',
-            placeholder: 'Couleur',
-            label: 'Couleur de la bière',
-            required: true
-        },
+    function getStyleBeer() {
+        axios
+            .get(`https://bibinov1.herokuapp.com/style`, {})
+            .then(function (response) {
+                console.log('consolelog getStyleBeer', response.data);
+                setStyle(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .then(function () {});
+    }
+    function getContry() {
+        axios
+            .get(`https://bibinov1.herokuapp.com/country`, {})
+            .then(function (response) {
+                console.log('consolelog getContry', response.data);
+                setContry(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .then(function () {});
+    }
+    function getColor() {
+        axios
+            .get(`https://bibinov1.herokuapp.com/color`, {})
+            .then(function (response) {
+                console.log('consolelog getColor', response.data);
+                setColor(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .then(function () {});
+    }
+    function getBrewery() {
+        axios
+            .get(`https://bibinov1.herokuapp.com/brewery`, {})
+            .then(function (response) {
+                console.log('consolelog getBrewery', response.data);
+                setBrewery(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .then(function () {});
+    }
 
-        {
-            id: 3,
-            name: 'style',
-            type: 'checkbox',
-            placeholder: 'Style',
-            label: 'Style de la bière',
-            required: true
-        },
-        {
-            id: 4,
-            name: 'percent_alcool',
-            type: 'number',
-            step: '.1',
-            placeholder: '°Alcool',
-            label: "Degré d'alcool de la bière",
-            required: true
-        },
-        {
-            id: 5,
-            name: 'contry',
-            type: 'checkbox',
-            placeholder: 'Pays',
-            label: 'Pays de la brasserie',
-            required: true
-        },
-        {
-            id: 6,
-            name: 'brewery',
-            type: 'text',
-            placeholder: 'Brasserie',
-            label: 'Brasserie',
-            required: true
-        },
-        {
-            id: 7,
-            name: 'rating',
-            type: 'number',
-            placeholder: 'Notation',
-            label: 'Note: Houblon/5',
-            min: '0',
-            max: '5',
-            required: true
-        },
-        {
-            id: 8,
-            name: 'notice',
-            type: 'text',
-            placeholder: 'Avis',
-            label: 'Avis',
-            required: true
-        }
-    ];
+    // const handleSubmit = (e) => {
+    //     setValues({ ...values, [e.target.name]: e.targer.value });
+    // };
+    // const onChange = (e) => {
+    //     setValues({ ...values, [e.target.name]: e.target.value });
+    // };
 
     const handleSubmit = (e) => {
-        setValues({ ...values, [e.target.name]: e.targer.value });
-    };
-    const onChange = (e) => {
-        setValues({ ...values, [e.target.name]: e.target.value });
+        e.preventDefault();
     };
 
+    // ;
+    useEffect(() => {
+        getStyleBeer();
+        getContry();
+        getColor();
+        getBrewery();
+    }, []);
     return (
         <section className='section_right'>
             <form onSubmit={handleSubmit}>
@@ -104,14 +98,96 @@ const SuggestionBiere = () => {
                     Merci de nous la suggérer en replissant le formulaire
                     ci-dessous
                 </p>
-                {inputsNewBeer.map((input) => (
-                    <FormInput
-                        key={input.id}
-                        {...input}
-                        value={values[input.name]}
-                        onChange={onChange}
+
+                <div>
+                    <label for='name'>Nom de la bière: </label>
+                    <input
+                        type='text'
+                        name='name'
+                        id='1'
+                        placeholder='Nom'
+                        option=''
+                        required
                     />
-                ))}
+                </div>
+                <div>
+                    <label for='name'>Couleur de la bière: </label>
+                    <select name='color' id='2' placeholder='Couleur' required>
+                        {color.map((el) => (
+                            <option key={el.id} value={el.name}>
+                                {el.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    <label for='name'>Style de la bière: </label>
+                    <select name='style' id='3' placeholder='Style' required>
+                        {style.map((el) => (
+                            <option key={el.id} value={el.name}>
+                                {el.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    <label for='name'>Degré d'alcool: </label>
+                    <input
+                        type='number'
+                        name='percent_alcool'
+                        id='4'
+                        placeholder='°Alcool'
+                        step='.1'
+                        option=''
+                        required
+                    />
+                </div>
+                <div>
+                    <label for='name'>Pays de la brasserie: </label>
+                    <select name='contry' id='5' placeholder='Pays' required>
+                        {contry.map((el) => (
+                            <option key={el.id} value={el.name}>
+                                {el.name}
+                            </option>
+                        ))}
+                        >
+                    </select>
+                </div>
+                <div>
+                    <label for='name'>Brasserie de la bière: </label>
+                    <input
+                        type='text'
+                        name='brewery'
+                        id='6'
+                        placeholder='Braserie'
+                        option=''
+                        required
+                    />
+                </div>
+                <div>
+                    <label for='name'>Note: Houblon/5: </label>
+                    <input
+                        type='number'
+                        name='rating'
+                        id='7'
+                        placeholder='Notation'
+                        option=''
+                        min='0'
+                        max='5'
+                        required
+                    />
+                </div>
+                <div>
+                    <label for='name'>Vote avis: </label>
+                    <input
+                        type='text'
+                        name='notice'
+                        id='8'
+                        placeholder='Avis'
+                        option=''
+                        required
+                    />
+                </div>
                 <button>Envoyer</button>
             </form>
         </section>
