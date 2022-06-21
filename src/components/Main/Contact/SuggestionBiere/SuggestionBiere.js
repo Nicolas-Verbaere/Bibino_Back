@@ -113,6 +113,7 @@ const SuggestionBiere = () => {
                 <div>
                     <label for='name'>Couleur de la bière: </label>
                     <select name='color' id='2' placeholder='Couleur' required>
+                        <option value=''>-- Sélectionnez une couleur</option>
                         {color.map((el) => (
                             <option key={el.id} value={el.name}>
                                 {el.name}
@@ -123,6 +124,7 @@ const SuggestionBiere = () => {
                 <div>
                     <label for='name'>Style de la bière: </label>
                     <select name='style' id='3' placeholder='Style' required>
+                        <option value=''>-- Sélectionnez un style</option>
                         {style.map((el) => (
                             <option key={el.id} value={el.name}>
                                 {el.name}
