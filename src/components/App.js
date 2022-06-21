@@ -19,13 +19,14 @@ const App = () => {
   const [isLogged, setIsLogged] = useState(false);
 
   // décodage du token pour dynamiser le getUser par l'id
- 
-  const userToken = localStorage.getItem('userLoggedToken')
-  const userTokenDecoded = jwt_decode(userToken);
-  console.log(userTokenDecoded);
+  const userToken = () => {
+    localStorage.getItem('userLoggedToken');
+  }
   
-  
+
+   
   function getUser() {
+      const userTokenDecoded = jwt_decode(userToken);
     
     axios.get(`https://bibinov1.herokuapp.com/user/${userTokenDecoded.id}`)
     .then(function (response) {
@@ -41,9 +42,9 @@ const App = () => {
       // dans tous les cas
     });
   }
-
+ 
   function getUserReviews(){
-
+    const userTokenDecoded = jwt_decode(userToken);
     axios.get(`https://bibinov1.herokuapp.com/user/${userTokenDecoded.id}/review`)
     .then(function (response) {
       // en cas de réussite de la requête
@@ -58,10 +59,10 @@ const App = () => {
       // dans tous les cas
     });
   }
+  
+  
 
   useEffect(() => {
-    
-    console.log(localStorage.getItem('userLoggedToken'));
     getUser();
     getUserReviews();
   }, []);
@@ -70,12 +71,26 @@ const App = () => {
 
       <Header />
 
-      <Main user={user} userReviews={userReviews} setIsLogged={setIsLogged()} isLogged={isLogged}  />
+      { isLogged ? 
+        (<Main               
+          user={user}
+          userReviews={userReviews} 
+          setIsLogged={setIsLogged()} 
+          isLogged={isLogged} 
+        />)
+        :
+        (<Main
+          setIsLogged={setIsLogged()} 
+          isLogged={isLogged} 
+        />)
+      
+      }
+      
 
 
-            <Footer />
-        </div>
-    );
+      <Footer />
+    </div>
+  );
 };
 
 export default App;

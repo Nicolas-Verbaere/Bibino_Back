@@ -7,10 +7,11 @@ import iconLogout from '../../../assets/img/icon_logout.png';
 import './HeaderTop.scss';
 
 function HeaderTop() {
-    // function onClick(event) {
-    //     event.preventDefault();
-    //     localStorage.removeItem('userLoggedToken')
-    // };
+    function onClick(event) {
+
+        event.preventDefault();
+        localStorage.removeItem('userLoggedToken')
+    };
     return (
         
             
@@ -34,13 +35,13 @@ function HeaderTop() {
                     alt="profil"
                 ></img>
             </Link>
-            {/* { localStorage.getItem('userLoggedToken') && (
+            { localStorage.getItem('userLoggedToken') && (
                 <button
                     className="top_header_auth-logout"
                     src={iconLogout} 
                     onclick={onClick()}
                 ></button>   
-            )} */}
+            )}
             </section>
             
 
