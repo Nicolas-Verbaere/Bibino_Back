@@ -143,26 +143,26 @@ const SuggestionBiere = () => {
                     />
                 </div>
                 <div>
-                    <label for='name'>Pays de la brasserie: </label>
-                    <select name='contry' id='5' placeholder='Pays' required>
+                    <label for='contry'>Pays de la brasserie:</label>
+                    <input list='pays' id='contry' name='contry' />
+                    <datalist id='pays'>
                         {contry.map((el) => (
                             <option key={el.id} value={el.name}>
                                 {el.name}
                             </option>
                         ))}
-                        >
-                    </select>
+                    </datalist>
                 </div>
                 <div>
-                    <label for='name'>Brasserie de la bière: </label>
-                    <input
-                        type='text'
-                        name='brewery'
-                        id='6'
-                        placeholder='Braserie'
-                        option=''
-                        required
-                    />
+                    <label for='brewery'>Brasserie de la bière:</label>
+                    <input list='brasserie' id='brewery' name='brewery' />
+                    <datalist id='brasserie'>
+                        {brewery.map((el) => (
+                            <option key={el.id} value={el.name}>
+                                {el.name}
+                            </option>
+                        ))}
+                    </datalist>
                 </div>
                 <div>
                     <label for='name'>Note: Houblon/5: </label>
