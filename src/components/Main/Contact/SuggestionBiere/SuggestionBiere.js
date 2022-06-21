@@ -25,7 +25,7 @@ const SuggestionBiere = () => {
         axios
             .get(`https://bibinov1.herokuapp.com/style`, {})
             .then(function (response) {
-                console.log('consolelog getStyleBeer', response.data);
+                // console.log('consolelog getStyleBeer', response.data);
                 setStyle(response.data);
             })
             .catch(function (error) {
@@ -37,7 +37,7 @@ const SuggestionBiere = () => {
         axios
             .get(`https://bibinov1.herokuapp.com/country`, {})
             .then(function (response) {
-                console.log('consolelog getContry', response.data);
+                // console.log('consolelog getContry', response.data);
                 setContry(response.data);
             })
             .catch(function (error) {
@@ -49,7 +49,7 @@ const SuggestionBiere = () => {
         axios
             .get(`https://bibinov1.herokuapp.com/color`, {})
             .then(function (response) {
-                console.log('consolelog getColor', response.data);
+                // console.log('consolelog getColor', response.data);
                 setColor(response.data);
             })
             .catch(function (error) {
@@ -61,7 +61,7 @@ const SuggestionBiere = () => {
         axios
             .get(`https://bibinov1.herokuapp.com/brewery`, {})
             .then(function (response) {
-                console.log('consolelog getBrewery', response.data);
+                // console.log('consolelog getBrewery', response.data);
                 setBrewery(response.data);
             })
             .catch(function (error) {
@@ -70,18 +70,34 @@ const SuggestionBiere = () => {
             .then(function () {});
     }
 
-    // const handleSubmit = (e) => {
-    //     setValues({ ...values, [e.target.name]: e.targer.value });
-    // };
-    // const onChange = (e) => {
-    //     setValues({ ...values, [e.target.name]: e.target.value });
-    // };
+    function addBeer() {
+        axios
+            .post('https://bibinov1.herokuapp.com/beer', {
+                name: values.name,
+                color: values.color,
+                style: values.style,
+                percent_alcool: values.percent_alcool,
+                country: values.country,
+                brewery: values.brewery,
+                rating: values.rating, //note
+                notice: values.notice //avis
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
 
     const handleSubmit = (e) => {
+        addBeer();
         e.preventDefault();
     };
+    const onChange = (e) => {
+        setValues({ ...values, [e.target.name]: e.target.value });
+    };
 
-    // ;
     useEffect(() => {
         getStyleBeer();
         getContry();
@@ -90,7 +106,7 @@ const SuggestionBiere = () => {
     }, []);
     return (
         <section className='section_right'>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} onChange={onChange}>
                 <h1>Contact</h1>
                 <h2>Petite soif ?</h2>
                 <p>
@@ -112,7 +128,8 @@ const SuggestionBiere = () => {
                 </div>
                 <div>
                     <label for='name'>Couleur de la bière: </label>
-                    <select name='color' id='2' placeholder='Couleur' required>
+                    <select name='color' id='2' placeholder='Couleur'>
+                        {/*required> */}
                         <option value=''>-- Sélectionnez une couleur</option>
                         {color.map((el) => (
                             <option key={el.id} value={el.name}>
