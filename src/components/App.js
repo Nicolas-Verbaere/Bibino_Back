@@ -16,9 +16,11 @@ const App = () => {
 
   const [user, setUser] = useState([]);
   const [userReviews, setUserReviews] = useState([]);
+  const [isLogged, setIsLogged] = useState(false);
 
   // décodage du token pour dynamiser le getUser par l'id
-  const userToken = localStorage.getItem('userLoggedToken');
+ 
+  const userToken = localStorage.getItem('userLoggedToken')
   const userTokenDecoded = jwt_decode(userToken);
   console.log(userTokenDecoded);
   
@@ -68,7 +70,7 @@ const App = () => {
 
       <Header />
 
-      <Main user={user} userReviews={userReviews} />
+      <Main user={user} userReviews={userReviews} setIsLogged={setIsLogged()} isLogged={isLogged}  />
 
 
             <Footer />
