@@ -27,8 +27,17 @@
   
   
   
-  .top_header-profil {
+  .top_header_auth-profil {
     width: 50px;
     margin-right: 10px;
+  }
+
+  .top_header_auth-logout {
+    // background-image: url("../../../assets/img/icon_logout.png");
+    width: 50px;
+    margin-right: 10px;
+    &:active {      
+    text-shadow: 1px 1px $color-green-dark;
+    }
   }
   

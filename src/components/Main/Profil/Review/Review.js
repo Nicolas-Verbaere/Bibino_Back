@@ -4,7 +4,7 @@ import IconModify from '../../../../assets/img/icon_modify.png';
 import IconDelete from '../../../../assets/img/icon_trash.png';
 
 function Review ( item ){
-    console.log(item);
+    
     const { beer, review } = item;
 
 return (
