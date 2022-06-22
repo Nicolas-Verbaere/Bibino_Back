@@ -8,8 +8,8 @@ import FormInput from '../FormInput';
 import axios from 'axios';
 
 
-const Connexion = ( setIsLogged, isLogged ) => {
-    
+const Connexion = ({isLogged, setIsLogged}) => {
+    // const [isLogged, setIsLogged] = useState(false);
     const [values, setValues] = useState({
         email: '',
         password: ''

@@ -5,16 +5,10 @@ import Review from './Review/Review';
 
 
 function Profil({ user, userReviews }) {
-    const key = Math.floor(Math.random() * 1000)
-    // userReviews.reviews.map((review) => 
-    // console.log(review.review)
-    // )
-    console.log(userReviews);
-    console.log(user);
+    
     return (
         <>
-        { user && (
-        <>
+        
             <section className="profil">
                 <p className="profil-welcome">Bonjour,</p>
                 <h1 className="profil-pseudo">{user && user.alias}</h1>
@@ -29,13 +23,11 @@ function Profil({ user, userReviews }) {
                  
                   ))}
 
-                  {/* <Review /> */}
 
                 </section>
             </section>
         </>
-    )}
-        </>
+    
     );
 }
 

@@ -16,18 +16,27 @@ const App = () => {
 
   const [user, setUser] = useState([]);
   const [userReviews, setUserReviews] = useState([]);
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(false)
 
-  // décodage du token pour dynamiser le getUser par l'id
-  const userToken = () => {
-    localStorage.getItem('userLoggedToken');
+  // // décodage du token pour dynamiser le getUser par l'id
+  // if (localStorage.getItem('userLoggedToken'))
+  const userToken = localStorage.getItem('userLoggedToken');
+  let userTokenDecoded = null;
+  if (userToken) {
+    
+     userTokenDecoded = jwt_decode(userToken);
   }
+
+  // console.log(userTokenDecoded);
+  
   
 
    
   function getUser() {
-      const userTokenDecoded = jwt_decode(userToken);
+    // if (userToken) {
+    //   const userTokenDecoded = jwt_decode(userToken);
     
+    // } 
     axios.get(`https://bibinov1.herokuapp.com/user/${userTokenDecoded.id}`)
     .then(function (response) {
       // en cas de réussite de la requête
@@ -48,7 +57,7 @@ const App = () => {
     axios.get(`https://bibinov1.herokuapp.com/user/${userTokenDecoded.id}/review`)
     .then(function (response) {
       // en cas de réussite de la requête
-      console.log('consolelog then userReviews', response.data[0]);
+      // console.log('consolelog then userReviews', response.data[0]);
       setUserReviews(response.data[0]);
     })
     .catch(function (error) {
@@ -63,29 +72,18 @@ const App = () => {
   
 
   useEffect(() => {
-    getUser();
-    getUserReviews();
-  }, []);
+    if (localStorage.getItem('userLoggedToken')) {
+      getUser();
+      getUserReviews();
+    }
+
+  }, [isLogged]);
   return (
     <div className="App">
 
-      <Header />
+      <Header isLogged={isLogged} setIsLogged={setIsLogged}/>
 
-      { isLogged ? 
-        (<Main               
-          user={user}
-          userReviews={userReviews} 
-          setIsLogged={setIsLogged()} 
-          isLogged={isLogged} 
-        />)
-        :
-        (<Main
-          setIsLogged={setIsLogged()} 
-          isLogged={isLogged} 
-        />)
-      
-      }
-      
+      <Main user={user} userReviews={userReviews} isLogged={isLogged} setIsLogged={setIsLogged} />
 
 
       <Footer />
