@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import Button from '@mui/material/Button';
-
 // import FormInput from '../FormInput';
 
 import '../Contact.scss';
@@ -109,17 +107,22 @@ const SuggestionBiere = ({ user }) => {
     }, []);
     return (
         <section className='section_right'>
-            <form onSubmit={handleSubmit} onChange={onChange}>
-                <h1>Contact</h1>
-                <h2>Petite soif ?</h2>
-                <p>
+            <form
+                className='contact_form'
+                onSubmit={handleSubmit}
+                onChange={onChange}>
+                <h1 className='section_title'>Contact</h1>
+                <h2 className='section_title_h2'>Petite soif ?</h2>
+                <p className='section_p'>
                     Vous voulez ajouter votre bière préférée sur notre site?
                     Merci de nous la suggérer en replissant le formulaire
                     ci-dessous
                 </p>
 
                 <div>
-                    <label for='name'>Nom de la bière: </label>
+                    <label className='label_input' for='name'>
+                        Nom de la bière:{' '}
+                    </label>
                     <input
                         type='text'
                         name='name'
@@ -130,7 +133,9 @@ const SuggestionBiere = ({ user }) => {
                     />
                 </div>
                 <div>
-                    <label for='name'>Couleur de la bière: </label>
+                    <label className='label_input' for='name'>
+                        Couleur de la bière:{' '}
+                    </label>
                     <select
                         name='color_id'
                         id='2'
@@ -145,7 +150,9 @@ const SuggestionBiere = ({ user }) => {
                     </select>
                 </div>
                 <div>
-                    <label for='name'>Style de la bière: </label>
+                    <label className='label_input' for='name'>
+                        Style de la bière:{' '}
+                    </label>
                     <select name='style' id='3' placeholder='Style' required>
                         <option value=''>-- Sélectionnez un style</option>
                         {style_id.map((el) => (
@@ -156,7 +163,9 @@ const SuggestionBiere = ({ user }) => {
                     </select>
                 </div>
                 <div>
-                    <label for='name'>Degré d'alcool: </label>
+                    <label className='label_input' for='name'>
+                        Degré d'alcool:{' '}
+                    </label>
                     <input
                         type='number'
                         name='alcohol_level'
@@ -168,7 +177,9 @@ const SuggestionBiere = ({ user }) => {
                     />
                 </div>
                 <div>
-                    <label for='country_id'>Pays de la brasserie:</label>
+                    <label className='label_input' for='country_id'>
+                        Pays de la brasserie:
+                    </label>
                     <input list='pays' id='country_id' name='country_id' />
                     <datalist id='pays'>
                         {country_id.map((el) => (
@@ -191,8 +202,11 @@ const SuggestionBiere = ({ user }) => {
                 </div>
 
                 <div>
-                    <label for='name'>Description:</label>
+                    <label className='label_input' for='name'>
+                        Description:
+                    </label>
                     <textarea
+                        className='input_textarea'
                         type='text'
                         name='description'
                         id='8'
@@ -206,7 +220,9 @@ const SuggestionBiere = ({ user }) => {
                 </div>
 
                 <div className='form_user_id'>
-                    <label for='name'>Nom utilisateur: </label>
+                    <label className='label_input' for='name'>
+                        Nom utilisateur:{' '}
+                    </label>
                     <input
                         type='number'
                         name='user'
@@ -216,7 +232,7 @@ const SuggestionBiere = ({ user }) => {
                         value={user.id}
                     />
                 </div>
-                <button>Envoyer</button>
+                <button className='contact_button'>Envoyer</button>
             </form>
         </section>
     );

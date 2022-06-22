@@ -6,8 +6,8 @@ import './Contact.scss';
 export default function Navbar() {
     return (
         <>
-            <nav className='nav'>
-                <ul>
+            <nav className='contact_nav'>
+                <ul className='contact_ul'>
                     {/* <CustomLink className='nav_link' to='/contact/PbTechnique'>
                         Problémes Techiques
                     </CustomLink> */}
