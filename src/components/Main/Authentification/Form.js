@@ -4,10 +4,10 @@ import './Form.scss';
 import Connection from './Connection/Connection';
 import Register from './Register/Register';
 
-const Form = () => {
+const Form = ( {isLogged, setIsLogged}) => {
     return (
         <div className="container">
-            <Connection />
+            <Connection isLogged={isLogged} setIsLogged={setIsLogged} />
             <Register />
         </div>
     );

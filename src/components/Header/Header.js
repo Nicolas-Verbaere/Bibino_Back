@@ -2,10 +2,10 @@ import HeaderNav from "./HeaderNav/HeaderNav";
 import HeaderTop from "./HeaderTop/HeaderTop";
 import './Header.scss';
 
-function Header() {
+function Header({isLogged, setIsLogged}) {
     return (
     <header className="header">
-        <HeaderTop />
+        <HeaderTop isLogged={isLogged} setIsLogged={setIsLogged} />
         <HeaderNav />
       </header>
     );

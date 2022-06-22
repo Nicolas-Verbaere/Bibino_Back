@@ -9,9 +9,9 @@ function Footer() {
                 Contact
             </a>
             <Link to="/a-propos">
-                <a className="footer_container-link" href="/a-propos">
+                <p className="footer_container-link" href="/a-propos">
                     A propos
-                </a>
+                </p>
             </Link>
         </nav>
     );
