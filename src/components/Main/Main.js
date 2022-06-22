@@ -52,4 +52,4 @@ function Main({ user, userReviews, isLogged, setIsLogged }) {
     );
 }
 
-export default React.memo(Main);
+export default Main;
