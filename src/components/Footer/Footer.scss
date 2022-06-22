@@ -13,6 +13,10 @@
     line-height: 2rem;
     display: flex;
     flex-direction: column;
-  }
+
+    &-copyright {
+      align-self: center;
+    }
+}
   
  
