@@ -6,19 +6,19 @@ import axios from 'axios';
 import '../Contact.scss';
 
 const SuggestionBiere = () => {
-    const [style, setStyle] = useState([]);
-    const [contry, setContry] = useState([]);
-    const [color, setColor] = useState([]);
-    const [brewery, setBrewery] = useState([]);
+    const [style_id, setStyleId] = useState([]);
+    const [country_id, setContryId] = useState([]);
+    const [color_id, setColorId] = useState([]);
+    const [brewery_id, setBreweryId] = useState([]);
     const [values, setValues] = useState({
-        name: '',
-        color: '',
-        style: '',
-        percent_alcool: '',
-        country: '',
-        brewery: '',
-        rating: '', //note
-        notice: '' //avis
+        name: '', //string nom de la biere
+        description: '', //avis
+        alcohol_level: '',
+        country_id: '', //string pays
+        style_id: '', //string style
+        color_id: '', //string color
+        brewery_id: '', // string
+        user_account_id: '3' // id utilisateur (cf token)
     });
 
     function getStyleBeer() {
@@ -26,7 +26,7 @@ const SuggestionBiere = () => {
             .get(`https://bibinov1.herokuapp.com/style`, {})
             .then(function (response) {
                 // console.log('consolelog getStyleBeer', response.data);
-                setStyle(response.data);
+                setStyleId(response.data);
             })
             .catch(function (error) {
                 console.log(error);
@@ -38,7 +38,7 @@ const SuggestionBiere = () => {
             .get(`https://bibinov1.herokuapp.com/country`, {})
             .then(function (response) {
                 // console.log('consolelog getContry', response.data);
-                setContry(response.data);
+                setContryId(response.data);
             })
             .catch(function (error) {
                 console.log(error);
@@ -50,7 +50,7 @@ const SuggestionBiere = () => {
             .get(`https://bibinov1.herokuapp.com/color`, {})
             .then(function (response) {
                 // console.log('consolelog getColor', response.data);
-                setColor(response.data);
+                setColorId(response.data);
             })
             .catch(function (error) {
                 console.log(error);
@@ -62,7 +62,20 @@ const SuggestionBiere = () => {
             .get(`https://bibinov1.herokuapp.com/brewery`, {})
             .then(function (response) {
                 // console.log('consolelog getBrewery', response.data);
-                setBrewery(response.data);
+                setBreweryId(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .then(function () {});
+    }
+
+    function getUser() {
+        axios
+            .get(`https://bibinov1.herokuapp.com/user`, {})
+            .then(function (response) {
+                // console.log('consolelog getUserId', response.data);
+                setBreweryId(response.data);
             })
             .catch(function (error) {
                 console.log(error);
@@ -74,13 +87,13 @@ const SuggestionBiere = () => {
         axios
             .post('https://bibinov1.herokuapp.com/beer', {
                 name: values.name,
-                color: values.color,
-                style: values.style,
-                percent_alcool: values.percent_alcool,
-                country: values.country,
-                brewery: values.brewery,
-                rating: values.rating, //note
-                notice: values.notice //avis
+                description: values.description, //avis
+                alcohol_level: values.alcohol_level,
+                country_id: values.country_id,
+                style_id: values.style,
+                color_id: values.color_id,
+                brewery_id: values.brewery_id,
+                user_account_id: values.user_account_id
             })
             .then(function (response) {
                 console.log(response);
@@ -103,6 +116,7 @@ const SuggestionBiere = () => {
         getContry();
         getColor();
         getBrewery();
+        getUser();
     }, []);
     return (
         <section className='section_right'>
@@ -128,10 +142,13 @@ const SuggestionBiere = () => {
                 </div>
                 <div>
                     <label for='name'>Couleur de la bière: </label>
-                    <select name='color' id='2' placeholder='Couleur'>
-                        {/*required> */}
+                    <select
+                        name='color_id'
+                        id='2'
+                        placeholder='Couleur'
+                        required>
                         <option value=''>-- Sélectionnez une couleur</option>
-                        {color.map((el) => (
+                        {color_id.map((el) => (
                             <option key={el.id} value={el.name}>
                                 {el.name}
                             </option>
@@ -142,7 +159,7 @@ const SuggestionBiere = () => {
                     <label for='name'>Style de la bière: </label>
                     <select name='style' id='3' placeholder='Style' required>
                         <option value=''>-- Sélectionnez un style</option>
-                        {style.map((el) => (
+                        {style_id.map((el) => (
                             <option key={el.id} value={el.name}>
                                 {el.name}
                             </option>
@@ -153,7 +170,7 @@ const SuggestionBiere = () => {
                     <label for='name'>Degré d'alcool: </label>
                     <input
                         type='number'
-                        name='percent_alcool'
+                        name='alcohol_level'
                         id='4'
                         placeholder='°Alcool'
                         step='.1'
@@ -162,10 +179,10 @@ const SuggestionBiere = () => {
                     />
                 </div>
                 <div>
-                    <label for='contry'>Pays de la brasserie:</label>
-                    <input list='pays' id='contry' name='contry' />
+                    <label for='country_id'>Pays de la brasserie:</label>
+                    <input list='pays' id='country_id' name='country_id' />
                     <datalist id='pays'>
-                        {contry.map((el) => (
+                        {country_id.map((el) => (
                             <option key={el.id} value={el.name}>
                                 {el.name}
                             </option>
@@ -173,36 +190,39 @@ const SuggestionBiere = () => {
                     </datalist>
                 </div>
                 <div>
-                    <label for='brewery'>Brasserie de la bière:</label>
-                    <input list='brasserie' id='brewery' name='brewery' />
+                    <label for='brewery_id'>Brasserie de la bière:</label>
+                    <input list='brasserie' id='brewery_id' name='brewery_id' />
                     <datalist id='brasserie'>
-                        {brewery.map((el) => (
+                        {brewery_id.map((el) => (
                             <option key={el.id} value={el.name}>
                                 {el.name}
                             </option>
                         ))}
                     </datalist>
                 </div>
+
                 <div>
-                    <label for='name'>Note: Houblon/5: </label>
-                    <input
-                        type='number'
-                        name='rating'
-                        id='7'
-                        placeholder='Notation'
+                    <label for='name'>Description:</label>
+                    <textarea
+                        type='text'
+                        name='description'
+                        id='8'
+                        placeholder='Veuillez saisir votre commentaire'
                         option=''
-                        min='0'
-                        max='5'
                         required
+                        maxLength='300'
+                        rows='5'
+                        cols='50'
                     />
                 </div>
+
                 <div>
-                    <label for='name'>Vote avis: </label>
+                    <label for='name'>Nom utilisateur: </label>
                     <input
-                        type='text'
-                        name='notice'
-                        id='8'
-                        placeholder='Avis'
+                        type='number'
+                        name='user'
+                        id='9'
+                        placeholder='Nom'
                         option=''
                         required
                     />
