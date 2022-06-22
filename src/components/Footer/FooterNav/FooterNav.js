@@ -8,8 +8,10 @@ function Footer() {
             <a className='footer_container-link' href='/contact'>
                 Contact
             </a>
-            <Link to='/a-propos'>
-                <p className='footer_container-link' href='/a-propos'>
+
+            <Link to="/a-propos">
+                <p className="footer_container-link" href="/a-propos">
+
                     A propos
                 </p>
             </Link>
