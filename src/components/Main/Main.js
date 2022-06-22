@@ -12,7 +12,7 @@ import './Main.scss';
 
 import './Main.scss';
 
-function Main({ user, userReviews }) {
+function Main({ user, userReviews, setIsLogged, isLogged }) {
 
     return (
         <main className="main">
@@ -29,7 +29,7 @@ function Main({ user, userReviews }) {
                 />
                 <Route path="/a-propos" element={<Apropos />} />
 
-                <Route path="/formulaire" element={<Form />} />
+                <Route path="/formulaire" element={<Form setIsLogged={setIsLogged} isLogged={isLogged} />} />
 
                 <Route path="/profil" element={<Profil user={user} userReviews={userReviews} />} />
 

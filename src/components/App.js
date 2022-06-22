@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import jwt_decode from "jwt-decode";
 
 // import composant
 import Main from './Main/Main'
@@ -15,12 +16,22 @@ const App = () => {
 
   const [user, setUser] = useState([]);
   const [userReviews, setUserReviews] = useState([]);
+  const [isLogged, setIsLogged] = useState(false);
 
+  // décodage du token pour dynamiser le getUser par l'id
+  const userToken = () => {
+    localStorage.getItem('userLoggedToken');
+  }
+  
+
+   
   function getUser() {
-    axios.get('https://bibinov1.herokuapp.com/user/1')
+      const userTokenDecoded = jwt_decode(userToken);
+    
+    axios.get(`https://bibinov1.herokuapp.com/user/${userTokenDecoded.id}`)
     .then(function (response) {
       // en cas de réussite de la requête
-      console.log('consolelog user', response.data);
+      // console.log('consolelog user', response.data);
       setUser(response.data);
     })
     .catch(function (error) {
@@ -31,13 +42,14 @@ const App = () => {
       // dans tous les cas
     });
   }
-
+ 
   function getUserReviews(){
-    axios.get('https://bibinov1.herokuapp.com/user/1/user-review')
+    const userTokenDecoded = jwt_decode(userToken);
+    axios.get(`https://bibinov1.herokuapp.com/user/${userTokenDecoded.id}/review`)
     .then(function (response) {
       // en cas de réussite de la requête
-      console.log('consolelog then userReviews', response.data);
-      setUserReviews(response.data);
+      console.log('consolelog then userReviews', response.data[0]);
+      setUserReviews(response.data[0]);
     })
     .catch(function (error) {
       // en cas d’échec de la requête
@@ -47,6 +59,8 @@ const App = () => {
       // dans tous les cas
     });
   }
+  
+  
 
   useEffect(() => {
     getUser();
@@ -57,12 +71,26 @@ const App = () => {
 
       <Header />
 
-      <Main user={user} userReviews={userReviews} />
+      { isLogged ? 
+        (<Main               
+          user={user}
+          userReviews={userReviews} 
+          setIsLogged={setIsLogged()} 
+          isLogged={isLogged} 
+        />)
+        :
+        (<Main
+          setIsLogged={setIsLogged()} 
+          isLogged={isLogged} 
+        />)
+      
+      }
+      
 
 
-            <Footer />
-        </div>
-    );
+      <Footer />
+    </div>
+  );
 };
 
 export default App;

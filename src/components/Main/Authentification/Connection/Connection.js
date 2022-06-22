@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
 
 import { useState } from 'react';
 import '../Form.scss';
@@ -6,26 +7,29 @@ import FormInput from '../FormInput';
 
 import axios from 'axios';
 
-const Connexion = () => {
+
+const Connexion = ( setIsLogged, isLogged ) => {
+    
     const [values, setValues] = useState({
         email: '',
         password: ''
     });
 
-    async function requestsConnexion() {
-        try {
-            const response = await axios.get(
-                'https://bibinov1.herokuapp.com/user'
-            );
-            console.log(
-                'methode find',
-                response.data.find((user) => user.email === values.email)
-            );
-            return response.data;
-        } catch (err) {
-            console.error(err);
-            throw err;
-        }
+
+
+    function connection() {
+        axios.post('https://bibinov1.herokuapp.com/login', {
+            email: values.email,
+            password: values.password
+          })
+          .then(function (response) {
+            console.log(`consolelog de response axios, ${response.data.token}`);
+            localStorage.setItem('userLoggedToken', `${response.data.token}`);
+            setIsLogged(true);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
 
     const inputsConnection = [
@@ -46,13 +50,13 @@ const Connexion = () => {
             errorMessage:
                 'Le mot de passe doit contenir au minimum 8 caractères, un caractère spécial, une lettre majuscule, une lettre minuscule et un nombre.',
             label: 'Mot de Passe',
-            pattern: `^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$`,
+            // pattern: `^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$`,
             required: true
         }
     ];
     const handleSubmit = (e) => {
         e.preventDefault();
-        requestsConnexion();
+        connection();
     };
 
     const onChange = (e) => {
@@ -61,6 +65,7 @@ const Connexion = () => {
     };
 
     return (
+
         <section className="connection">
             <form onSubmit={handleSubmit}>
                 <h1>Connexion</h1>
@@ -76,6 +81,7 @@ const Connexion = () => {
                 <button type="submit">Identifiez-vous</button>
                 <button>Mot de passe oublié?</button>
             </form>
+            { isLogged && <Navigate to={"/profil"} />}
         </section>
     );
 };
