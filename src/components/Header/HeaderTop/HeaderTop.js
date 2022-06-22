@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import logo from '../../../assets/img/logo_bibino.png';
 import iconProfil from '../../../assets/img/icon_profil.png';
@@ -6,11 +6,9 @@ import iconLogout from '../../../assets/img/icon_logout.png';
 import './HeaderTop.scss';
 
 function HeaderTop({isLogged, setIsLogged}) {
-    const navigate = useNavigate()
     function handleclick() {
        setIsLogged(false);
        localStorage.clear();
-       navigate('/');
     }
     return (
         <section className="top_header">
@@ -24,12 +22,15 @@ function HeaderTop({isLogged, setIsLogged}) {
             <section className="top_header_auth">
 
                 { isLogged ?
-                (<Link to='/profil'>
+                (<>
+                <Link to='/profil'>
                     <img
                         className="top_header_auth-profil"
                         src={iconProfil}
                         alt="profil"
                     ></img>
+                </Link>
+                <Link to='/'>
                 <img 
                 src={iconLogout} 
                 alt="logout" 
@@ -37,7 +38,7 @@ function HeaderTop({isLogged, setIsLogged}) {
                 onClick={handleclick}>
                    
                 </img>
-                </Link>)
+                </Link></>)
                 :
                 (<Link to='/formulaire'>
                     <img
