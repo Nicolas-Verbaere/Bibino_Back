@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import Button from '@mui/material/Button';
+
 // import FormInput from '../FormInput';
 
 import '../Contact.scss';
 
-const SuggestionBiere = () => {
+const SuggestionBiere = ({ user }) => {
     const [style_id, setStyleId] = useState([]);
     const [country_id, setContryId] = useState([]);
     const [color_id, setColorId] = useState([]);
@@ -18,8 +20,9 @@ const SuggestionBiere = () => {
         style_id: '', //string style
         color_id: '', //string color
         brewery_id: '', // string
-        user_account_id: '3' // id utilisateur (cf token)
+        user_account_id: user.id // id utilisateur (cf token)
     });
+    console.log('user', user.id);
 
     function getStyleBeer() {
         axios
@@ -70,19 +73,6 @@ const SuggestionBiere = () => {
             .then(function () {});
     }
 
-    function getUser() {
-        axios
-            .get(`https://bibinov1.herokuapp.com/user`, {})
-            .then(function (response) {
-                // console.log('consolelog getUserId', response.data);
-                setBreweryId(response.data);
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-            .then(function () {});
-    }
-
     function addBeer() {
         axios
             .post('https://bibinov1.herokuapp.com/beer', {
@@ -116,7 +106,6 @@ const SuggestionBiere = () => {
         getContry();
         getColor();
         getBrewery();
-        getUser();
     }, []);
     return (
         <section className='section_right'>
@@ -216,15 +205,15 @@ const SuggestionBiere = () => {
                     />
                 </div>
 
-                <div>
+                <div className='form_user_id'>
                     <label for='name'>Nom utilisateur: </label>
                     <input
                         type='number'
                         name='user'
                         id='9'
                         placeholder='Nom'
-                        option=''
                         required
+                        value={user.id}
                     />
                 </div>
                 <button>Envoyer</button>

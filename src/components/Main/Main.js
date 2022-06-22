@@ -12,11 +12,9 @@ import PbTechnique from './Contact/PbTechnique/PbTechnique';
 import SuggestionBiere from './Contact/SuggestionBiere/SuggestionBiere';
 import SuggestionBHistoire from './Contact/SuggestionBHistoire/SuggestionBHistoire';
 
-
 import './Main.scss';
 
 function Main({ user, userReviews, isLogged, setIsLogged }) {
-
     return (
         <main className='main'>
             <Routes>
@@ -24,15 +22,25 @@ function Main({ user, userReviews, isLogged, setIsLogged }) {
                     path='/'
                     element={
                         <>
-                            <Link to="/a-propos"><ArticleAPropos /></Link>
-                            
+                            <Link to='/a-propos'>
+                                <ArticleAPropos />
+                            </Link>
+
                             <ArticleTopBeers />
                         </>
                     }
                 />
-                <Route path="/a-propos" element={<Apropos />} />
-                <Route path="/formulaire" element={<Form isLogged={isLogged} setIsLogged={setIsLogged} />} />
-                <Route path="/profil" element={<Profil user={user} userReviews={userReviews} />} />
+                <Route path='/a-propos' element={<Apropos />} />
+                <Route
+                    path='/formulaire'
+                    element={
+                        <Form isLogged={isLogged} setIsLogged={setIsLogged} />
+                    }
+                />
+                <Route
+                    path='/profil'
+                    element={<Profil user={user} userReviews={userReviews} />}
+                />
                 <Route path='/contact' element={<Contact />}>
                     <Route
                         path='/contact/PbTechnique'
@@ -40,7 +48,7 @@ function Main({ user, userReviews, isLogged, setIsLogged }) {
                     />
                     <Route
                         path='/contact/SuggestionBiere'
-                        element={<SuggestionBiere />}
+                        element={<SuggestionBiere user={user} />}
                     />
                     <Route
                         path='/contact/SuggestionBHistoire'

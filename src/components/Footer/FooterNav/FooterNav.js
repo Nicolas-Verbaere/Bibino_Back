@@ -6,9 +6,9 @@ function Footer() {
     return (
         <nav className='footer_container'>
             <Link to='/contact'>
-                <a className='footer_container-link' href='/contact'>
+                <p className='footer_container-link' href='/contact'>
                     Contact
-                </a>
+                </p>
             </Link>
 
             <Link to='/a-propos'>
