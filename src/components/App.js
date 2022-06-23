@@ -17,6 +17,7 @@ const App = () => {
   const [user, setUser] = useState([]);
   const [userReviews, setUserReviews] = useState([]);
   const [isLogged, setIsLogged] = useState(false)
+  const [bieres, setBieres] = useState([]);
 
   // // décodage du token pour dynamiser le getUser par l'id
   // if (localStorage.getItem('userLoggedToken'))
@@ -69,12 +70,30 @@ const App = () => {
     });
   }
   
-  
+  function getBieres(){
+      axios.get('https://bibinov1.herokuapp.com/beer', {
+        headers: {
+          Authorization: `bearer ${userToken}`
+        },
+      })
+    .then(function (response) {
+      // console.log(response.data)
+      console.log(response.data)
+      setBieres(response.data);
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+    .then(function (){
+
+    });
+  }
 
   useEffect(() => {
     if (localStorage.getItem('userLoggedToken')) {
       getUser();
       getUserReviews();
+      getBieres();
     }
 
   }, [isLogged]);
@@ -83,7 +102,7 @@ const App = () => {
 
       <Header isLogged={isLogged} setIsLogged={setIsLogged}/>
 
-      <Main user={user} userReviews={userReviews} isLogged={isLogged} setIsLogged={setIsLogged} />
+      <Main user={user} userReviews={userReviews} isLogged={isLogged} setIsLogged={setIsLogged} bieres={bieres} />
 
 
       <Footer />

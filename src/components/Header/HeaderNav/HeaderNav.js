@@ -1,10 +1,16 @@
 import './HeaderNav.scss';
 
+import {Link} from 'react-router-dom'
+
 function HeaderNav() {
     return (
         <nav className="nav_header">
-          <a className="nav_header-link" href="#">Bières</a>
-          <a className="nav_header-link" href="#">Bières du moment</a>
+        <Link to='/bieres'>
+          <p className="nav_header-link" href="/bieres">Bières</p>
+        </Link>
+        <Link to='/top-bieres'>
+          <p className="nav_header-link" href="/top-bieres">Bières du moment</p>
+        </Link>
         </nav>
     );
 }
