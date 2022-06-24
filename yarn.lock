@@ -7257,6 +7257,11 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
+react-contact-form@^0.0.1-rc.2:
+  version "0.0.1-rc.2"
+  resolved "https://registry.yarnpkg.com/react-contact-form/-/react-contact-form-0.0.1-rc.2.tgz#31bcdb63a5828ddce95dac8c0c0e163d1e2bdeee"
+  integrity sha512-RzXBpSurrAFG91ahYTWnjnaOKYpIoJ3wIMatEMBP2l7wpfR1ze3TESbmlGk9DQqmt4FTKTQ9I/pAVe1HF0jBeg==
+
 react-dev-utils@^12.0.1:
   version "12.0.1"
   resolved "https://registry.npmjs.org/react-dev-utils/-/react-dev-utils-12.0.1.tgz"

@@ -20,7 +20,7 @@ const SuggestionBiere = ({ user }) => {
         brewery_id: '', // string
         user_account_id: user.id // id utilisateur (cf token)
     });
-    console.log('user', user.id);
+    // console.log('user', user.id);
 
     function getStyleBeer() {
         axios

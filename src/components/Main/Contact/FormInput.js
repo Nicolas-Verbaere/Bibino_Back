@@ -15,7 +15,7 @@ const FormInput = (props) => {
     //     axios
     //         .get(`https://bibinov1.herokuapp.com/style`)
     //         .then(function (response) {
-    //             // console.log('consolelog then userReviews', response.data);
+    //             // ('consolelog then userReviews', response.data);
     //             setStyle.style(response.data);
     //             console.log(
     //                 ' setStyle.style(response.data)',
