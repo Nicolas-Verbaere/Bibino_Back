@@ -3,11 +3,11 @@ import { Routes, Route } from 'react-router-dom';
 import './Contact.scss';
 
 import Navbar from './Navbar';
-import PbTechnique from './PbTechnique/PbTechnique';
+import ContactForm from './PbTechnique/PbTechnique';
 import SuggestionBiere from './SuggestionBiere/SuggestionBiere';
 import SuggestionBHistoire from './SuggestionBHistoire/SuggestionBHistoire';
 
-const Contact = () => {
+const Contact = ({ user }) => {
     return (
         <div className='container'>
             <Navbar />
@@ -16,17 +16,17 @@ const Contact = () => {
                 <Route
                     className='nav-link'
                     path='/contact/PbTechnique'
-                    element={<PbTechnique />}
+                    element={<ContactForm user={user} />}
                 />
                 <Route
                     className='nav-link'
                     path='/contact/SuggestionBiere'
-                    element={<SuggestionBiere />}
+                    element={<SuggestionBiere user={user} />}
                 />
                 <Route
                     className='nav-link'
                     path='/contact/SuggestionBHistoire'
-                    element={<SuggestionBHistoire />}
+                    element={<SuggestionBHistoire user={user} />}
                 />
             </Routes>
         </div>
