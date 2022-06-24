@@ -1,0 +1,43 @@
+@import '../../../style/vars';
+
+.biere {
+    background-color: $color-background-light;
+    margin: 50px 0 20px 0;
+    border: 1px solid $color-junction;
+    border-radius: 5px;
+    display: flex;
+    box-shadow: 2px 2px 5px 0px #B9B9B9;
+
+    &-img{
+        border-right: 1px solid $color-junction;
+        box-shadow: 2px 0px 5px 0px #B9B9B9;
+        width: 30%;
+        height: 500px;          
+        object-fit: contain;
+    }
+    &_contain{
+        width: 70%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        line-height: 2.5rem;
+        
+        &-style, &-color, &-alcohol, &-brewery, &-country, &-description, &-star {
+            padding: 0 400px;
+        }
+
+        &-name{
+            font-size: 3rem;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid $color-junction;
+            font-weight: bold;
+            text-shadow:  1px 1px $color-green-dark;
+        }
+
+        &-description{
+            line-height: 2rem
+        }
+    }
+}

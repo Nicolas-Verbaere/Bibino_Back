@@ -18,27 +18,24 @@ const App = () => {
   const [userReviews, setUserReviews] = useState([]);
   const [isLogged, setIsLogged] = useState(false)
   const [bieres, setBieres] = useState([]);
+  const [biere, setBiere] = useState([]);
+  const [biereId, setBiereId] = useState();
 
   // // décodage du token pour dynamiser le getUser par l'id
   // if (localStorage.getItem('userLoggedToken'))
   const userToken = localStorage.getItem('userLoggedToken');
+  // console.log(userToken);
   let userTokenDecoded = null;
-  if (userToken) {
+  // if (userToken) {
     
-     userTokenDecoded = jwt_decode(userToken);
-  }
-
-  // console.log(userTokenDecoded);
-  
-  
-
+  //    userTokenDecoded = jwt_decode(userToken);
+  //    console.log(userTokenDecoded.user.id);
+  // }
    
   function getUser() {
-    // if (userToken) {
-    //   const userTokenDecoded = jwt_decode(userToken);
     
-    // } 
-    axios.get(`https://bibinov1.herokuapp.com/user/${userTokenDecoded.id}`)
+        const userTokenDecoded = jwt_decode(userToken);
+    axios.get(`https://bibinov1.herokuapp.com/user/${userTokenDecoded.user.id}`)
     .then(function (response) {
       // en cas de réussite de la requête
       // console.log('consolelog user', response.data);
@@ -55,7 +52,7 @@ const App = () => {
  
   function getUserReviews(){
     const userTokenDecoded = jwt_decode(userToken);
-    axios.get(`https://bibinov1.herokuapp.com/user/${userTokenDecoded.id}/review`)
+    axios.get(`https://bibinov1.herokuapp.com/user/${userTokenDecoded.user.id}/review`)
     .then(function (response) {
       // en cas de réussite de la requête
       // console.log('consolelog then userReviews', response.data[0]);
@@ -71,14 +68,18 @@ const App = () => {
   }
   
   function getBieres(){
-      axios.get('https://bibinov1.herokuapp.com/beer', {
-        headers: {
-          Authorization: `bearer ${userToken}`
-        },
-      })
+      axios.get('https://bibinov1.herokuapp.com/beer',
+      //  {
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     Accept: 'application/json',
+      //     Authorization: `Bearer ${userToken}`
+      //   },
+      // }
+      )
     .then(function (response) {
       // console.log(response.data)
-      console.log(response.data)
+      // console.log(response.data)
       setBieres(response.data);
     })
     .catch(function (error) {
@@ -89,20 +90,33 @@ const App = () => {
     });
   }
 
+  
+
+
   useEffect(() => {
     if (localStorage.getItem('userLoggedToken')) {
       getUser();
       getUserReviews();
-      getBieres();
     }
-
+    getBieres();
+    
+    
   }, [isLogged]);
   return (
     <div className="App">
 
       <Header isLogged={isLogged} setIsLogged={setIsLogged}/>
 
-      <Main user={user} userReviews={userReviews} isLogged={isLogged} setIsLogged={setIsLogged} bieres={bieres} />
+      <Main 
+      user={user} 
+      userReviews={userReviews} 
+      isLogged={isLogged} setIsLogged={setIsLogged} 
+      bieres={bieres}
+      setBiereId={setBiereId}
+      biereId={biereId}
+      setBiere={setBiere}
+      biere={biere}
+      />
 
 
       <Footer />
