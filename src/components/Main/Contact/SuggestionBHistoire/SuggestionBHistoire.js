@@ -12,17 +12,17 @@ const SuggestionBHistoire = ({ user }) => {
     const [values, setValues] = useState({
         title: '', // Titre de l'article
         content: '', // contenue
-        publication_date: '', // date de publication article
+        // publication_date: '', // date de publication article
         beerId: '',
-        user: user.id // id utilisateur (cf token)
+        user_account_id: user.id // id utilisateur (cf token)
     });
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const [publication_date, setPublicationDate] = useState('');
+    // const [title, setTitle] = useState('');
+    // const [content, setContent] = useState('');
+    // const [publication_date, setPublicationDate] = useState('');
     const [beerId, setBeerId] = useState('');
     // const [user, setUser] = useState('');
 
-    console.log('user.id', user.id);
+    // console.log('user.id', user.id);
     function getBeerId() {
         axios
             .get(`https://bibinov1.herokuapp.com/beer`, {})
@@ -39,9 +39,9 @@ const SuggestionBHistoire = ({ user }) => {
             .post('https://bibinov1.herokuapp.com/article', {
                 title: values.title,
                 content: values.content,
-                publication_date: values.publication_date,
+                // publication_date: values.publication_date,
                 country_id: values.country_id,
-                user: values.user
+                user_account_id: values.user
             })
             .then(function (response) {
                 console.log(response);
@@ -102,7 +102,7 @@ const SuggestionBHistoire = ({ user }) => {
 
                 <textarea
                     type='text'
-                    name='notice'
+                    name='content'
                     id='8'
                     placeholder='Veuillez saisir votre commentaire'
                     option=''

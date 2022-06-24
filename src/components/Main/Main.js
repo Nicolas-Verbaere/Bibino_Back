@@ -16,7 +16,6 @@ import SuggestionBHistoire from './Contact/SuggestionBHistoire/SuggestionBHistoi
 import './Main.scss';
 
 function Main({ user, userReviews, isLogged, setIsLogged, bieres }) {
-    console.log('user main', user.id);
     return (
         <main className='main'>
             <Routes>
