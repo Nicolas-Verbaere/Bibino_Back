@@ -82,7 +82,7 @@ const Register = () => {
                 console.log(error);
             });
     }
-    console.log(values.date_of_birth);
+    //  console.log(values.date_of_birth);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -94,7 +94,7 @@ const Register = () => {
     };
 
     return (
-        <section className="register">
+        <section className='register'>
             <form onSubmit={handleSubmit}>
                 <h1>Créer votre compte</h1>
                 {inputsRegister.map((input) => (

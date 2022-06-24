@@ -22,6 +22,7 @@ const SuggestionBHistoire = ({ user }) => {
     const [beerId, setBeerId] = useState('');
     // const [user, setUser] = useState('');
 
+    console.log('user.id', user.id);
     function getBeerId() {
         axios
             .get(`https://bibinov1.herokuapp.com/beer`, {})

@@ -7,29 +7,30 @@ import FormInput from '../FormInput';
 
 import axios from 'axios';
 
-
-const Connexion = ({isLogged, setIsLogged}) => {
+const Connexion = ({ isLogged, setIsLogged }) => {
     // const [isLogged, setIsLogged] = useState(false);
     const [values, setValues] = useState({
         email: '',
         password: ''
     });
 
-
-
     function connection() {
-        axios.post('https://bibinov1.herokuapp.com/login', {
-            email: values.email,
-            password: values.password
-          })
-          .then(function (response) {
-            console.log(`consolelog de response axios, ${response.data.token}`);
-            localStorage.setItem('userLoggedToken', `${response.data.token}`);
-            setIsLogged(true);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        axios
+            .post('https://bibinov1.herokuapp.com/login', {
+                email: values.email,
+                password: values.password
+            })
+            .then(function (response) {
+                //  console.log(`consolelog de response axios, ${response.data.token}`);
+                localStorage.setItem(
+                    'userLoggedToken',
+                    `${response.data.token}`
+                );
+                setIsLogged(true);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     const inputsConnection = [
@@ -61,12 +62,11 @@ const Connexion = ({isLogged, setIsLogged}) => {
 
     const onChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });
-        console.log(e.target.value);
+        // console.log(e.target.value);
     };
 
     return (
-
-        <section className="connection">
+        <section className='connection'>
             <form onSubmit={handleSubmit}>
                 <h1>Connexion</h1>
                 {inputsConnection.map((input) => (
@@ -78,10 +78,10 @@ const Connexion = ({isLogged, setIsLogged}) => {
                     />
                 ))}
 
-                <button type="submit">Identifiez-vous</button>
+                <button type='submit'>Identifiez-vous</button>
                 <button>Mot de passe oublié?</button>
             </form>
-            { isLogged && <Navigate to={"/profil"} />}
+            {isLogged && <Navigate to={'/profil'} />}
         </section>
     );
 };
