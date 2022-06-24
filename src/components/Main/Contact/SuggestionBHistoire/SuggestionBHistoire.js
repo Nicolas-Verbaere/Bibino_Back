@@ -47,6 +47,16 @@ const SuggestionBHistoire = () => {
                     de nous la suggerer en replissant le formulaire ci-dessous
                 </p>
                 <label for='name'>Vote histoire:</label>
+                <div>
+                    <label for='name'> </label>
+                    <input
+                        type='text'
+                        name='name'
+                        id='1'
+                        placeholder='Titre de votre article:'
+                        option=''
+                    />
+                </div>
                 <textarea
                     type='text'
                     name='notice'
