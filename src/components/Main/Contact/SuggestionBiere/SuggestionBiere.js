@@ -164,7 +164,7 @@ const SuggestionBiere = ({ user }) => {
                 </div>
                 <div>
                     <label className='label_input' for='name'>
-                        Degré d'alcool:{' '}
+                        Degré d'alcool:
                     </label>
                     <input
                         type='number'
@@ -200,7 +200,6 @@ const SuggestionBiere = ({ user }) => {
                         ))}
                     </datalist>
                 </div>
-
                 <div>
                     <label className='label_input' for='name'>
                         Description:

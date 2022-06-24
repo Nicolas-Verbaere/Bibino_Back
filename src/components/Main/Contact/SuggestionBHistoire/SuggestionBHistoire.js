@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import FormInput from '../FormInput';
-
-// TODO A poster sur /article
-// Manque isContentEditable( contente de l'article)
-// BiereID, date de publication (insert auto Now)
 
 import '../Contact.scss';
 
@@ -16,11 +11,8 @@ const SuggestionBHistoire = ({ user }) => {
         beerId: '',
         user_account_id: user.id // id utilisateur (cf token)
     });
-    // const [title, setTitle] = useState('');
-    // const [content, setContent] = useState('');
-    // const [publication_date, setPublicationDate] = useState('');
+
     const [beerId, setBeerId] = useState('');
-    // const [user, setUser] = useState('');
 
     // console.log('user.id', user.id);
     function getBeerId() {
@@ -39,9 +31,8 @@ const SuggestionBHistoire = ({ user }) => {
             .post('https://bibinov1.herokuapp.com/article', {
                 title: values.title,
                 content: values.content,
-                // publication_date: values.publication_date,
                 country_id: values.country_id,
-                user_account_id: values.user
+                user_account_id: values.user_account_id
             })
             .then(function (response) {
                 console.log(response);
@@ -111,13 +102,14 @@ const SuggestionBHistoire = ({ user }) => {
                     rows='10'
                     cols='70'
                 />
+
                 <div className='form_user_id'>
                     <label className='label_input' for='name'>
                         Nom utilisateur:
                     </label>
                     <input
                         type='number'
-                        name='user'
+                        name=' user_account_id'
                         id='9'
                         placeholder='Nom'
                         required
