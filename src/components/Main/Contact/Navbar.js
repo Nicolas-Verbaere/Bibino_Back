@@ -11,6 +11,7 @@ export default function Navbar() {
                     <CustomLink className='nav_link' to='/contact/PbTechnique'>
                         Problémes Techiques
                     </CustomLink>
+                    {/* { if user.id= (1||2||3)( */}
                     <CustomLink
                         className='nav_link'
                         to='/contact/SuggestionBiere'>

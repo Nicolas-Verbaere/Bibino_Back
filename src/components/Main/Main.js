@@ -16,6 +16,7 @@ import SuggestionBHistoire from './Contact/SuggestionBHistoire/SuggestionBHistoi
 import './Main.scss';
 
 function Main({ user, userReviews, isLogged, setIsLogged, bieres }) {
+    console.log('user main', user.id);
     return (
         <main className='main'>
             <Routes>
@@ -44,10 +45,10 @@ function Main({ user, userReviews, isLogged, setIsLogged, bieres }) {
                     path='/profil'
                     element={<Profil user={user} userReviews={userReviews} />}
                 />
-                <Route path='/contact' element={<Contact />}>
+                <Route path='/contact' user={user} element={<Contact />}>
                     <Route
                         path='/contact/PbTechnique'
-                        element={<PbTechnique />}
+                        element={<PbTechnique user={user} />}
                     />
                     <Route
                         path='/contact/SuggestionBiere'

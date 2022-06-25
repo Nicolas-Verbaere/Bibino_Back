@@ -4,6 +4,7 @@ import axios from 'axios';
 import '../Contact.scss';
 
 const SuggestionBHistoire = ({ user }) => {
+    const [beerId, setBeerId] = useState([]);
     const [values, setValues] = useState({
         title: '', // Titre de l'article
         content: '', // contenue
@@ -12,9 +13,7 @@ const SuggestionBHistoire = ({ user }) => {
         user_account_id: user.id // id utilisateur (cf token)
     });
 
-    const [beerId, setBeerId] = useState('');
-
-    // console.log('user.id', user.id);
+    console.log('user.id', user.id);
     function getBeerId() {
         axios
             .get(`https://bibinov1.herokuapp.com/beer`, {})
@@ -59,7 +58,7 @@ const SuggestionBHistoire = ({ user }) => {
             <form onSubmit={handleSubmit} onChange={onChange}>
                 <h1>Contact</h1>
                 <h2>Raconte-moi une histoire ?</h2>
-                <p>
+                <p className='p-SBHistoire'>
                     Vous avez une histoire sur une bière a nous raconter? Merci
                     de nous la suggerer en replissant le formulaire ci-dessous
                 </p>
@@ -76,21 +75,18 @@ const SuggestionBHistoire = ({ user }) => {
                     />
                 </div>
                 <div>
-                    <label className='label_input' for='name'>
-                        Nom de la bière:
+                    <label className='name' for='Nom'>
+                        Nom de la bière (facultatif):
                     </label>
-                    <select name='name' id='3' placeholder='Nom'>
-                        <option value=''>
-                            -- Sélectionnez une biere (facultatif)
-                        </option>
-                        {/* {beerId.map((el) => (
+                    <input list='name' id='3' name='name' />
+                    <datalist id='name'>
+                        {beerId.map((el) => (
                             <option key={el.id} value={el.name}>
                                 {el.name}
                             </option>
-                        ))} */}
-                    </select>
+                        ))}
+                    </datalist>
                 </div>
-
                 <textarea
                     type='text'
                     name='content'

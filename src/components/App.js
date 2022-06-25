@@ -115,7 +115,7 @@ const App = () => {
                 biere={biere}
             />
 
-            <Footer />
+            <Footer user={user} />
         </div>
     );
 };
