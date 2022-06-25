@@ -8,6 +8,7 @@ import Form from './Authentification/Form';
 import Profil from './Profil/Profil';
 import Contact from './Contact/Contact';
 import Bieres from './Bieres/Bieres';
+import BiereHistoire from './BiereHistoire/BiereHistoire';
 
 import PbTechnique from './Contact/PbTechnique/PbTechnique';
 import SuggestionBiere from './Contact/SuggestionBiere/SuggestionBiere';
@@ -34,6 +35,10 @@ function Main({ user, userReviews, isLogged, setIsLogged, bieres }) {
                     }
                 />
                 <Route path='/bieres' element={<Bieres bieres={bieres} />} />
+                <Route
+                    path='/biere-histoire'
+                    element={<BiereHistoire bieres={bieres} />}
+                />
                 <Route path='/a-propos' element={<Apropos />} />
                 <Route
                     path='/formulaire'
