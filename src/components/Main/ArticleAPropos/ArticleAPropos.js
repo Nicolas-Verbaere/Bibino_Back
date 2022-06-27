@@ -8,7 +8,10 @@ function ArticleAPropos () {
         <img className="main_article-img" src={imgApropos} alt="" />
         <div className="main_article_rightside">
             <h2 className="main_article_rightside-title">Venez en découvrir plus sur nous!</h2>
-            <p className="main_article_rightside-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sagittis sodales facilisis. Cras aliquam leo a lacus accumsan, vel bibendum velit feugiat. Nulla in lacinia risus. Phasellus eu nisl ante. Nulla purus erat, eleifend aliquam fringilla eu, lacinia bibendum diam. Ut pharetra eget dui at pulvinar. Phasellus eget facilisis urna.</p>
+            <p className="main_article_rightside-content">Bibino est un projet de fin de formation O'clock.</p>
+            <p className="main_article_rightside-content">Nous avions une deadline de 1 mois à respecter.</p>
+            <p className="main_article_rightside-content">L'idée à été proposé par Nicolas Verbaere et le projet à vu le jour grâce au travail de l'équipe.</p>
+            <p className="main_article_rightside-content">L'objectif de base est de proposer à nos utilisateurs une plateforme ou ils pourront voir, noter et donner leur avis sur différentes bières.</p>
         </div>
     </article>
     )
