@@ -12,7 +12,6 @@ import './App.scss';
 
 const App = () => {
 
-
   const [user, setUser] = useState([]);
   const [userReviews, setUserReviews] = useState([]);
   const [isLogged, setIsLogged] = useState(false)
@@ -121,41 +120,7 @@ const App = () => {
       biere={biere}
       />
 
-    function getUserReviews() {
-        const userTokenDecoded = jwt_decode(userToken);
-        axios
-            .get(
-                `https://bibinov1.herokuapp.com/user/${userTokenDecoded.id}/review`
-            )
-            .then(function (response) {
-                // en cas de réussite de la requête
-                // console.log('consolelog then userReviews', response.data[0]);
-                setUserReviews(response.data[0]);
-            })
-            .catch(function (error) {
-                // en cas d’échec de la requête
-                console.log(error);
-            })
-            .then(function () {
-                // dans tous les cas
-            });
-    }
 
-    useEffect(() => {
-        if (localStorage.getItem('userLoggedToken')) {
-            getUser();
-            getUserReviews();
-        }
-    }, [isLogged]);
-    return (
-        <div className='App'>
-            <Header isLogged={isLogged} setIsLogged={setIsLogged} />
-
-            <Main
-                user={user}
-                userReviews={userReviews}
-                isLogged={isLogged}
-                setIsLogged={setIsLogged}
             />
 
             <Footer />

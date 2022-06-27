@@ -20,7 +20,9 @@ const SuggestionBiere = ({ user }) => {
         brewery_id: '', // string
         user_account_id: user.id // id utilisateur (cf token)
     });
-    console.log('user', user.id);
+
+    // console.log('user', user.id);
+
 
     function getStyleBeer() {
         axios
@@ -121,7 +123,8 @@ const SuggestionBiere = ({ user }) => {
 
                 <div>
                     <label className='label_input' for='name'>
-                        Nom de la bière:{' '}
+                        Nom de la bière:
+
                     </label>
                     <input
                         type='text'
@@ -134,7 +137,7 @@ const SuggestionBiere = ({ user }) => {
                 </div>
                 <div>
                     <label className='label_input' for='name'>
-                        Couleur de la bière:{' '}
+                        Couleur de la bière:
                     </label>
                     <select
                         name='color_id'
@@ -151,7 +154,7 @@ const SuggestionBiere = ({ user }) => {
                 </div>
                 <div>
                     <label className='label_input' for='name'>
-                        Style de la bière:{' '}
+                        Style de la bière:
                     </label>
                     <select name='style' id='3' placeholder='Style' required>
                         <option value=''>-- Sélectionnez un style</option>
@@ -221,7 +224,7 @@ const SuggestionBiere = ({ user }) => {
 
                 <div className='form_user_id'>
                     <label className='label_input' for='name'>
-                        Nom utilisateur:{' '}
+                        Nom utilisateur:
                     </label>
                     <input
                         type='number'

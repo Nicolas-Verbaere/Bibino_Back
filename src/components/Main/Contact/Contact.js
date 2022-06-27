@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import './Contact.scss';
 
 import Navbar from './Navbar';
-import PbTechnique from './PbTechnique/PbTechnique';
+import ContactForm from './PbTechnique/PbTechnique';
 import SuggestionBiere from './SuggestionBiere/SuggestionBiere';
 import SuggestionBHistoire from './SuggestionBHistoire/SuggestionBHistoire';
 
@@ -16,7 +16,8 @@ const Contact = ({ user }) => {
                 <Route
                     className='nav-link'
                     path='/contact/PbTechnique'
-                    element={<PbTechnique user={user} />}
+                    element={<ContactForm user={user} />}
+
                 />
                 <Route
                     className='nav-link'
