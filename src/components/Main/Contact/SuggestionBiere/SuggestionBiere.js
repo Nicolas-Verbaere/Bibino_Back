@@ -99,10 +99,23 @@ const SuggestionBiere = ({ user }) => {
                 console.log(error);
             });
     }
+    function clearForm() {
+        document.getElementById('color_id').value = '';
+        document.getElementById('style_id').value = '';
+        document.getElementById('country_id').value = '';
+        document.getElementById('brewery_id').value = '';
+        document.getElementById('content').value = '';
+    }
 
     const handleSubmit = (e) => {
         addBeer();
         e.preventDefault();
+        clearForm();
+        setValues({
+            ...values,
+            name: '',
+            alcohol_level: ''
+        });
     };
     const onChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });
@@ -135,19 +148,20 @@ const SuggestionBiere = ({ user }) => {
                     <input
                         type='text'
                         name='name'
-                        id='1'
+                        id='beer_name'
                         placeholder='Nom'
                         option=''
                         required
+                        value={values.name}
                     />
                 </div>
                 <div>
-                    <label className='label_input' for='name'>
+                    <label className='color_id' for='name'>
                         Couleur de la bière:
                     </label>
                     <select
                         name='color_id'
-                        id='2'
+                        id='color_id'
                         placeholder='Couleur'
                         required>
                         <option value=''>-- Sélectionnez une couleur</option>
@@ -162,7 +176,11 @@ const SuggestionBiere = ({ user }) => {
                     <label className='label_input' for='name'>
                         Style de la bière:
                     </label>
-                    <select name='style' id='3' placeholder='Style' required>
+                    <select
+                        name='style'
+                        id='style_id'
+                        placeholder='Style'
+                        required>
                         <option value=''>-- Sélectionnez un style</option>
                         {style_id.map((el) => (
                             <option key={el.id} value={el.name}>
@@ -178,11 +196,12 @@ const SuggestionBiere = ({ user }) => {
                     <input
                         type='number'
                         name='alcohol_level'
-                        id='4'
+                        id='alcohol_level'
                         placeholder='°Alcool'
                         step='.1'
                         option=''
                         required
+                        value={values.alcohol_level}
                     />
                 </div>
                 <div>
@@ -217,13 +236,14 @@ const SuggestionBiere = ({ user }) => {
                         className='input_textarea'
                         type='text'
                         name='description'
-                        id='8'
+                        id='content'
                         placeholder='Veuillez saisir votre commentaire'
                         option=''
                         required
                         maxLength='300'
                         rows='5'
                         cols='50'
+                        value={values.content}
                     />
                 </div>
 

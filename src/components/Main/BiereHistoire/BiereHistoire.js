@@ -3,14 +3,8 @@ import axios from 'axios';
 
 import './BiereHistoire.scss';
 
-const BiereHsitoire = ({ article, biere }) => {
+const BiereHsitoire = () => {
     const [beer_article, setBeerArticle] = useState([]);
-    const [values, setValues] = useState({
-        title: '', // Titre de l'article
-        content: '' // contenue
-        // beer_id: bieres.id,
-        // user_account_id: user.id // id utilisateur (cf token)
-    });
 
     function getArticle() {
         axios

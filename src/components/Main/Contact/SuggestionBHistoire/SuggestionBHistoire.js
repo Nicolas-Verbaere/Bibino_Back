@@ -49,9 +49,18 @@ const SuggestionBHistoire = ({ user, bieres }) => {
             });
     }
 
+    //  function clearForm() {
+    //     document.getElementById('color_id').value = '';
+    //     document.getElementById('style_id').value = '';
+    //     document.getElementById('country_id').value = '';
+    //     document.getElementById('brewery_id').value = '';
+    //     document.getElementById('content').value = '';
+    // }
+
     const handleSubmit = (e) => {
         postHistory();
         e.preventDefault();
+        setValues({ ...values, title: '', content: '' });
     };
     const onChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });
@@ -80,6 +89,7 @@ const SuggestionBHistoire = ({ user, bieres }) => {
                         placeholder='Titre de votre article:'
                         option=''
                         required
+                        value={values.title}
                     />
                 </div>
                 <div>
@@ -105,6 +115,7 @@ const SuggestionBHistoire = ({ user, bieres }) => {
                     maxLength='500'
                     rows='10'
                     cols='70'
+                    value={values.content}
                 />
 
                 <div className='form_user_id'>

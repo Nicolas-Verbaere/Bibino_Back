@@ -11,17 +11,16 @@
     }
 
     &_contain{
+        
         width: 70%;
         padding: 20px;
         display: flex;
         flex-direction: column;
         text-align: left;
-        border: 1px solid $color-junction;
+        border-bottom: 1px solid $color-junction;
         
         
-        &-style, &-color, &-alcohol, &-brewery, &-country, &-description, &-star {
-            padding: 0 400px;
-        }
+
 
 }
 }
