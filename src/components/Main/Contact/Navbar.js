@@ -9,9 +9,9 @@ export default function Navbar() {
             <nav className='nav'>
                 <ul>
                     <CustomLink className='nav_link' to='/contact/PbTechnique'>
-
                         Problémes Techiques
                     </CustomLink>
+                    {/* { if user.id= (1||2||3)( */}
                     <CustomLink
                         className='nav_link'
                         to='/contact/SuggestionBiere'>

@@ -5,6 +5,7 @@ import Review from './Review/Review';
 
 
 function Profil({ user, userReviews }) {
+    console.log(userReviews)
     return (
         <>
         

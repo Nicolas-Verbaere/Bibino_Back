@@ -8,6 +8,7 @@ import Form from './Authentification/Form';
 import Profil from './Profil/Profil';
 import Contact from './Contact/Contact';
 import Bieres from './Bieres/Bieres';
+import BiereHistoire from './BiereHistoire/BiereHistoire';
 import Biere from './Biere/Biere';
 
 import PbTechnique from './Contact/PbTechnique/PbTechnique';
@@ -33,13 +34,14 @@ function Main({ user, userReviews, isLogged, setIsLogged, bieres, setBiereId, bi
                 />
                 <Route path="/bieres" element={<Bieres bieres={bieres} biereId={biereId} setBiereId={setBiereId}/>} />
                 <Route path={`/biere/${biereId}`} element={<Biere biere={biere} setBiere={setBiere} biereId={biereId} setBiereId={setBiereId} user={user} isLogged={isLogged} />} />
+                <Route path='/biere-histoire' element={<BiereHistoire bieres={bieres} />} />
                 <Route path="/a-propos" element={<Apropos />} />
                 <Route path="/formulaire" element={<Form isLogged={isLogged} setIsLogged={setIsLogged} />} />
                 <Route path="/profil" element={<Profil user={user} userReviews={userReviews} />} />
                 <Route path='/contact' element={<Contact />}>
                     <Route
                         path='/contact/PbTechnique'
-                        element={<PbTechnique />}
+                        element={<PbTechnique user={user} />}
                     />
                     <Route
                         path='/contact/SuggestionBiere'
@@ -47,7 +49,9 @@ function Main({ user, userReviews, isLogged, setIsLogged, bieres, setBiereId, bi
                     />
                     <Route
                         path='/contact/SuggestionBHistoire'
-                        element={<SuggestionBHistoire />}
+                        element={
+                            <SuggestionBHistoire user={user} bieres={bieres} />
+                        }
                     />
                 </Route>
             </Routes>

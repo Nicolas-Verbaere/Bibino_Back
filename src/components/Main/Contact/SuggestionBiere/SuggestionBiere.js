@@ -20,6 +20,9 @@ const SuggestionBiere = ({ user }) => {
         brewery_id: '', // string
         user_account_id: user.id // id utilisateur (cf token)
     });
+    // console.log('user SuggestionBiere', user.id);
+
+    const userToken = localStorage.getItem('userLoggedToken');
 
     // console.log('user', user.id);
 
@@ -74,8 +77,10 @@ const SuggestionBiere = ({ user }) => {
     }
 
     function addBeer() {
-        axios
-            .post('https://bibinov1.herokuapp.com/beer', {
+        axios({
+            method: 'POST',
+            url: 'https://bibinov1.herokuapp.com/beer',
+            data: {
                 name: values.name,
                 description: values.description, //avis
                 alcohol_level: values.alcohol_level,
@@ -84,7 +89,12 @@ const SuggestionBiere = ({ user }) => {
                 color_id: values.color_id,
                 brewery_id: values.brewery_id,
                 user_account_id: values.user_account_id
-            })
+            },
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `JWT ${userToken}`
+            }
+        })
             .then(function (response) {
                 console.log(response);
             })
@@ -92,10 +102,23 @@ const SuggestionBiere = ({ user }) => {
                 console.log(error);
             });
     }
+    function clearForm() {
+        document.getElementById('color_id').value = '';
+        document.getElementById('style_id').value = '';
+        document.getElementById('country_id').value = '';
+        document.getElementById('brewery_id').value = '';
+        document.getElementById('content').value = '';
+    }
 
     const handleSubmit = (e) => {
         addBeer();
         e.preventDefault();
+        clearForm();
+        setValues({
+            ...values,
+            name: '',
+            alcohol_level: ''
+        });
     };
     const onChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });
@@ -124,15 +147,15 @@ const SuggestionBiere = ({ user }) => {
                 <div>
                     <label className='label_input' for='name'>
                         Nom de la bière:
-
                     </label>
                     <input
                         type='text'
                         name='name'
-                        id='1'
+                        id='beer_name'
                         placeholder='Nom'
                         option=''
                         required
+                        value={values.name}
                     />
                 </div>
                 <div>
@@ -141,7 +164,7 @@ const SuggestionBiere = ({ user }) => {
                     </label>
                     <select
                         name='color_id'
-                        id='2'
+                        id='color_id'
                         placeholder='Couleur'
                         required>
                         <option value=''>-- Sélectionnez une couleur</option>
@@ -172,11 +195,12 @@ const SuggestionBiere = ({ user }) => {
                     <input
                         type='number'
                         name='alcohol_level'
-                        id='4'
+                        id='alcohol_level'
                         placeholder='°Alcool'
                         step='.1'
                         option=''
                         required
+                        value={values.alcohol_level}
                     />
                 </div>
                 <div>
@@ -203,7 +227,6 @@ const SuggestionBiere = ({ user }) => {
                         ))}
                     </datalist>
                 </div>
-
                 <div>
                     <label className='label_input' for='name'>
                         Description:
@@ -212,13 +235,14 @@ const SuggestionBiere = ({ user }) => {
                         className='input_textarea'
                         type='text'
                         name='description'
-                        id='8'
+                        id='content'
                         placeholder='Veuillez saisir votre commentaire'
                         option=''
                         required
                         maxLength='300'
                         rows='5'
                         cols='50'
+                        value={values.content}
                     />
                 </div>
 
