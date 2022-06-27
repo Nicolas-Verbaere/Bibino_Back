@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import '../Contact.scss';
 
-const SuggestionBiere = () => {
+const SuggestionBiere = ({ user }) => {
     const [style_id, setStyleId] = useState([]);
     const [country_id, setContryId] = useState([]);
     const [color_id, setColorId] = useState([]);
@@ -18,8 +18,9 @@ const SuggestionBiere = () => {
         style_id: '', //string style
         color_id: '', //string color
         brewery_id: '', // string
-        user_account_id: '3' // id utilisateur (cf token)
+        user_account_id: user.id // id utilisateur (cf token)
     });
+    console.log('user', user.id);
 
     function getStyleBeer() {
         axios
@@ -70,19 +71,6 @@ const SuggestionBiere = () => {
             .then(function () {});
     }
 
-    function getUser() {
-        axios
-            .get(`https://bibinov1.herokuapp.com/user`, {})
-            .then(function (response) {
-                // console.log('consolelog getUserId', response.data);
-                setBreweryId(response.data);
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-            .then(function () {});
-    }
-
     function addBeer() {
         axios
             .post('https://bibinov1.herokuapp.com/beer', {
@@ -116,21 +104,25 @@ const SuggestionBiere = () => {
         getContry();
         getColor();
         getBrewery();
-        getUser();
     }, []);
     return (
         <section className='section_right'>
-            <form onSubmit={handleSubmit} onChange={onChange}>
-                <h1>Contact</h1>
-                <h2>Petite soif ?</h2>
-                <p>
+            <form
+                className='contact_form'
+                onSubmit={handleSubmit}
+                onChange={onChange}>
+                <h1 className='section_title'>Contact</h1>
+                <h2 className='section_title_h2'>Petite soif ?</h2>
+                <p className='section_p'>
                     Vous voulez ajouter votre bière préférée sur notre site?
                     Merci de nous la suggérer en replissant le formulaire
                     ci-dessous
                 </p>
 
                 <div>
-                    <label for='name'>Nom de la bière: </label>
+                    <label className='label_input' for='name'>
+                        Nom de la bière:{' '}
+                    </label>
                     <input
                         type='text'
                         name='name'
@@ -141,7 +133,9 @@ const SuggestionBiere = () => {
                     />
                 </div>
                 <div>
-                    <label for='name'>Couleur de la bière: </label>
+                    <label className='label_input' for='name'>
+                        Couleur de la bière:{' '}
+                    </label>
                     <select
                         name='color_id'
                         id='2'
@@ -156,7 +150,9 @@ const SuggestionBiere = () => {
                     </select>
                 </div>
                 <div>
-                    <label for='name'>Style de la bière: </label>
+                    <label className='label_input' for='name'>
+                        Style de la bière:{' '}
+                    </label>
                     <select name='style' id='3' placeholder='Style' required>
                         <option value=''>-- Sélectionnez un style</option>
                         {style_id.map((el) => (
@@ -167,7 +163,9 @@ const SuggestionBiere = () => {
                     </select>
                 </div>
                 <div>
-                    <label for='name'>Degré d'alcool: </label>
+                    <label className='label_input' for='name'>
+                        Degré d'alcool:{' '}
+                    </label>
                     <input
                         type='number'
                         name='alcohol_level'
@@ -179,7 +177,9 @@ const SuggestionBiere = () => {
                     />
                 </div>
                 <div>
-                    <label for='country_id'>Pays de la brasserie:</label>
+                    <label className='label_input' for='country_id'>
+                        Pays de la brasserie:
+                    </label>
                     <input list='pays' id='country_id' name='country_id' />
                     <datalist id='pays'>
                         {country_id.map((el) => (
@@ -202,8 +202,11 @@ const SuggestionBiere = () => {
                 </div>
 
                 <div>
-                    <label for='name'>Description:</label>
+                    <label className='label_input' for='name'>
+                        Description:
+                    </label>
                     <textarea
+                        className='input_textarea'
                         type='text'
                         name='description'
                         id='8'
@@ -216,18 +219,20 @@ const SuggestionBiere = () => {
                     />
                 </div>
 
-                <div>
-                    <label for='name'>Nom utilisateur: </label>
+                <div className='form_user_id'>
+                    <label className='label_input' for='name'>
+                        Nom utilisateur:{' '}
+                    </label>
                     <input
                         type='number'
                         name='user'
                         id='9'
                         placeholder='Nom'
-                        option=''
                         required
+                        value={user.id}
                     />
                 </div>
-                <button>Envoyer</button>
+                <button className='contact_button'>Envoyer</button>
             </form>
         </section>
     );
