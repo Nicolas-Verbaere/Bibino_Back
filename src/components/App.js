@@ -96,13 +96,7 @@ const App = () => {
     }
 
   }, [isLogged]);
-  return (
-    <div className="App">
-
-      <Header isLogged={isLogged} setIsLogged={setIsLogged}/>
-
-      <Main user={user} userReviews={userReviews} isLogged={isLogged} setIsLogged={setIsLogged} bieres={bieres} />
-
+ 
     function getUserReviews() {
         const userTokenDecoded = jwt_decode(userToken);
         axios
