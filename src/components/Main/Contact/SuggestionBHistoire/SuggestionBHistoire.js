@@ -49,18 +49,15 @@ const SuggestionBHistoire = ({ user, bieres }) => {
             });
     }
 
-    //  function clearForm() {
-    //     document.getElementById('color_id').value = '';
-    //     document.getElementById('style_id').value = '';
-    //     document.getElementById('country_id').value = '';
-    //     document.getElementById('brewery_id').value = '';
-    //     document.getElementById('content').value = '';
-    // }
+    function clearForm() {
+        document.getElementById('3').value = '';
+    }
 
     const handleSubmit = (e) => {
         postHistory();
         e.preventDefault();
         setValues({ ...values, title: '', content: '' });
+        clearForm();
     };
     const onChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });
