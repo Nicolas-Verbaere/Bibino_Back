@@ -26,23 +26,23 @@ const BiereHsitoire = () => {
     return (
         <>
             <article className='biereHistoire'>
-                <img
-                    className='biere-img'
-                    // src={process.env.PUBLIC_URL + `/img/${biere.name}.jpg`}
-                    alt=''
-                />
-                <div className='biereHstoire_contain'>
-                    {beer_article.map((el) => (
-                        <>
+                {beer_article.map((el) => (
+                    <>
+                        <img
+                            className='biereHstoire_Beerimg'
+                            src={process.env.PUBLIC_URL + `/img/${el.beer}.jpg`}
+                            alt=''
+                        />
+                        <div className='biereHstoire_contain'>
                             <h1 className='biereHstoire_contain-title'>
                                 {el.title}
                             </h1>
                             <p className='biereHstoire_contain-content'>
                                 {el.content}
                             </p>
-                        </>
-                    ))}
-                </div>
+                        </div>
+                    </>
+                ))}
             </article>
         </>
     );

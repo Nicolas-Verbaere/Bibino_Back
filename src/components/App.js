@@ -57,8 +57,8 @@ const App = () => {
             )
             .then(function (response) {
                 // en cas de réussite de la requête
-                // console.log('consolelog then userReviews', response.data[0]);
-                setUserReviews(response.data[0]);
+                // console.log('consolelog then userReviews', response.data);
+                setUserReviews(response.data);
             })
             .catch(function (error) {
                 // en cas d’échec de la requête

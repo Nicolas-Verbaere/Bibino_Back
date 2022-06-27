@@ -8,10 +8,7 @@ import SuggestionBiere from './SuggestionBiere/SuggestionBiere';
 import SuggestionBHistoire from './SuggestionBHistoire/SuggestionBHistoire';
 
 const Contact = ({ user }) => {
-<<<<<<< HEAD
     console.log('user contact', user);
-=======
->>>>>>> develop
     return (
         <div className='container'>
             <Navbar user={user} />
@@ -22,10 +19,6 @@ const Contact = ({ user }) => {
                     className='nav-link'
                     path='/contact/PbTechnique'
                     element={<ContactForm user={user} />}
-<<<<<<< HEAD
-=======
-
->>>>>>> develop
                 />
                 <Route
                     user={user}
