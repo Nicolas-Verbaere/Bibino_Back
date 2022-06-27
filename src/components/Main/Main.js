@@ -16,9 +16,8 @@ import SuggestionBHistoire from './Contact/SuggestionBHistoire/SuggestionBHistoi
 
 import './Main.scss';
 
+
 function Main({ user, userReviews, isLogged, setIsLogged, bieres, setBiereId, biereId, setBiere, biere }) {
-
-
 
     return (
         <main className='main'>
@@ -27,10 +26,8 @@ function Main({ user, userReviews, isLogged, setIsLogged, bieres, setBiereId, bi
                     path='/'
                     element={
                         <>
-
                             <Link to="/a-propos"><ArticleAPropos /></Link>
-                            <Link to="/top-bieres"><ArticleTopBeers /></Link>
-                            
+                            <Link to="/top-bieres"><ArticleTopBeers /></Link>                            
                         </>
                     }
                 />

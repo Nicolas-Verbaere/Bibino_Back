@@ -12,7 +12,6 @@ import './App.scss';
 
 const App = () => {
 
-
   const [user, setUser] = useState([]);
   const [userReviews, setUserReviews] = useState([]);
   const [isLogged, setIsLogged] = useState(false)
