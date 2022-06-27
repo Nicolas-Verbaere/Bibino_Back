@@ -16,7 +16,8 @@
         display: flex;
         flex-direction: column;
         text-align: left;
-        line-height: 2.5rem;
+        border: 1px solid $color-junction;
+        
         
         &-style, &-color, &-alcohol, &-brewery, &-country, &-description, &-star {
             padding: 0 400px;

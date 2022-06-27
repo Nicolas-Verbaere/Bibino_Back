@@ -17,7 +17,7 @@ import SuggestionBHistoire from './Contact/SuggestionBHistoire/SuggestionBHistoi
 import './Main.scss';
 
 function Main({ user, userReviews, isLogged, setIsLogged, bieres }) {
-    console.log('user main', user.id);
+    // console.log('bieres main', bieres);
     return (
         <main className='main'>
             <Routes>
@@ -48,7 +48,13 @@ function Main({ user, userReviews, isLogged, setIsLogged, bieres }) {
                 />
                 <Route
                     path='/profil'
-                    element={<Profil user={user} userReviews={userReviews} />}
+                    element={
+                        <Profil
+                            user={user}
+                            bieres={bieres}
+                            userReviews={userReviews}
+                        />
+                    }
                 />
                 <Route path='/contact' user={user} element={<Contact />}>
                     <Route
@@ -61,7 +67,9 @@ function Main({ user, userReviews, isLogged, setIsLogged, bieres }) {
                     />
                     <Route
                         path='/contact/SuggestionBHistoire'
-                        element={<SuggestionBHistoire user={user} />}
+                        element={
+                            <SuggestionBHistoire user={user} bieres={bieres} />
+                        }
                     />
                 </Route>
             </Routes>

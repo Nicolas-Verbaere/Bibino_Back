@@ -22,6 +22,8 @@ const SuggestionBiere = ({ user }) => {
     });
     // console.log('user SuggestionBiere', user.id);
 
+    const userToken = localStorage.getItem('userLoggedToken');
+
     function getStyleBeer() {
         axios
             .get(`https://bibinov1.herokuapp.com/style`, {})
@@ -72,8 +74,10 @@ const SuggestionBiere = ({ user }) => {
     }
 
     function addBeer() {
-        axios
-            .post('https://bibinov1.herokuapp.com/beer', {
+        axios({
+            method: 'POST',
+            url: 'https://bibinov1.herokuapp.com/beer',
+            data: {
                 name: values.name,
                 description: values.description, //avis
                 alcohol_level: values.alcohol_level,
@@ -82,7 +86,12 @@ const SuggestionBiere = ({ user }) => {
                 color_id: values.color_id,
                 brewery_id: values.brewery_id,
                 user_account_id: values.user_account_id
-            })
+            },
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `JWT ${userToken}`
+            }
+        })
             .then(function (response) {
                 console.log(response);
             })

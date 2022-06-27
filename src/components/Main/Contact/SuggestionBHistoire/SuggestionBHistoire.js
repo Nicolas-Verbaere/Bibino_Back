@@ -3,22 +3,23 @@ import axios from 'axios';
 
 import '../Contact.scss';
 
-const SuggestionBHistoire = ({ user }) => {
-    const [beerId, setBeerId] = useState([]);
+const SuggestionBHistoire = ({ user, bieres }) => {
+    const [beer_id, setBeerId] = useState([]);
     const [values, setValues] = useState({
         title: '', // Titre de l'article
         content: '', // contenue
-        // publication_date: '', // date de publication article
-        beerId: '',
+        beer_id: bieres.id,
         user_account_id: user.id // id utilisateur (cf token)
     });
 
-    console.log('user.id', user.id);
+    const userToken = localStorage.getItem('userLoggedToken');
+    // console.log('bieres.id', bieres.id);
     function getBeerId() {
         axios
             .get(`https://bibinov1.herokuapp.com/beer`, {})
             .then(function (response) {
                 setBeerId(response.data);
+                // console.log('response.data', response.data);
             })
             .catch(function (error) {
                 console.log(error);
@@ -26,13 +27,20 @@ const SuggestionBHistoire = ({ user }) => {
             .then(function () {});
     }
     function postHistory() {
-        axios
-            .post('https://bibinov1.herokuapp.com/article', {
+        axios({
+            method: 'POST',
+            url: 'https://bibinov1.herokuapp.com/article',
+            data: {
                 title: values.title,
                 content: values.content,
-                country_id: values.country_id,
+                beer_id: values.beer_id,
                 user_account_id: values.user_account_id
-            })
+            },
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `JWT ${userToken}`
+            }
+        })
             .then(function (response) {
                 console.log(response);
             })
@@ -78,9 +86,9 @@ const SuggestionBHistoire = ({ user }) => {
                     <label className='name' for='Nom'>
                         Nom de la bière (facultatif):
                     </label>
-                    <input list='name' id='3' name='name' />
+                    <input list='name' id='3' name='beer_id' />
                     <datalist id='name'>
-                        {beerId.map((el) => (
+                        {beer_id.map((el) => (
                             <option key={el.id} value={el.name}>
                                 {el.name}
                             </option>
