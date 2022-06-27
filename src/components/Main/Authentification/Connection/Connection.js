@@ -67,7 +67,7 @@ const Connexion = ({isLogged, setIsLogged}) => {
     return (
 
         <section className="connection">
-            <form onSubmit={handleSubmit}>
+            <form className="formAuth" onSubmit={handleSubmit}>
                 <h1>Connexion</h1>
                 {inputsConnection.map((input) => (
                     <FormInput

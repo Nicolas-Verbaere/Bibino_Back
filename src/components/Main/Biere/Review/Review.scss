@@ -1,0 +1,71 @@
+@import '../../../../style/vars';
+
+.review{
+    background-color: $color-background-light;
+    border: 1px solid $color-junction;
+    border-radius: 5px;
+    display: flex;
+    margin: 20px 0;
+    box-shadow: 2px 2px 5px 0px #B9B9B9;
+
+    &_info{
+        min-width: 15%;
+        border-right: 1px solid $color-junction;
+        box-shadow: 2px 0px 5px 0px #B9B9B9;
+        padding: 10px 15px;
+
+        &-pseudo{
+            font-size: 1.5rem;
+            text-overflow: ellipsis;
+        }
+
+        &-created_at {
+            margin-bottom: 5px;
+        }
+    }
+
+    &_content{
+        padding: 10px 20px;
+        width: 85%;
+
+        &-title{
+            border-bottom: 1px solid $color-junction;
+            padding-left: 20px;
+            padding-bottom: 10px;
+            text-align: left;    
+        }
+
+        &-content{
+            text-align: left;
+            padding-left: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .review{
+        flex-direction: column;
+        &_info{
+            box-shadow: 0px 2px 5px 0px #B9B9B9;
+            &-pseudo{
+                text-overflow: "...";
+            }
+        }
+        &_content{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+    
+            &-title{
+                padding-left: 0;
+                text-align: left;    
+            }
+    
+            &-content{
+                text-align: left;
+                padding-left: 0;
+            }
+        }
+    }
+}
