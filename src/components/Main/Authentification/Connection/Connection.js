@@ -68,7 +68,6 @@ const Connexion = ({ isLogged, setIsLogged }) => {
     return (
         <section className='connection'>
             <form onSubmit={handleSubmit}>
-
                 <h1>Connexion</h1>
                 {inputsConnection.map((input) => (
                     <FormInput
@@ -80,7 +79,7 @@ const Connexion = ({ isLogged, setIsLogged }) => {
                 ))}
 
                 <button type='submit'>Identifiez-vous</button>
-                <button>Mot de passe oublié?</button>
+                {/* <button>Mot de passe oublié?</button> */}
             </form>
             {isLogged && <Navigate to={'/profil'} />}
         </section>
