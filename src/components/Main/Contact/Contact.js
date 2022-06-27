@@ -17,6 +17,7 @@ const Contact = ({ user }) => {
                     className='nav-link'
                     path='/contact/PbTechnique'
                     element={<ContactForm user={user} />}
+
                 />
                 <Route
                     className='nav-link'

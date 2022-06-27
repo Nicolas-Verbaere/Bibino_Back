@@ -9,6 +9,7 @@ export default function Navbar() {
             <nav className='nav'>
                 <ul>
                     <CustomLink className='nav_link' to='/contact/PbTechnique'>
+
                         Problémes Techiques
                     </CustomLink>
                     <CustomLink
