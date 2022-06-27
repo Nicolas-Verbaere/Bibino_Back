@@ -26,7 +26,6 @@ const SuggestionBiere = ({ user }) => {
 
     // console.log('user', user.id);
 
-
     function getStyleBeer() {
         axios
             .get(`https://bibinov1.herokuapp.com/style`, {})
@@ -162,6 +161,7 @@ const SuggestionBiere = ({ user }) => {
                     <label className='label_input' for='name'>
                         Couleur de la bière:
                     </label>
+
                     <select
                         name='color_id'
                         id='color_id'

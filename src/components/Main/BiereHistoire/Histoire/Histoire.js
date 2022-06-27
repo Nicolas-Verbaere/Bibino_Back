@@ -1,3 +1,5 @@
+import '../BiereHistoire.scss';
+
 function Histoire({ el }) {
     return (
         <article className='article'>
