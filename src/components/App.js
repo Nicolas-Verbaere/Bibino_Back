@@ -94,6 +94,7 @@ const App = () => {
 
     useEffect(() => {
         if (localStorage.getItem('userLoggedToken')) {
+            setIsLogged(true);
             getUser();
             getUserReviews();
         }
