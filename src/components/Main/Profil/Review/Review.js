@@ -2,10 +2,40 @@ import './Review.scss'
 
 import IconModify from '../../../../assets/img/icon_modify.png';
 import IconDelete from '../../../../assets/img/icon_trash.png';
+import { useEffect } from 'react';
+import axios from 'axios';
 
-function Review ( item ){
-    
+function Review ( item ){   
     const { beer, review } = item;
+
+    function deleteReview() {
+        const userToken = localStorage.getItem('userLoggedToken');   
+        axios({ method: 'DELETE',
+                url: `https://bibinov1.herokuapp.com/review/${review.id}`,
+                data : {},
+                headers: {
+                    "Content-Type": 'application/json',
+                    Authorization: `JWT ${userToken}`,
+                },
+            })     
+            
+            .then(function (response) {
+                console.log("delete une review")
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+
+    function handleClick() {
+        // deleteReview();
+        console.log("boop")
+    }
+
+    useEffect(() => {
+    //    deleteReview(); 
+    }, [handleClick()]);
 
 return (
 
@@ -22,8 +52,8 @@ return (
         </section>
         <section className="profil_reviews_list_review_content">
             <div className="profil_reviews_list_review_content_icon">
-                <a href="#"><img className="profil_reviews_list_review_content_icon-modify" src={IconModify} alt="" /></a>
-                <a href="#"><img className="profil_reviews_list_review_content_icon-delete" src={IconDelete} alt="" /></a>
+                <i ><img className="profil_reviews_list_review_content_icon-modify" src={IconModify} alt="" /></i>
+                <a href="*" onClick={handleClick}><img className="profil_reviews_list_review_content_icon-delete" src={IconDelete} alt="" /></a>
             </div>
             <p className="profil_reviews_list_review_content-p">"{review.content}"</p>
         </section>
