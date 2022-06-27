@@ -5,7 +5,6 @@ import Review from './Review/Review';
 
 
 function Profil({ user, userReviews }) {
-    
     return (
         <>
         

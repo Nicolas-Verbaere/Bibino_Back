@@ -12,7 +12,16 @@
         min-width: 15%;
         border-right: 1px solid $color-junction;
         box-shadow: 2px 0px 5px 0px #B9B9B9;
-        padding: 10px 20px;
+        padding: 10px 15px;
+
+        &-pseudo{
+            font-size: 1.5rem;
+            text-overflow: ellipsis;
+        }
+
+        &-created_at {
+            margin-bottom: 5px;
+        }
     }
 
     &_content{
@@ -23,13 +32,40 @@
             border-bottom: 1px solid $color-junction;
             padding-left: 20px;
             padding-bottom: 10px;
-            text-align: left;
-            
+            text-align: left;    
         }
 
         &-content{
             text-align: left;
             padding-left: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .review{
+        flex-direction: column;
+        &_info{
+            box-shadow: 0px 2px 5px 0px #B9B9B9;
+            &-pseudo{
+                text-overflow: "...";
+            }
+        }
+        &_content{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+    
+            &-title{
+                padding-left: 0;
+                text-align: left;    
+            }
+    
+            &-content{
+                text-align: left;
+                padding-left: 0;
+            }
         }
     }
 }

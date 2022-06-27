@@ -52,11 +52,15 @@ const App = () => {
  
   function getUserReviews(){
     const userTokenDecoded = jwt_decode(userToken);
-    axios.get(`https://bibinov1.herokuapp.com/user/${userTokenDecoded.user.id}/review`)
+    axios.get(`https://bibinov1.herokuapp.com/user/${userTokenDecoded.user.id}/review`,
+    {
+      headers: {
+        Authorization: `Bearer ${userToken}`
+      },},)
     .then(function (response) {
       // en cas de réussite de la requête
-      // console.log('consolelog then userReviews', response.data[0]);
-      setUserReviews(response.data[0]);
+      // console.log('consolelog then userReviews', response.data);
+      setUserReviews(response.data);
     })
     .catch(function (error) {
       // en cas d’échec de la requête
@@ -79,7 +83,6 @@ const App = () => {
       )
     .then(function (response) {
       // console.log(response.data)
-      // console.log(response.data)
       setBieres(response.data);
     })
     .catch(function (error) {
@@ -95,6 +98,7 @@ const App = () => {
 
   useEffect(() => {
     if (localStorage.getItem('userLoggedToken')) {
+      setIsLogged(true);
       getUser();
       getUserReviews();
     }

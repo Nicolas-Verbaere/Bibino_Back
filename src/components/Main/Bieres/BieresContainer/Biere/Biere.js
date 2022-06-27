@@ -2,9 +2,11 @@ import './Biere.scss';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Biere({biere, biereId, setBiereId})  {
+    console.log(biere);
+
     let navigate = useNavigate();
 
-    console.log(biereId);
+    // console.log(biere);
     function handleClick(e) {
         e.preventDefault();
         setBiereId(biere.id);
@@ -19,7 +21,7 @@ function Biere({biere, biereId, setBiereId})  {
                     <p className="bieres_container_article_content-alcool"><strong>Alcool:</strong> {biere.alcohol_level} °</p>
                     <p className="bieres_container_article_content-brasserie"><strong>Brasserie:</strong> {biere.brewery}</p>
                     <p className="bieres_container_article_content-origin"><strong>Origine:</strong> {biere.country} </p>
-                    <p className="bieres_container_article_content-note"><strong>Note:</strong> </p>
+                    <p className="bieres_container_article_content-note"><strong>Note:</strong> {biere.note?.average}/5 </p>
                 </div>
             </article>  
         </Link>  
