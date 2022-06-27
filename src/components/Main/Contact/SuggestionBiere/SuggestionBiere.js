@@ -24,6 +24,9 @@ const SuggestionBiere = ({ user }) => {
 
     const userToken = localStorage.getItem('userLoggedToken');
 
+    // console.log('user', user.id);
+
+
     function getStyleBeer() {
         axios
             .get(`https://bibinov1.herokuapp.com/style`, {})
@@ -156,7 +159,7 @@ const SuggestionBiere = ({ user }) => {
                     />
                 </div>
                 <div>
-                    <label className='color_id' for='name'>
+                    <label className='label_input' for='name'>
                         Couleur de la bière:
                     </label>
                     <select
@@ -176,11 +179,7 @@ const SuggestionBiere = ({ user }) => {
                     <label className='label_input' for='name'>
                         Style de la bière:
                     </label>
-                    <select
-                        name='style'
-                        id='style_id'
-                        placeholder='Style'
-                        required>
+                    <select name='style' id='3' placeholder='Style' required>
                         <option value=''>-- Sélectionnez un style</option>
                         {style_id.map((el) => (
                             <option key={el.id} value={el.name}>
@@ -191,7 +190,7 @@ const SuggestionBiere = ({ user }) => {
                 </div>
                 <div>
                     <label className='label_input' for='name'>
-                        Degré d'alcool:
+                        Degré d'alcool:{' '}
                     </label>
                     <input
                         type='number'

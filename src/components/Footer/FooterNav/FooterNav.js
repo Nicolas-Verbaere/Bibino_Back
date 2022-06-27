@@ -5,7 +5,8 @@ import './FooterNav.scss';
 function Footer({ user }) {
     return (
         <nav className='footer_container'>
-            <Link to={'/contact'} user={user}>
+
+            <Link to='/contact'>
                 <p className='footer_container-link' href='/contact'>
                     Contact
                 </p>

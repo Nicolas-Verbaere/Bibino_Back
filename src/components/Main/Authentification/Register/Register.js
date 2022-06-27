@@ -96,6 +96,7 @@ const Register = () => {
     return (
         <section className='register'>
             <form onSubmit={handleSubmit}>
+
                 <h1>Créer votre compte</h1>
                 {inputsRegister.map((input) => (
                     <FormInput
