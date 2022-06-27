@@ -11,40 +11,97 @@ import Footer from './Footer/Footer';
 import './App.scss';
 
 const App = () => {
-    const [user, setUser] = useState([]);
-    const [userReviews, setUserReviews] = useState([]);
-    const [isLogged, setIsLogged] = useState(false);
 
-    // // décodage du token pour dynamiser le getUser par l'id
-    // if (localStorage.getItem('userLoggedToken'))
-    const userToken = localStorage.getItem('userLoggedToken');
-    let userTokenDecoded = null;
-    if (userToken) {
-        userTokenDecoded = jwt_decode(userToken);
+
+  const [user, setUser] = useState([]);
+  const [userReviews, setUserReviews] = useState([]);
+  const [isLogged, setIsLogged] = useState(false)
+  const [bieres, setBieres] = useState([]);
+
+  // // décodage du token pour dynamiser le getUser par l'id
+  // if (localStorage.getItem('userLoggedToken'))
+  const userToken = localStorage.getItem('userLoggedToken');
+  let userTokenDecoded = null;
+  if (userToken) {
+    
+     userTokenDecoded = jwt_decode(userToken);
+  }
+
+  // console.log(userTokenDecoded);
+  
+  
+
+   
+  function getUser() {
+    // if (userToken) {
+    //   const userTokenDecoded = jwt_decode(userToken);
+    
+    // } 
+    axios.get(`https://bibinov1.herokuapp.com/user/${userTokenDecoded.id}`)
+    .then(function (response) {
+      // en cas de réussite de la requête
+      // console.log('consolelog user', response.data);
+      setUser(response.data);
+    })
+    .catch(function (error) {
+      // en cas d’échec de la requête
+      console.log(error);
+    })
+    .then(function () {
+      // dans tous les cas
+    });
+  }
+ 
+  function getUserReviews(){
+    const userTokenDecoded = jwt_decode(userToken);
+    axios.get(`https://bibinov1.herokuapp.com/user/${userTokenDecoded.id}/review`)
+    .then(function (response) {
+      // en cas de réussite de la requête
+      // console.log('consolelog then userReviews', response.data[0]);
+      setUserReviews(response.data[0]);
+    })
+    .catch(function (error) {
+      // en cas d’échec de la requête
+      console.log(error);
+    })
+    .then(function () {
+      // dans tous les cas
+    });
+  }
+  
+  function getBieres(){
+      axios.get('https://bibinov1.herokuapp.com/beer', {
+        headers: {
+          Authorization: `bearer ${userToken}`
+        },
+      })
+    .then(function (response) {
+      // console.log(response.data)
+      console.log(response.data)
+      setBieres(response.data);
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+    .then(function (){
+
+    });
+  }
+
+  useEffect(() => {
+    if (localStorage.getItem('userLoggedToken')) {
+      getUser();
+      getUserReviews();
+      getBieres();
     }
 
-    // console.log(userTokenDecoded);
+  }, [isLogged]);
+  return (
+    <div className="App">
 
-    function getUser() {
-        // if (userToken) {
-        //   const userTokenDecoded = jwt_decode(userToken);
+      <Header isLogged={isLogged} setIsLogged={setIsLogged}/>
 
-        // }
-        axios
-            .get(`https://bibinov1.herokuapp.com/user/${userTokenDecoded.id}`)
-            .then(function (response) {
-                // en cas de réussite de la requête
-                // console.log('consolelog user', response.data);
-                setUser(response.data);
-            })
-            .catch(function (error) {
-                // en cas d’échec de la requête
-                console.log(error);
-            })
-            .then(function () {
-                // dans tous les cas
-            });
-    }
+      <Main user={user} userReviews={userReviews} isLogged={isLogged} setIsLogged={setIsLogged} bieres={bieres} />
 
     function getUserReviews() {
         const userTokenDecoded = jwt_decode(userToken);

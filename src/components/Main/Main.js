@@ -7,6 +7,7 @@ import ArticleTopBeers from './ArticleTopBeers/ArticleTopBeers';
 import Form from './Authentification/Form';
 import Profil from './Profil/Profil';
 import Contact from './Contact/Contact';
+import Bieres from './Bieres/Bieres';
 
 import PbTechnique from './Contact/PbTechnique/PbTechnique';
 import SuggestionBiere from './Contact/SuggestionBiere/SuggestionBiere';
@@ -14,7 +15,10 @@ import SuggestionBHistoire from './Contact/SuggestionBHistoire/SuggestionBHistoi
 
 import './Main.scss';
 
-function Main({ user, userReviews, isLogged, setIsLogged }) {
+
+function Main({ user, userReviews, isLogged, setIsLogged, bieres }) {
+
+
     return (
         <main className='main'>
             <Routes>
@@ -22,25 +26,17 @@ function Main({ user, userReviews, isLogged, setIsLogged }) {
                     path='/'
                     element={
                         <>
-                            <Link to='/a-propos'>
-                                <ArticleAPropos />
-                            </Link>
 
-                            <ArticleTopBeers />
+                            <Link to="/a-propos"><ArticleAPropos /></Link>
+                            <Link to="/top-bieres"><ArticleTopBeers /></Link>
+                            
                         </>
                     }
                 />
-                <Route path='/a-propos' element={<Apropos />} />
-                <Route
-                    path='/formulaire'
-                    element={
-                        <Form isLogged={isLogged} setIsLogged={setIsLogged} />
-                    }
-                />
-                <Route
-                    path='/profil'
-                    element={<Profil user={user} userReviews={userReviews} />}
-                />
+                <Route path="/bieres" element={<Bieres bieres={bieres}/>} />
+                <Route path="/a-propos" element={<Apropos />} />
+                <Route path="/formulaire" element={<Form isLogged={isLogged} setIsLogged={setIsLogged} />} />
+                <Route path="/profil" element={<Profil user={user} userReviews={userReviews} />} />
                 <Route path='/contact' element={<Contact />}>
                     <Route
                         path='/contact/PbTechnique'
@@ -60,4 +56,4 @@ function Main({ user, userReviews, isLogged, setIsLogged }) {
     );
 }
 
-export default React.memo(Main);
+export default Main;
