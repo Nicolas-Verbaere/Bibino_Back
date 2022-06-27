@@ -14,10 +14,11 @@ import PbTechnique from './Contact/PbTechnique/PbTechnique';
 import SuggestionBiere from './Contact/SuggestionBiere/SuggestionBiere';
 import SuggestionBHistoire from './Contact/SuggestionBHistoire/SuggestionBHistoire';
 
-
 import './Main.scss';
 
 function Main({ user, userReviews, isLogged, setIsLogged, bieres, setBiereId, biereId, setBiere, biere }) {
+
+
 
     return (
         <main className='main'>
@@ -26,6 +27,7 @@ function Main({ user, userReviews, isLogged, setIsLogged, bieres, setBiereId, bi
                     path='/'
                     element={
                         <>
+
                             <Link to="/a-propos"><ArticleAPropos /></Link>
                             <Link to="/top-bieres"><ArticleTopBeers /></Link>
                             
@@ -44,7 +46,7 @@ function Main({ user, userReviews, isLogged, setIsLogged, bieres, setBiereId, bi
                     />
                     <Route
                         path='/contact/SuggestionBiere'
-                        element={<SuggestionBiere />}
+                        element={<SuggestionBiere user={user} />}
                     />
                     <Route
                         path='/contact/SuggestionBHistoire'
