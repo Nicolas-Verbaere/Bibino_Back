@@ -11,6 +11,7 @@ import Bieres from './Bieres/Bieres';
 import BiereHistoire from './BiereHistoire/BiereHistoire';
 import Biere from './Biere/Biere';
 import TopBeer from './TopBeer/TopBeerContainer';
+import Page404 from './404/404';
 
 import PbTechnique from './Contact/PbTechnique/PbTechnique';
 import SuggestionBiere from './Contact/SuggestionBiere/SuggestionBiere';
@@ -68,6 +69,7 @@ function Main({
                         />
                     }
                 />
+                <Route path={`/404`} element={<Page404 />} />
                 <Route
                     path={`/top-bieres`}
                     element={
