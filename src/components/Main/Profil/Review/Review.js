@@ -2,7 +2,6 @@ import './Review.scss'
 
 import IconModify from '../../../../assets/img/icon_modify.png';
 import IconDelete from '../../../../assets/img/icon_trash.png';
-import { useEffect } from 'react';
 import axios from 'axios';
 
 function Review ( item ){   
@@ -22,6 +21,7 @@ function Review ( item ){
             .then(function (response) {
                 console.log("delete une review")
                 console.log(response);
+                window.location.reload();
             })
             .catch(function (error) {
                 console.log(error);
@@ -29,13 +29,13 @@ function Review ( item ){
     }
 
     function handleClick() {
-        // deleteReview();
+        deleteReview();
         console.log("boop")
     }
 
-    useEffect(() => {
+    // useEffect(() => {
     //    deleteReview(); 
-    }, [handleClick()]);
+    // }, [handleclick()]);
 
 return (
 
@@ -52,8 +52,8 @@ return (
         </section>
         <section className="profil_reviews_list_review_content">
             <div className="profil_reviews_list_review_content_icon">
-                <i ><img className="profil_reviews_list_review_content_icon-modify" src={IconModify} alt="" /></i>
-                <a href="*" onClick={handleClick}><img className="profil_reviews_list_review_content_icon-delete" src={IconDelete} alt="" /></a>
+                {/* <i ><img className="profil_reviews_list_review_content_icon-modify" src={IconModify} alt="" /></i> */}
+                <i onClick={handleClick}><img className="profil_reviews_list_review_content_icon-delete" src={IconDelete} alt="" /></i>
             </div>
             <p className="profil_reviews_list_review_content-p">"{review.content}"</p>
         </section>

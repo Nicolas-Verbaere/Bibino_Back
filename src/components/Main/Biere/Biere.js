@@ -4,7 +4,7 @@ import axios from 'axios';
 import Review from "./Review/Review";
 
 function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged}) {
-    console.log(biereId);
+    // console.log(biereId);
     
     const [values, setValues] = useState({
         content: '',
@@ -22,7 +22,7 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged}) {
           }
           )
         .then(function (response) {
-          console.log(response.data)
+        //   console.log(response.data)
           setBiere(response.data);
           
         })
@@ -74,7 +74,7 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged}) {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
-    console.log(biere);
+    // console.log(biere);
       useEffect(() => {  
         getBiereById();   
       }, [biereId]);

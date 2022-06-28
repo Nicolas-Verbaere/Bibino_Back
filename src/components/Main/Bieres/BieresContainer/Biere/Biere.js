@@ -2,7 +2,7 @@ import './Biere.scss';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Biere({biere, biereId, setBiereId})  {
-    console.log(biere);
+    // console.log(biere);
 
     let navigate = useNavigate();
 

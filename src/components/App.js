@@ -114,6 +114,7 @@ const App = () => {
                 biereId={biereId}
                 setBiere={setBiere}
                 biere={biere}
+                userToken={userToken}
             />
 
             <Footer user={user} />
