@@ -120,6 +120,7 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged }) {
                                 type='number'
                                 min='0'
                                 max='5'
+                                step='0.1'
                                 isRequired
                                 onChange={onChange}></input>
                             /5

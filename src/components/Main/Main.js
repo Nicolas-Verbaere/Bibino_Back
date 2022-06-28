@@ -17,9 +17,17 @@ import SuggestionBHistoire from './Contact/SuggestionBHistoire/SuggestionBHistoi
 
 import './Main.scss';
 
-
-function Main({ user, userReviews, isLogged, setIsLogged, bieres, setBiereId, biereId, setBiere, biere }) {
-
+function Main({
+    user,
+    userReviews,
+    isLogged,
+    setIsLogged,
+    bieres,
+    setBiereId,
+    biereId,
+    setBiere,
+    biere
+}) {
     return (
         <main className='main'>
             <Routes>
@@ -27,17 +35,53 @@ function Main({ user, userReviews, isLogged, setIsLogged, bieres, setBiereId, bi
                     path='/'
                     element={
                         <>
-                            <Link to="/a-propos"><ArticleAPropos /></Link>
-                            <Link to="/top-bieres"><ArticleTopBeers /></Link>                            
+                            <Link to='/a-propos'>
+                                <ArticleAPropos />
+                            </Link>
+                            <Link to='beer/top-bieres'>
+                                <ArticleTopBeers />
+                            </Link>
                         </>
                     }
                 />
-                <Route path="/bieres" element={<Bieres bieres={bieres} biereId={biereId} setBiereId={setBiereId}/>} />
-                <Route path={`/biere/${biereId}`} element={<Biere biere={biere} setBiere={setBiere} biereId={biereId} setBiereId={setBiereId} user={user} isLogged={isLogged} />} />
-                <Route path='/biere-histoire' element={<BiereHistoire bieres={bieres} />} />
-                <Route path="/a-propos" element={<Apropos />} />
-                <Route path="/formulaire" element={<Form isLogged={isLogged} setIsLogged={setIsLogged} />} />
-                <Route path="/profil" element={<Profil user={user} userReviews={userReviews} />} />
+                <Route
+                    path='/bieres'
+                    element={
+                        <Bieres
+                            bieres={bieres}
+                            biereId={biereId}
+                            setBiereId={setBiereId}
+                        />
+                    }
+                />
+                <Route
+                    path={`/biere/${biereId}`}
+                    element={
+                        <Biere
+                            biere={biere}
+                            setBiere={setBiere}
+                            biereId={biereId}
+                            setBiereId={setBiereId}
+                            user={user}
+                            isLogged={isLogged}
+                        />
+                    }
+                />
+                <Route
+                    path='/biere-histoire'
+                    element={<BiereHistoire bieres={bieres} />}
+                />
+                <Route path='/a-propos' element={<Apropos />} />
+                <Route
+                    path='/formulaire'
+                    element={
+                        <Form isLogged={isLogged} setIsLogged={setIsLogged} />
+                    }
+                />
+                <Route
+                    path='/profil'
+                    element={<Profil user={user} userReviews={userReviews} />}
+                />
                 <Route path='/contact' element={<Contact />}>
                     <Route
                         path='/contact/PbTechnique'

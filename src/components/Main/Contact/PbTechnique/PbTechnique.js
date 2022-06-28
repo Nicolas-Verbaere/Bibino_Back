@@ -38,7 +38,7 @@ const ContactForm = () => {
                 Merci beaucoup de nous signaler les problémes techniques
                 constater sur Bibino.fr
             </p>
-            <div>
+            {/* <div>
                 <label className='label_input' htmlFor='name'>
                     Nom:
                 </label>
@@ -63,8 +63,9 @@ const ContactForm = () => {
                     cols='70'
                     required
                 />
-            </div>
-            <button type='submit'>{status}</button>
+            </div> */}
+            <button type='submit'> Contactez nous </button>
+            {/* {status} */}
         </form>
     );
 };
