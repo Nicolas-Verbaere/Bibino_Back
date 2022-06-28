@@ -11,9 +11,8 @@ function ArticleAPropos() {
                     Venez en découvrir plus sur nous!
                 </h2>
                 <p className='main_article_rightside-content'>
-                    Bibino est un site réalisé dans le cadre d'un projet de fin
-                    d'études de la formation O'Clock, école de développement
-                    web.
+                    Bibino est un projet de fin d'études de la formation
+                    O'Clock, école de développement web.
                 </p>
                 <p className='main_article_rightside-content'>
                     Le cadre de ce projet était de réaliser un site, en

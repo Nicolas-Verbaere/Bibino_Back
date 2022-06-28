@@ -1,7 +1,7 @@
 import '../BiereHistoire.scss';
 
 function Histoire({ el }) {
-    console.log(el);
+    // console.log(el);
     return (
         <article className='article'>
             {/* {el.beer && ( */}

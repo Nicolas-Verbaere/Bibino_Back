@@ -10,6 +10,7 @@ import Contact from './Contact/Contact';
 import Bieres from './Bieres/Bieres';
 import BiereHistoire from './BiereHistoire/BiereHistoire';
 import Biere from './Biere/Biere';
+import TopBeer from './TopBeer/TopBeerContainer';
 
 import PbTechnique from './Contact/PbTechnique/PbTechnique';
 import SuggestionBiere from './Contact/SuggestionBiere/SuggestionBiere';
@@ -38,7 +39,7 @@ function Main({
                             <Link to='/a-propos'>
                                 <ArticleAPropos />
                             </Link>
-                            <Link to='beer/top-bieres'>
+                            <Link to='/top-bieres'>
                                 <ArticleTopBeers />
                             </Link>
                         </>
@@ -65,6 +66,12 @@ function Main({
                             user={user}
                             isLogged={isLogged}
                         />
+                    }
+                />
+                <Route
+                    path={`/top-bieres`}
+                    element={
+                        <TopBeer biereId={biereId} setBiereId={setBiereId} />
                     }
                 />
                 <Route
