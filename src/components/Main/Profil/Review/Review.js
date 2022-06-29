@@ -14,7 +14,7 @@ function Review ( item ){
                 data : {},
                 headers: {
                     "Content-Type": 'application/json',
-                    Authorization: `JWT ${userToken}`,
+                    Authorization: `Bearer ${userToken}`,
                 },
             })     
             

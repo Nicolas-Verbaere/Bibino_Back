@@ -13,13 +13,15 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged, userToken
         user_account_id: '',
     });
     function getBiereById(){
-        axios.get(`https://bibinov1.herokuapp.com/beer/${biereId}`, 
-          {
-            headers: {
-              Authorization: `bearer ${userToken}`
-            },
-          }
-          )
+        
+        axios({ method: 'GET',
+        url: `https://bibinov1.herokuapp.com/beer/${biereId}`,
+        data : {},
+        headers: {
+            "Content-Type": 'application/json',
+            Authorization: `Bearer ${userToken}`,
+        },
+        })    
         .then(function (response) {
         //   console.log(response.data)
           setBiere(response.data);
@@ -45,7 +47,7 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged, userToken
                 },
                 headers: {
                     "Content-Type": 'application/json',
-                    Authorization: `JWT ${userToken}`,
+                    Authorization: `Bearer ${userToken}`,
                 },
             })     
             
@@ -105,7 +107,7 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged, userToken
                             type="number" 
                             min="0"
                             max="5"
-                            isRequired
+                            required
                             onChange={onChange}
                             >
                         </input>

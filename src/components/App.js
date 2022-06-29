@@ -31,10 +31,14 @@ const App = () => {
 
     function getUser() {
         const userTokenDecoded = jwt_decode(userToken);
-        axios
-            .get(
-                `https://bibinov1.herokuapp.com/user/${userTokenDecoded.user.id}`
-            )
+            axios({ method: 'GET',
+                url: `https://bibinov1.herokuapp.com/user/${userTokenDecoded.user.id}`,
+                data : {},
+                headers: {
+                    "Content-Type": 'application/json',
+                    Authorization: `Bearer ${userToken}`,
+                },
+            })     
             .then(function (response) {
                 // en cas de réussite de la requête
                 // console.log('consolelog user', response.data);
@@ -51,10 +55,15 @@ const App = () => {
 
     function getUserReviews() {
         const userTokenDecoded = jwt_decode(userToken);
-        axios
-            .get(
-                `https://bibinov1.herokuapp.com/user/${userTokenDecoded.user.id}/review`
-            )
+        
+            axios({ method: 'GET',
+                url: `https://bibinov1.herokuapp.com/user/${userTokenDecoded.user.id}/review`,
+                data : {},
+                headers: {
+                    "Content-Type": 'application/json',
+                    Authorization: `Bearer ${userToken}`,
+                },
+            })     
             .then(function (response) {
                 // en cas de réussite de la requête
                 // console.log('consolelog then userReviews', response.data);
