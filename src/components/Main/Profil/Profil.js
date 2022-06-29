@@ -1,11 +1,46 @@
 import PropTypes from 'prop-types';
 import './Profil.scss';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import jwt_decode from 'jwt-decode';
 
 import Review from './Review/Review';
 
 
-function Profil({ user, userReviews }) {
-    console.log(userReviews)
+function Profil({ user, userToken }) {
+    const [userReviews, setUserReviews] = useState([]);
+
+    function getUserReviews() {
+        const userTokenDecoded = jwt_decode(userToken);
+         
+            axios({ method: 'GET',
+                url: `https://bibinov1.herokuapp.com/user/${userTokenDecoded.user.id}/review`,
+                data : {},
+                headers: {
+                    "Content-Type": 'application/json',
+                    Authorization: `Bearer ${userToken}`,
+                },
+            })  
+            .then(function (response) {
+                // en cas de réussite de la requête
+                // console.log('consolelog then userReviews', response.data);
+                setUserReviews(response.data);
+            })
+            .catch(function (error) {
+                // en cas d’échec de la requête
+                console.log(error);
+            })
+            .then(function () {
+                // dans tous les cas
+            });
+    }
+
+    
+    useEffect(() => {
+            getUserReviews();
+        
+        
+    }, []);
     return (
         <>
         
@@ -18,7 +53,8 @@ function Profil({ user, userReviews }) {
                 <h1 className="profil_reviews-title">Ici, vous pouvez gérer vos reviews.</h1>
                 <section className="profil_reviews_list">
 
-                  { userReviews?.reviews?.map((item) => (
+                
+                  {userReviews?.reviews?.map((item) => (
                    <Review key={item.review.id} {...item} />
                  
                   ))}

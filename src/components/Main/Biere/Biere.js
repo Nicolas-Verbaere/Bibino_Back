@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Review from "./Review/Review";
 
-function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged}) {
-    console.log(biereId);
+function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged, userToken}) {
+    // console.log(biereId);
     
     const [values, setValues] = useState({
         content: '',
@@ -13,16 +13,17 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged}) {
         user_account_id: '',
     });
     function getBiereById(){
-        const userToken = localStorage.getItem('userLoggedToken');
-        axios.get(`https://bibinov1.herokuapp.com/beer/${biereId}`, 
-          {
-            headers: {
-              Authorization: `bearer ${userToken}`
-            },
-          }
-          )
+        
+        axios({ method: 'GET',
+        url: `https://bibinov1.herokuapp.com/beer/${biereId}`,
+        data : {},
+        headers: {
+            "Content-Type": 'application/json',
+            Authorization: `Bearer ${userToken}`,
+        },
+        })    
         .then(function (response) {
-          console.log(response.data)
+        //   console.log(response.data)
           setBiere(response.data);
           
         })
@@ -35,7 +36,6 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged}) {
       }
 
     function postReview() {
-        const userToken = localStorage.getItem('userLoggedToken');   
         axios({ method: 'POST',
                 url: 'https://bibinov1.herokuapp.com/review',
                 data : {
@@ -47,7 +47,7 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged}) {
                 },
                 headers: {
                     "Content-Type": 'application/json',
-                    Authorization: `JWT ${userToken}`,
+                    Authorization: `Bearer ${userToken}`,
                 },
             })     
             
@@ -74,7 +74,7 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged}) {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
-    console.log(biere);
+    // console.log(biere);
       useEffect(() => {  
         getBiereById();   
       }, [biereId]);
@@ -107,7 +107,7 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged}) {
                             type="number" 
                             min="0"
                             max="5"
-                            isRequired
+                            required
                             onChange={onChange}
                             >
                         </input>
