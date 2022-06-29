@@ -1,17 +1,19 @@
 import './Biere.scss';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Review from "./Review/Review";
+import Review from './Review/Review';
+
 
 function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged, userToken}) {
     // console.log(biereId);
-    
+
     const [values, setValues] = useState({
         content: '',
         note: '',
         beer_id: '',
-        user_account_id: '',
+        user_account_id: ''
     });
+
     function getBiereById(){
         
         axios({ method: 'GET',
@@ -51,48 +53,70 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged, userToken
                 },
             })     
             
+
             .then(function (response) {
-                console.log("envoyer une review")
+                console.log('envoyer une review');
                 console.log(response);
             })
             .catch(function (error) {
                 console.log(error);
             })
-            .then(function (){
+            .then(function () {
                 getBiereById();
-            });;
+            });
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log("refresh prevented");
+        console.log('refresh prevented');
         postReview();
         setValues({ ...values, content: '', note: '' });
-    };
+    }
 
     const onChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
+
     // console.log(biere);
       useEffect(() => {  
         getBiereById();   
       }, [biereId]);
+
     return (
         <>
-            <article className="biere">
-                <img className="biere-img" src={process.env.PUBLIC_URL + `/img/${biere.name}.jpg`} alt="" />
-                <div className="biere_contain">
-                    <h1 className="biere_contain-name">{biere.name}</h1>
-                    <p className="biere_contain-style"><strong>Style:</strong> {biere.style} </p>
-                    <p className="biere_contain-color"><strong>Couleur:</strong> {biere.color} </p>
-                    <p className="biere_contain-alcohol"><strong>Alcool:</strong> {biere.alcohol_level}  °</p>
-                    <p className="biere_contain-brewery"><strong>Brasserie:</strong> {biere.brewery} </p>
-                    <p className="biere_contain-country"><strong>Origine:</strong> {biere.country}  </p>
-                    <p className="biere_contain-description"><strong>Description:</strong> {biere.description} </p>
-                    <p className="biere_contain-star"><strong>Note:</strong> {biere.note?.average}/5 </p>
+            <article className='biere'>
+                <img
+                    className='biere-img'
+                    src={process.env.PUBLIC_URL + `/img/${biere.name}.jpg`}
+                    alt=''
+                />
+                <div className='biere_contain'>
+                    <h1 className='biere_contain-name'>{biere.name}</h1>
+                    <p className='biere_contain-style'>
+                        <strong>Style:</strong> {biere.style}{' '}
+                    </p>
+                    <p className='biere_contain-color'>
+                        <strong>Couleur:</strong> {biere.color}{' '}
+                    </p>
+                    <p className='biere_contain-alcohol'>
+                        <strong>Alcool:</strong> {biere.alcohol_level} °
+                    </p>
+                    <p className='biere_contain-brewery'>
+                        <strong>Brasserie:</strong> {biere.brewery}{' '}
+                    </p>
+                    <p className='biere_contain-country'>
+                        <strong>Origine:</strong> {biere.country}{' '}
+                    </p>
+                    <p className='biere_contain-description'>
+                        <strong>Description:</strong> {biere.description}{' '}
+                    </p>
+                    <p className='biere_contain-star'>
+                        <strong>Note:</strong> {biere.note?.average}/5{' '}
+                    </p>
                 </div>
             </article>
+
 
             {isLogged && 
             <form className="addReview" onSubmit={handleSubmit}>
@@ -128,16 +152,12 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged, userToken
             </form>
             }
             
-                    
-            
+
             {biere?.reviews?.map((review) => (
                 <Review key={review.id} review={review} />
             ))}
-                
-            
-              
         </>
-    )
+    );
 }
 
 export default Biere;

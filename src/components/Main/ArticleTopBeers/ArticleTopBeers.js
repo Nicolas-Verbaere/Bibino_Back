@@ -1,14 +1,24 @@
 import React from 'react';
+import imgTop10 from '../../../assets/img/top-10.png';
+import './ArticleTopBeers.scss';
 
-function ArticleTopBeers () {
-    return(
-    <article className="main_article">
-    <img src="#" alt="" />
-    <div className="main_article_rightside">
-        <h2 className="main_article_rightside-title">Découvrez les bières les mieux notées des 7 derniers jours</h2>
-        <p className="main_article_rightside-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sagittis sodales facilisis. Cras aliquam leo a lacus accumsan, vel bibendum velit feugiat. Nulla in lacinia risus. Phasellus eu nisl ante. Nulla purus erat, eleifend aliquam fringilla eu, lacinia bibendum diam. Ut pharetra eget dui at pulvinar. Phasellus eget facilisis urna.</p>
-    </div>
-    </article>
-    )
+function ArticleTopBeers() {
+    return (
+        <>
+            <article className='main_article'>
+                <div className='main_article_rightside'>
+                    <h2 className='main_article_rightside-title'>
+                        Découvrez les bières les mieux notées du moment
+                    </h2>
+                    <p className='main_article_rightside-content_top10'>
+                        Venez découvrir les 10 bières les mieux notées cette
+                        semaine
+                    </p>
+                </div>
+
+                <img className='main_article-imgTop10' src={imgTop10} alt='' />
+            </article>
+        </>
+    );
 }
 export default React.memo(ArticleTopBeers);

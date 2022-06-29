@@ -69,16 +69,21 @@ const SuggestionBHistoire = ({ user, bieres }) => {
 
     return (
         <section className='section_right'>
-            <form onSubmit={handleSubmit} onChange={onChange}>
-                <h1>Contact</h1>
-                <h2>Raconte-moi une histoire ?</h2>
+            <form
+                className='contact_form'
+                onSubmit={handleSubmit}
+                onChange={onChange}>
+                <h1 className='section_title'>Contact</h1>
+                <h2 className='section_title_h2'>Raconte-moi une histoire ?</h2>
                 <p className='p-SBHistoire'>
                     Vous avez une histoire sur une bière a nous raconter? Merci
                     de nous la suggerer en replissant le formulaire ci-dessous
                 </p>
                 <label for='name'>Vote histoire:</label>
                 <div>
-                    <label for='title'> </label>
+                    <label lassName='label_input' for='title'>
+                        {' '}
+                    </label>
                     <input
                         type='text'
                         name='title'
@@ -103,6 +108,7 @@ const SuggestionBHistoire = ({ user, bieres }) => {
                     </datalist>
                 </div>
                 <textarea
+                    className='input_textarea'
                     type='text'
                     name='content'
                     id='8'

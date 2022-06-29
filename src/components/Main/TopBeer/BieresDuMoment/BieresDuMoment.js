@@ -1,13 +1,9 @@
-import './Biere.scss';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-function Biere({ biere, biereId, setBiereId }) {
-
-    // console.log(biere);
-
+function BieresDuMoment({ biere, biereId, setBiereId }) {
     let navigate = useNavigate();
 
-    // console.log(biere);
     function handleClick(e) {
         e.preventDefault();
         setBiereId(biere.id);
@@ -42,5 +38,4 @@ function Biere({ biere, biereId, setBiereId }) {
         </Link>
     );
 }
-
-export default Biere;
+export default React.memo(BieresDuMoment);

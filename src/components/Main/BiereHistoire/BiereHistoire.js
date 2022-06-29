@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import Histoire from './Histoire/Histoire';
+
 import './BiereHistoire.scss';
 
 const BiereHsitoire = () => {
@@ -25,25 +27,11 @@ const BiereHsitoire = () => {
 
     return (
         <>
-            <article className='biereHistoire'>
+            <section className='biereHistoire'>
                 {beer_article.map((el) => (
-                    <>
-                        <img
-                            className='biereHstoire_Beerimg'
-                            src={process.env.PUBLIC_URL + `/img/${el.beer}.jpg`}
-                            alt=''
-                        />
-                        <div className='biereHstoire_contain'>
-                            <h1 className='biereHstoire_contain-title'>
-                                {el.title}
-                            </h1>
-                            <p className='biereHstoire_contain-content'>
-                                {el.content}
-                            </p>
-                        </div>
-                    </>
+                    <Histoire key={el.id} el={el} />
                 ))}
-            </article>
+            </section>
         </>
     );
 };

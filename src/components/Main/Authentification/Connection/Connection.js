@@ -67,6 +67,7 @@ const Connexion = ({ isLogged, setIsLogged }) => {
 
     return (
         <section className='connection'>
+
             <form className='formAuth' onSubmit={handleSubmit}>
 
                 <h1>Connexion</h1>
@@ -80,7 +81,7 @@ const Connexion = ({ isLogged, setIsLogged }) => {
                 ))}
 
                 <button type='submit'>Identifiez-vous</button>
-                <button>Mot de passe oublié?</button>
+                {/* <button>Mot de passe oublié?</button> */}
             </form>
             {isLogged && <Navigate to={'/profil'} />}
         </section>

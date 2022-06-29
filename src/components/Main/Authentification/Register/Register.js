@@ -86,6 +86,14 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setValues({
+            ...values,
+            alias: '',
+            email: '',
+            date_of_birth: '',
+            password: '',
+            confirmPassword: ''
+        });
         addUser();
     };
 
@@ -95,6 +103,7 @@ const Register = () => {
 
     return (
         <section className='register'>
+
             <form className='formAuth' onSubmit={handleSubmit}>
 
                 <h1>Créer votre compte</h1>
