@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import logo from '../../../assets/img/logo_bibino.png';
 import iconProfil from '../../../assets/img/icon_profil.png';
@@ -11,7 +12,8 @@ function HeaderTop({isLogged, setIsLogged}) {
        localStorage.clear();
     }
 
-   
+    // useEffect(() => {
+    // }, [isLogged]);
     return (
         
             

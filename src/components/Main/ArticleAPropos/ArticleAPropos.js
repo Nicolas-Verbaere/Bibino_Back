@@ -4,6 +4,7 @@ import '../Main.scss';
 
 function ArticleAPropos() {
     return (
+
         <article className='main_article'>
             <img className='main_article-img' src={imgApropos} alt='' />
             <div className='main_article_rightside'>
@@ -31,5 +32,6 @@ function ArticleAPropos() {
             </div>
         </article>
     );
+
 }
 export default React.memo(ArticleAPropos);

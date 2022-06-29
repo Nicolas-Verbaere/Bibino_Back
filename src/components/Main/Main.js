@@ -19,17 +19,9 @@ import SuggestionBHistoire from './Contact/SuggestionBHistoire/SuggestionBHistoi
 
 import './Main.scss';
 
-function Main({
-    user,
-    userReviews,
-    isLogged,
-    setIsLogged,
-    bieres,
-    setBiereId,
-    biereId,
-    setBiere,
-    biere
-}) {
+
+function Main({ user, userReviews, isLogged, setIsLogged, bieres, setBiereId, biereId, setBiere, biere, userToken }) {
+
     return (
         <main className='main'>
             <Routes>
@@ -46,64 +38,29 @@ function Main({
                         </>
                     }
                 />
-                <Route
-                    path='/bieres'
-                    element={
-                        <Bieres
-                            bieres={bieres}
-                            biereId={biereId}
-                            setBiereId={setBiereId}
-                        />
-                    }
-                />
-                <Route
-                    path={`/biere/${biereId}`}
-                    element={
-                        <Biere
-                            biere={biere}
-                            setBiere={setBiere}
-                            biereId={biereId}
-                            setBiereId={setBiereId}
-                            user={user}
-                            isLogged={isLogged}
-                        />
-                    }
-                />
+
+                <Route path="/bieres" element={<Bieres bieres={bieres} biereId={biereId} setBiereId={setBiereId}/>} />
+                <Route path={`/biere/${biereId}`} element={<Biere biere={biere} setBiere={setBiere} biereId={biereId} setBiereId={setBiereId} user={user} isLogged={isLogged} userToken={userToken} />} />
                 <Route path={`/404`} element={<Page404 />} />
-                <Route
-                    path={`/top-bieres`}
-                    element={
-                        <TopBeer biereId={biereId} setBiereId={setBiereId} />
-                    }
-                />
-                <Route
-                    path='/biere-histoire'
-                    element={<BiereHistoire bieres={bieres} />}
-                />
-                <Route path='/a-propos' element={<Apropos />} />
-                <Route
-                    path='/formulaire'
-                    element={
-                        <Form isLogged={isLogged} setIsLogged={setIsLogged} />
-                    }
-                />
-                <Route
-                    path='/profil'
-                    element={<Profil user={user} userReviews={userReviews} />}
-                />
-                <Route path='/contact' element={<Contact />}>
+                <Route path={`/top-bieres`} element={ <TopBeer biereId={biereId} setBiereId={setBiereId} /> }/>
+                <Route path='/biere-histoire' element={<BiereHistoire bieres={bieres} />} />
+                <Route path="/a-propos" element={<Apropos />} />
+                <Route path="/formulaire" element={<Form isLogged={isLogged} setIsLogged={setIsLogged} />} />
+                <Route path="/profil" element={<Profil user={user} userReviews={userReviews} userToken={userToken} />} />
+                <Route path='/contact' element={<Contact userToken={userToken}/>}>
+
                     <Route
                         path='/contact/PbTechnique'
                         element={<PbTechnique user={user} />}
                     />
                     <Route
                         path='/contact/SuggestionBiere'
-                        element={<SuggestionBiere user={user} />}
+                        element={<SuggestionBiere user={user} userToken={userToken} />}
                     />
                     <Route
                         path='/contact/SuggestionBHistoire'
                         element={
-                            <SuggestionBHistoire user={user} bieres={bieres} />
+                            <SuggestionBHistoire user={user} bieres={bieres} userToken={userToken} />
                         }
                     />
                 </Route>

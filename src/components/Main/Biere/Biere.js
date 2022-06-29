@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Review from './Review/Review';
 
-function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged }) {
+
+function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged, userToken}) {
     // console.log(biereId);
 
     const [values, setValues] = useState({
@@ -12,40 +13,47 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged }) {
         beer_id: '',
         user_account_id: ''
     });
-    function getBiereById() {
-        const userToken = localStorage.getItem('userLoggedToken');
-        axios
-            .get(`https://bibinov1.herokuapp.com/beer/${biereId}`, {
-                headers: {
-                    Authorization: `bearer ${userToken}`
-                }
-            })
-            .then(function (response) {
-                // console.log(response.data);
-                setBiere(response.data);
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-            .then(function () {});
-    }
+
+    function getBiereById(){
+        
+        axios({ method: 'GET',
+        url: `https://bibinov1.herokuapp.com/beer/${biereId}`,
+        data : {},
+        headers: {
+            "Content-Type": 'application/json',
+            Authorization: `Bearer ${userToken}`,
+        },
+        })    
+        .then(function (response) {
+        //   console.log(response.data)
+          setBiere(response.data);
+          
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+        .then(function (){
+    
+        });
+      }
 
     function postReview() {
-        const userToken = localStorage.getItem('userLoggedToken');
-        axios({
-            method: 'POST',
-            url: 'https://bibinov1.herokuapp.com/review',
-            data: {
-                content: values.content,
-                note: values.note,
-                beer_id: biereId,
-                user_account_id: user.id
-            },
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `JWT ${userToken}`
-            }
-        })
+        axios({ method: 'POST',
+                url: 'https://bibinov1.herokuapp.com/review',
+                data : {
+
+                    content: values.content,
+                    note: values.note,
+                    beer_id: biereId,
+                    user_account_id: user.id,
+                },
+                headers: {
+                    "Content-Type": 'application/json',
+                    Authorization: `Bearer ${userToken}`,
+                },
+            })     
+            
+
             .then(function (response) {
                 console.log('envoyer une review');
                 console.log(response);
@@ -69,10 +77,12 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged }) {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
-    console.log(biere);
-    useEffect(() => {
-        getBiereById();
-    }, [biereId]);
+
+    // console.log(biere);
+      useEffect(() => {  
+        getBiereById();   
+      }, [biereId]);
+
     return (
         <>
             <article className='biere'>
@@ -107,38 +117,41 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged }) {
                 </div>
             </article>
 
-            {isLogged && (
-                <form className='addReview' onSubmit={handleSubmit}>
-                    <h1 className='addReview-title'>Donnez nous votre avis!</h1>
-                    <section className='addReview_review'>
-                        <p className='addReview_review-note'>
-                            <strong>Note: </strong>
-                            <input
-                                className='addReview_review-note-input'
-                                name='note'
-                                value={values.note}
-                                type='number'
-                                min='0'
-                                max='5'
-                                step='0.1'
-                                isRequired
-                                onChange={onChange}></input>
-                            /5
-                        </p>
-                        <div className='addReview_review_resizeContent'>
-                            <textarea
-                                className='addReview_review_resizeContent-content'
-                                name='content'
-                                value={values.content}
-                                placeholder='Saisissez votre avis ici...'
-                                onChange={onChange}></textarea>
-                        </div>
-                    </section>
-                    <button className='addReview_review-submit'>
-                        Envoyer la review
-                    </button>
-                </form>
-            )}
+
+            {isLogged && 
+            <form className="addReview" onSubmit={handleSubmit}>
+                <h1 className="addReview-title">Donnez nous votre avis!</h1>
+                <section className="addReview_review">
+                    <p className="addReview_review-note">
+                        <strong>Note: </strong>
+                        <input 
+                            className="addReview_review-note-input" 
+                            name='note'
+                            value={values.note}
+                            type="number" 
+                            min="0"
+                            max="5"
+                            required
+                            onChange={onChange}
+                            >
+                        </input>
+                        /5
+                    </p>
+                    <div className="addReview_review_resizeContent">
+                        <textarea 
+                            className="addReview_review_resizeContent-content" 
+                            name='content'
+                            value={values.content}
+                            placeholder="Saisissez votre avis ici..."
+                            onChange={onChange}
+                            >
+                        </textarea> 
+                    </div>
+                </section>
+                <button className="addReview_review-submit" >Envoyer la review</button>
+            </form>
+            }
+            
 
             {biere?.reviews?.map((review) => (
                 <Review key={review.id} review={review} />
