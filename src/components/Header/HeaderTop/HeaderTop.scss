@@ -1,5 +1,6 @@
 @import '../../../style/vars';
 
+
 .top_header {
     display: flex;
     justify-content: space-between;
@@ -24,6 +25,12 @@
     color: $color-green-medium;
     text-shadow: 1px 1px $color-green-dark;
   }
+
+  em{
+    font-size: 1.5rem;
+    color: $color-green-dark;
+    font-style: italic;
+  }
   
   
   
@@ -37,7 +44,26 @@
     width: 50px;
     margin-right: 10px;
     &:active {      
-    text-shadow: 1px 1px $color-green-dark;
+    // text-shadow: 1px 1px $color-green-dark;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    em {
+      font-size: 1.2rem;
+    }
+    .top_header{
+      &-title{
+        font-size: 1.5rem;
+      }
+      &_auth-profil{
+        width: 30px;
+        margin-right: 0px;
+      }
+      &_auth-logout{
+        width: 30px;
+        margin-right: 0px;
+      }
     }
   }
   

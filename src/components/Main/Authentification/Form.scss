@@ -9,7 +9,7 @@
     // height: 100vh;
     background-color: #e7e7e7;
     border: 2px solid $color-junction;
-    margin: 50px auto;
+    margin: 150px auto;
   }
   
   .formAuth{
@@ -95,6 +95,7 @@ input:invalid[focused="true"] ~ span{
         flex-direction: column;
         width: 100%;
         padding: 20px;
+        margin: 20px 0;
     }
 
     .connection {
