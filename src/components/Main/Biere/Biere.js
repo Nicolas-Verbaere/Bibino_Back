@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Review from "./Review/Review";
 
-function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged}) {
+function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged, userToken}) {
     // console.log(biereId);
     
     const [values, setValues] = useState({
@@ -13,7 +13,6 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged}) {
         user_account_id: '',
     });
     function getBiereById(){
-        const userToken = localStorage.getItem('userLoggedToken');
         axios.get(`https://bibinov1.herokuapp.com/beer/${biereId}`, 
           {
             headers: {
@@ -35,7 +34,6 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged}) {
       }
 
     function postReview() {
-        const userToken = localStorage.getItem('userLoggedToken');   
         axios({ method: 'POST',
                 url: 'https://bibinov1.herokuapp.com/review',
                 data : {
