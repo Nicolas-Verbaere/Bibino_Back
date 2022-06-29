@@ -1,10 +1,8 @@
 import React from 'react';
-import teutonne from '../../../assets/img/teutonne.png';
-// import moine from '../../../assets/img/moine.png';
-// import choppe from '../../../assets/img/choppe.png';
-// import good from '../../../assets/img/good.jpg';
 
-import '../Main.scss';
+import good from '../../../assets/img/good.jpg';
+
+import '../404/404.scss';
 
 function Page404() {
     return (
@@ -21,7 +19,7 @@ function Page404() {
                     c'est le moment idéal pour savourer une bonne mousse
                 </p>
             </div>
-            <img className='main_article-img' src={teutonne} alt='' />
+            <img className='main_article-img' src={good} alt='' />
         </article>
     );
 }
