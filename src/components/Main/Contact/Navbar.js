@@ -3,7 +3,8 @@ import { Link, Outlet, useMatch, useResolvedPath } from 'react-router-dom';
 
 import './Contact.scss';
 
-export default function Navbar() {
+export default function Navbar({user}) {
+    console.log(user.role)
     return (
         <>
             <nav className='nav'>
@@ -11,7 +12,8 @@ export default function Navbar() {
                     <CustomLink className='nav_link' to='/contact/PbTechnique'>
                         Problémes Techiques
                     </CustomLink>
-                    {/* { if user.id= (1||2||3)( */}
+                    { user.role === "admin" && 
+                    <>
                     <CustomLink
                         className='nav_link'
                         to='/contact/SuggestionBiere'>
@@ -22,6 +24,8 @@ export default function Navbar() {
                         to='/contact/SuggestionBHistoire'>
                         Suggestion Bière'Histoires
                     </CustomLink>
+                    </>
+                    }
                 </ul>
             </nav>
             <Outlet />

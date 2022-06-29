@@ -18,3 +18,9 @@
         color: $color-green-medium;
       }
   }
+
+  @media screen and (max-width: 900px) {
+    .nav_header-link{
+      font-size: 1rem;
+    }
+  }

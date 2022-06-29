@@ -8,9 +8,9 @@ import SuggestionBiere from './SuggestionBiere/SuggestionBiere';
 import SuggestionBHistoire from './SuggestionBHistoire/SuggestionBHistoire';
 
 const Contact = ({ user }) => {
-    // console.log('user contact', user);
+    console.log('user contact', user);
     return (
-        <div className='container'>
+        <div className='container_navbar'>
             <Navbar user={user} />
 
             <Routes className='nav'>

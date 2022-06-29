@@ -1,8 +1,9 @@
 @import '../../../style/vars';
-.container{
-    margin: 0px 0px;
+.container_navbar{
+    margin: 100px 0px;
     width: 100%;
     height: 100%;
+    display: flex;
     justify-content: left;
 }
 .formInput{

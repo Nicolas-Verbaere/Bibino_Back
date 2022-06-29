@@ -12,6 +12,10 @@
 
   &_rightside-content{
       text-align: justify;
+      &_top10{
+        font-size: 1.2rem;
+        margin-top: 50px
+      }
   }
 
   &-section-right{
@@ -24,12 +28,27 @@
     width: 15%;
     height: 15%;
     object-fit: contain;
-    margin-left: 25em;
+    // padding: 50px;
+    margin-left: 18%;
     margin-top: 1em;
     margin-bottom: 1em;
   }
 
   &_rightside-content_top10{
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 900px) {
+
+  .main_article_rightside-content_top10{
+    margin-top: 0px;
+    font-size: 1rem;
+  }
+  .main_article-imgTop10{
+    width: 50%;
+    height: 50%;
+    margin-left: 25%;
+    margin-bottom: 10px;;
   }
 }
