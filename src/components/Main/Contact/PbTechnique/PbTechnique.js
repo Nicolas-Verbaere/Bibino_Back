@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './PbTechnique.scss'
 // import axios from 'axios';
 
 import '../Contact.scss';
@@ -30,13 +31,16 @@ const ContactForm = () => {
         <form
             // onSubmit={handleSubmit}
             className='contact_form'
-            action='mailto:******@gmail.com' // TODO Mettre une adresse mail de test
+            action='mailto:bibino.contact@gmail.com' // TODO Mettre une adresse mail de test
             method='post'>
-            <h1 className='section_title'>Contact</h1>
-            <h2 className='section_title_h2'>Oups! I beer it again ?</h2>
-            <p className='section_p'>
-                Merci beaucoup de nous signaler les problémes techniques
+            <h1 className='contact_form-title'>Contact</h1>
+            <h2 className='contact_form-subtitle'>Oups! I beer it again ?</h2>
+            <p className='contact_form-p'>
+                Merci beaucoup de nous signaler les problèmes techniques
                 constater sur Bibino.fr
+            </p>
+            <p className='contact_form-p'>
+                N'hésitez pas non plus à nous suggérer des bières, des histoires ou des fonctionnalités.
             </p>
             {/* <div>
                 <label className='label_input' htmlFor='name'>
@@ -64,7 +68,7 @@ const ContactForm = () => {
                     required
                 />
             </div> */}
-            <button type='submit'> Contactez nous </button>
+            <button type='submit' className='contact_form-btn'> Contactez nous </button>
             {/* {status} */}
         </form>
     );

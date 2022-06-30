@@ -5,8 +5,8 @@ import './ArticleTopBeers.scss';
 function ArticleTopBeers() {
     return (
         <>
-            <article className='main_article'>
-                <div className='main_article_rightside'>
+            <article className='main_article-top'>
+                <div className='main_article-top_leftside'>
                     <h2 className='main_article_rightside-title'>
                         Découvrez les bières les mieux notées du moment
                     </h2>

@@ -41,13 +41,13 @@ function Main({ user, userReviews, isLogged, setIsLogged, bieres, setBiereId, bi
 
                 <Route path="/bieres" element={<Bieres bieres={bieres} biereId={biereId} setBiereId={setBiereId}/>} />
                 <Route path={`/biere/${biereId}`} element={<Biere biere={biere} setBiere={setBiere} biereId={biereId} setBiereId={setBiereId} user={user} isLogged={isLogged} userToken={userToken} />} />
-                <Route path={`/404`} element={<Page404 />} />
+                <Route path={"*"} element={<Page404 />} />
                 <Route path={`/top-bieres`} element={ <TopBeer biereId={biereId} setBiereId={setBiereId} /> }/>
                 <Route path='/biere-histoire' element={<BiereHistoire bieres={bieres} />} />
                 <Route path="/a-propos" element={<Apropos />} />
                 <Route path="/formulaire" element={<Form isLogged={isLogged} setIsLogged={setIsLogged} />} />
                 <Route path="/profil" element={<Profil user={user} userReviews={userReviews} userToken={userToken} />} />
-                <Route path='/contact' element={<Contact userToken={userToken}/>}>
+                <Route path='/contact' element={<Contact user={user} userToken={userToken}/>}>
 
                     <Route
                         path='/contact/PbTechnique'
