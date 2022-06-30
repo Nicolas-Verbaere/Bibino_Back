@@ -106,18 +106,19 @@ const SuggestionBiere = ({ user }) => {
         document.getElementById('style_id').value = '';
         document.getElementById('country_id').value = '';
         document.getElementById('brewery_id').value = '';
-        document.getElementById('content').value = '';
+        // document.getElementById('content').value = '';
     }
 
     const handleSubmit = (e) => {
         addBeer();
         e.preventDefault();
-        clearForm();
         setValues({
             ...values,
             name: '',
-            alcohol_level: ''
+            alcohol_level: '',
+            content: ''
         });
+        clearForm();
     };
     const onChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });
@@ -179,7 +180,11 @@ const SuggestionBiere = ({ user }) => {
                     <label className='label_input' for='name'>
                         Style de la bière:
                     </label>
-                    <select name='style' id='3' placeholder='Style' required>
+                    <select
+                        name='style'
+                        id='style_id'
+                        placeholder='Style'
+                        required>
                         <option value=''>-- Sélectionnez un style</option>
                         {style_id.map((el) => (
                             <option key={el.id} value={el.name}>
