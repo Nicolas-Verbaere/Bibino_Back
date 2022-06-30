@@ -129,6 +129,7 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged, userToken
                             name='note'
                             value={values.note}
                             type="number" 
+                            step=".1"
                             min="0"
                             max="5"
                             required
