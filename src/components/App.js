@@ -106,6 +106,7 @@ const App = () => {
             setIsLogged(true);
             getUser();
             getUserReviews();
+            getBieres();
         }
         getBieres();
     }, [isLogged]);
