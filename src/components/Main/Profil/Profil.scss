@@ -1,0 +1,40 @@
+@import '../../../style/vars';
+
+.profil {
+    margin-top: 50px;
+
+    &-welcome {
+        color: $color-green-medium;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+    &-pseudo {
+        color: $color-text-orange;
+        font-weight: bold;
+        font-size: 2rem;
+        text-shadow:  0.5px 0.5px $color-green-dark;
+        margin-bottom: 40px;
+        padding-bottom: 25px;
+        border-bottom: 2px solid $color-junction;
+    }
+    &_reviews {
+       
+        &-title {
+            color: $color-text-orange;
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-shadow:  0.5px 0.5px $color-green-dark;
+            margin-bottom: 20px;
+        }
+
+        
+                
+            
+    }
+}
+
+@media screen and (max-width: 900px) { 
+    .profil {
+        margin-top: 20px;
+    }
+}

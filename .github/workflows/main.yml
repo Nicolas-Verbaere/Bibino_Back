@@ -1,0 +1,28 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: kenny-caldieraro/github-action-ssh-docker-compose@master
+      name: Docker-Compose Remote Deployment
+      with:
+        ssh_host: webplayground.fr
+        ssh_port: 51512
+        ssh_private_key: -----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+QyNTUxOQAAACDbBTWvN5ZSJPgjuAb0jeZsfx0Xx5EZmkQ6NfwjSg3UTAAAAJhLKJ5gSyie
+YAAAAAtzc2gtZWQyNTUxOQAAACDbBTWvN5ZSJPgjuAb0jeZsfx0Xx5EZmkQ6NfwjSg3UTA
+AAAEB6vZ2RdilfPf5rrtS0k3/0OGe/y0VgaznGBhg+NyuYzNsFNa83llIk+CO4BvSN5mx/
+HRfHkRmaRDo1/CNKDdRMAAAAFWNhbGRpQERFU0tUT1AtUDU0MlROMQ==
+-----END OPENSSH PRIVATE KEY-----
+        ssh_user: docker-deploy
+        docker_compose_prefix: bibino
+        docker_compose_filename : docker-compose.yml

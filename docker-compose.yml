@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  front_bibino:
+      build:
+        context: .
+        dockerfile: ./Dockerfile
+      container_name: front_bibino
+      image: front_bibino
+      stdin_open: true
+      tty: true
+      expose:
+        - 3000
+      labels:
+        - traefik.http.routers.bibino_front.rule=Host(`bibino.fr`, `www.bibino.fr`)
+        - traefik.http.routers.bibino_front.tls=true
+        - traefik.http.routers.bibino_front.tls.certresolver=lets-encrypt
+        - traefik.port=80
+      networks:
+        - web
+      command: npm start
+
+networks:
+  web:
+    external: true

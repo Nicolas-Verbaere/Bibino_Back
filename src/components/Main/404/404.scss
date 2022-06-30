@@ -1,0 +1,56 @@
+@import '../../../style/vars';
+
+
+.article404{
+  width: 60%;
+  margin: 10vh auto;
+  background-color: #E7E7E7;
+  border: 1px solid $color-junction;
+  display: flex;
+  border-radius: 4px;
+  box-shadow: 0.1px 0.1px 1px 1px $color-green-medium;
+  &-img{
+   width: 50%;
+  }
+  &_rightside{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 20px;
+    &-title {
+        font-size: 10rem;
+        margin-bottom: 20px;
+        font-weight: bold;
+        color: $color-text-orange;
+        text-shadow:  0.5px 0.5px $color-green-dark
+      }
+    &-subtitle {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      font-weight: bold;
+      color: $color-text-orange;
+      text-shadow:  0.5px 0.5px $color-green-dark
+    }
+    &-btn{
+      margin-top: 100px;
+    }
+
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .article404{
+    flex-direction: column-reverse;
+    margin: 20px auto;
+    width: 100%;
+    &-img{
+      width: 100%;
+    }
+    &_rightside{
+      width: 100%;
+      &-btn{
+        margin-top: 20px;
+      }
+    }
+    }
+}
