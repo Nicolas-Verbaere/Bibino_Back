@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import './SuggestionBHistoire.scss';
 import '../Contact.scss';
 
 const SuggestionBHistoire = ({ user, bieres }) => {
@@ -68,51 +68,52 @@ const SuggestionBHistoire = ({ user, bieres }) => {
     }, []);
 
     return (
-        <section className='section_right'>
             <form
-                className='contact_form'
+                className='suggestionBHistoire_form'
                 onSubmit={handleSubmit}
                 onChange={onChange}>
-                <h1 className='section_title'>Contact</h1>
-                <h2 className='section_title_h2'>Raconte-moi une histoire ?</h2>
-                <p className='p-SBHistoire'>
+                <h1 className='suggestionBHistoire_form-title'>Ajouter l'histoire d'une bière</h1>
+                <h2 className='suggestionBHistoire_form-subtitle'>Raconte-moi une histoire ?</h2>
+                <p className='suggestionBHistoire_form-p'>
                     Vous avez une histoire sur une bière a nous raconter? Merci
                     de nous la suggerer en replissant le formulaire ci-dessous
                 </p>
-                <label for='name'>Vote histoire:</label>
-                <div>
-                    <label lassName='label_input' for='title'>
-                        {' '}
-                    </label>
-                    <input
-                        type='text'
-                        name='title'
-                        id='1'
-                        placeholder='Titre de votre article:'
-                        option=''
-                        required
-                        value={values.title}
-                    />
-                </div>
-                <div>
-                    <label className='name' for='Nom'>
-                        Nom de la bière (facultatif):
-                    </label>
-                    <input list='name' id='3' name='beer_id' />
-                    <datalist id='name'>
-                        {beer_id.map((el) => (
-                            <option key={el.id} value={el.name}>
-                                {el.name}
-                            </option>
-                        ))}
-                    </datalist>
-                </div>
+                <h3 className='suggestionBHistoire_form-subtitle'>Vote histoire:</h3>
+                <label className='suggestionBHistoire_form-label' for='title'>
+                    Titre de votre histoire:
+                </label>
+                <input
+                    className='suggestionBHistoire_form-input'
+                    type='text'
+                    name='title'
+                    id='1'
+                    placeholder='Titre de votre article:'
+                    option=''
+                    required
+                    value={values.title}
+                />
+
+                <label className='suggestionBHistoire_form-label' for='name'>
+                    Nom de la bière (facultatif):
+                </label>
+                <input className='suggestionBHistoire_form-input' list='name' id='3' name='beer_id' />
+                <datalist id='name'>
+                    {beer_id.map((el) => (
+                        <option key={el.id} value={el.name}>
+                            {el.name}
+                        </option>
+                    ))}
+                </datalist>
+
+                <label className='suggestionBHistoire_form-label' for='content'>
+                    Contenu de votre histoire:
+                </label>
                 <textarea
-                    className='input_textarea'
+                    className='suggestionBHistoire_form-textarea'
                     type='text'
                     name='content'
                     id='8'
-                    placeholder='Veuillez saisir votre commentaire'
+                    placeholder='Veuillez saisir votre histoire'
                     option=''
                     required
                     maxLength='500'
@@ -135,9 +136,8 @@ const SuggestionBHistoire = ({ user, bieres }) => {
                     />
                 </div>
 
-                <button>Envoyer</button>
+                <button className='suggestionBHistoire_form-btn'>Envoyer</button>
             </form>
-        </section>
     );
 };
 

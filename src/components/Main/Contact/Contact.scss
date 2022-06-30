@@ -5,6 +5,10 @@
     height: 100%;
     display: flex;
     justify-content: left;
+    background-color: $color-background-light;
+    border: 1px solid $color-junction;
+    box-shadow: 0.1px 0.1px 1px 1px $color-junction;
+    border-radius: 5px;
 }
 .formInput{
 //   width: 50%;
@@ -19,25 +23,32 @@
 }
 
 .contact_form{
-    margin-left: 75px;
-    margin-right: 30px;
-    width: 75%;
+    margin: 200px auto;
 }
 
 .nav{
-    background-color: #CEC0C0;
+    
     width: 25%;
-    height: 70vh;
-    margin-left: 10px;
-
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    border-right: 1px solid $color-junction;
+    box-shadow: 2px 2px 5px 0px #B9B9B9;
 }
 ul{
     top:0px;
-    width: 20vw;
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 li{
 //    margin-bottom: 1em;
-   margin: 1em;
+    // background-color: $color-green-medium;
+    border-bottom: 1px solid $color-junction;
+    box-shadow: 0px 2px 5px 0px #B9B9B9;
+    height: 50px;
+    line-height: 50px;
+    // margin: 1em;
 }
 li:hover{
     color: $color-green-medium;
@@ -53,18 +64,24 @@ textarea{
     display: none;
     }
 @media screen and (max-width: 900px) {
+    .container_navbar{
+        flex-direction: column;
+        margin: 20px 0;
+    }
     .nav{
       width: 100%;
-      height: 20%;
-      margin-left: 0;
+      min-height: auto;
       display: flex;
       flex-direction: row;
     }
     ul{
-     flex-grow: 1;
     }
   }
 
   .input_textarea{
     width: 90%
+  }
+  .contact_form{
+    margin: 0 auto;
+    padding: 20px;
   }
