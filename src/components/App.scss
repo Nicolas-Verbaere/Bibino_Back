@@ -1,0 +1,33 @@
+@import '../style/vars';
+
+.App {
+  text-align: center;
+  background-color: $color-background-medium;
+  min-height: 100vh;
+  width: 100%;
+  border-right: 1px solid $color-junction;
+  border-left: 1px solid $color-junction;
+}
+
+@media screen and (max-width: 900px) {
+  .App {
+    width: 100%;
+  }
+
+  .main_article{
+    flex-direction: column;
+    &-img {
+      width: 100%;
+      padding-left: 0px;
+      padding: 1px;
+    }
+    &_rightside {
+      width: 100%;
+    }
+  }
+
+
+  .main {
+    padding: 10px 15px 10px 15px;
+  }
+}
