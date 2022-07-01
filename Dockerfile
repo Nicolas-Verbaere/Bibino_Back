@@ -1,7 +1,7 @@
 FROM node:16-alpine3.15
 WORKDIR /front_bibino
 COPY ./package.json .
-RUN npm install
+RUN yarn
 COPY . .
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
