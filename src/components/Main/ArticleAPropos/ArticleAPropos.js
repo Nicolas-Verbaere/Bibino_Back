@@ -25,7 +25,7 @@ function ArticleAPropos() {
                 <p className='main_article_rightside-content'>
                     Bibino part d'un constat simple, il existe des sites en
                     ligne pour l'achat divers et variés de bières, mais très
-                    peut qui donnent la possibilité à une communauté de partager
+                    peu qui donnent la possibilité à une communauté de partager
                     leurs avis et leurs expériences autour de leur boisson
                     favorite.
                 </p>
