@@ -47,6 +47,7 @@ return (
                 <p className="profil_reviews_list_review_beer_content-alcool"><strong>Alcool:</strong> {beer.alcohol_level}°</p>
                 <p className="profil_reviews_list_review_beer_content-brasserie"><strong>Brasserie:</strong> {beer.brewery.name}</p>
                 <p className="profil_reviews_list_review_beer_content-origin"><strong>Origine:</strong> {beer.country.name}</p>
+                <p className="profil_reviews_list_review_beer_content-origin"><strong>Note attribuée:</strong> {review.note}/5</p>
             </div>
 
         </section>
