@@ -55,7 +55,7 @@ function Profil({ user, userToken }) {
 
                 
                   {userReviews?.reviews?.map((item) => (
-                   <Review key={item.review.id} {...item} />
+                   <Review key={item.review.id} {...item} getUserReviews={getUserReviews} />
                  
                   ))}
 

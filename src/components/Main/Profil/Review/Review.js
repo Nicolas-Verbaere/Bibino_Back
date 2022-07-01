@@ -5,7 +5,7 @@ import IconDelete from '../../../../assets/img/icon_trash.png';
 import axios from 'axios';
 
 function Review ( item ){   
-    const { beer, review } = item;
+    const { beer, review, getUserReviews } = item;
 
     function deleteReview() {
         const userToken = localStorage.getItem('userLoggedToken');   

@@ -29,11 +29,20 @@
         padding: 10px 20px;
         width: 85%;
 
-        &-title{
-            border-bottom: 1px solid $color-junction;
-            padding-left: 20px;
-            padding-bottom: 10px;
-            text-align: left;    
+        &_icon{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            &-title{
+                border-bottom: 1px solid $color-junction;
+                padding: 0 20px;
+                padding-bottom: 10px;
+                text-align: left;    
+            }
+            &-delete{
+                width: 20px;
+                align-self: end;
+            }
         }
 
         &-content{
@@ -59,9 +68,12 @@
             flex-direction: column;
             align-items: center;
     
-            &-title{
-                padding-left: 0;
-                text-align: left;    
+            &_icon{
+                &-title{
+                    padding-left: 0;
+                    text-align: left;    
+                }
+
             }
     
             &-content{

@@ -1,6 +1,35 @@
 import './Review.scss';
+import IconDelete from '../../../../assets/img/icon_trash.png';
+import axios from 'axios';
 
-function Review({review}) {
+function Review({review, user, getBiereById }) {
+
+    function deleteReview() {
+        const userToken = localStorage.getItem('userLoggedToken');   
+        axios({ method: 'DELETE',
+                url: `https://bibinov1.herokuapp.com/review/${review.id}`,
+                data : {},
+                headers: {
+                    "Content-Type": 'application/json',
+                    Authorization: `Bearer ${userToken}`,
+                },
+            })     
+            
+            .then(function (response) {
+                console.log("delete une review")
+                console.log(response);
+                getBiereById();
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+
+    function handleClick() {
+        deleteReview();
+        console.log("boop")
+    }
+
     return (
         <article  className="review">
             <section className="review_info">
@@ -9,7 +38,12 @@ function Review({review}) {
                 <p className="review_info-note"><strong>Note:</strong> {review.note}/5 </p>
             </section>
             <section className="review_content">
-                <h1 className="review_content-title">Commentaire: </h1>
+                <div className="review_content_icon">
+                    <h1 className="review_content_icon-title">Commentaire: </h1>
+                    {review.author === user.alias && 
+                    <i onClick={handleClick}><img className="review_content_icon-delete" src={IconDelete} alt="" /></i>
+                    }
+                </div>
                 <p className="review_content-content">{review.content}</p>
             </section>
         </article>

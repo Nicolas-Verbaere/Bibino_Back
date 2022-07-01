@@ -155,7 +155,7 @@ function Biere({ biereId, setBiere, biere, setBiereId, user, isLogged, userToken
             
 
             {biere?.reviews?.map((review) => (
-                <Review key={review.id} review={review} />
+                <Review key={review.id} review={review} user={user} getBiereById={getBiereById} />
             ))}
         </>
     );
