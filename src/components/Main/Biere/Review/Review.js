@@ -31,6 +31,8 @@ function Review({review, user, getBiereById }) {
     }
 
     return (
+        <>
+        {review.content &&
         <article  className="review">
             <section className="review_info">
                 <h1 className="review_info-pseudo">{review.author}</h1>
@@ -47,6 +49,8 @@ function Review({review, user, getBiereById }) {
                 <p className="review_content-content">{review.content}</p>
             </section>
         </article>
+        }
+        </>    
     )
 }
 
