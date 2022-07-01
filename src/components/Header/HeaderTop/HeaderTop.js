@@ -22,7 +22,7 @@ function HeaderTop({isLogged, setIsLogged}) {
                     <img className="top_header-logo" src={logo} alt="" />
                 </Link>
                 <Link to="/">
-                    <h1 className="top_header-title">Bibino <em>la communautée du goulot</em></h1>
+                    <h1 className="top_header-title">Bibino <em>la communauté du goulot</em></h1>
                 </Link>
 
             <section className="top_header_auth">

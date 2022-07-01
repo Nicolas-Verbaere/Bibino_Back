@@ -21,8 +21,8 @@ const Register = () => {
             name: 'alias',
             type: 'text',
             placeholder: 'Pseudo',
-            errorMessage:
-                'Votre pseudo doit contenir au minimum 3 caractères et au maximum 20',
+            // errorMessage:
+            //     'Votre pseudo doit contenir au minimum 3 caractères et au maximum 20',
             label: 'Pseudo',
             pattern: `^.{3,20}[^"]$`,
             required: true
@@ -32,7 +32,7 @@ const Register = () => {
             name: 'email',
             type: 'email',
             placeholder: 'Email',
-            errorMessage: 'Adresse mail invalide',
+            // errorMessage: 'Adresse mail invalide',
             label: 'Email',
             required: true
         },
@@ -48,8 +48,8 @@ const Register = () => {
             name: 'password',
             type: 'password',
             placeholder: 'Mot de Passe',
-            errorMessage:
-                'Le mot de passe doit contenir au minimum 8 caractères, un caractère spécial, une lettre majuscule, une lettre minuscule et un nombre.',
+            // errorMessage:
+            //     'Le mot de passe doit contenir au minimum 8 caractères, un caractère spécial, une lettre majuscule, une lettre minuscule et un nombre.',
             label: 'Mot de Passe',
             // pattern: `^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$`,
             required: true
@@ -59,7 +59,7 @@ const Register = () => {
             name: 'confirmPassword',
             type: 'password',
             placeholder: 'Confirmation',
-            errorMessage: 'Mot de passe ne correspond pas',
+            // errorMessage: 'Mot de passe ne correspond pas',
             label: 'Confirmation',
             pattern: values.password,
             required: true

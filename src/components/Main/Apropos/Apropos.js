@@ -19,8 +19,8 @@ function Apropos() {
                 .
             </p>
             <p className='about-content'>
-                Ce projet a été développer par quatres étudiants déshydrater,
-                qui souhaitent partager leur expérience zythologique avec le
+                Ce projet a été développé par quatre étudiants déshydratés,
+                qui souhaitent partager leurs expériences zythologique avec le
                 reste du monde.
             </p>
             <p className='about-content'>
@@ -55,13 +55,13 @@ function Apropos() {
                         Arnaud Jaureguiberry
                     </h1>
                     <p className='about_developers_article-content'>
-                        <strong>Role:</strong> Lead Dev Front
+                        <strong>Rôle:</strong> Lead Dev Front
                     </p>
                     <p className='about_developers_article-content'>
                         <strong>Spé:</strong> React
                     </p>
                     <p className='about_developers_article-content'>
-                        <strong>Linkedin:</strong>{' '}
+                        <strong>LinkedIn:</strong>{' '}
                         <a
                             href='https://www.linkedin.com/in/arnaud-jaureguiberry/'
                             target='_blank'
@@ -70,7 +70,7 @@ function Apropos() {
                         </a>
                     </p>
                     <p className='about_developers_article-content'>
-                        <strong>Github:</strong>{' '}
+                        <strong>GitHub:</strong>{' '}
                         <a
                             target='_blank'
                             href='https://github.com/Jaureguiberry-Arnaud'
@@ -90,13 +90,13 @@ function Apropos() {
                         Nicolas Verbaere
                     </h1>
                     <p className='about_developers_article-content'>
-                        <strong>Role:</strong> Product Owner / Scrum Master
+                        <strong>Rôle:</strong> Product Owner / Scrum Master
                     </p>
                     <p className='about_developers_article-content'>
                         <strong>Spé:</strong> React
                     </p>
                     <p className='about_developers_article-content'>
-                        <strong>Linkedin:</strong>{' '}
+                        <strong>LinkedIn:</strong>{' '}
                         <a
                             href='https://www.linkedin.com/in/nicolas-verbaere-a71667155/'
                             target='_blank'
@@ -105,7 +105,7 @@ function Apropos() {
                         </a>
                     </p>
                     <p className='about_developers_article-content'>
-                        <strong>Github:</strong>{' '}
+                        <strong>GitHub:</strong>{' '}
                         <a
                             target='_blank'
                             rel='noreferrer'
@@ -125,13 +125,13 @@ function Apropos() {
                         Eva Sanchez
                     </h1>
                     <p className='about_developers_article-content'>
-                        <strong>Role:</strong> Git Master
+                        <strong>Rôle:</strong> Git Master
                     </p>
                     <p className='about_developers_article-content'>
                         <strong>Spé:</strong> Data
                     </p>
                     <p className='about_developers_article-content'>
-                        <strong>Linkedin:</strong>{' '}
+                        <strong>LinkedIn:</strong>{' '}
                         <a
                             href='https://www.linkedin.com/in/eva-sanchez-83689b203/'
                             target='_blank'
@@ -140,7 +140,7 @@ function Apropos() {
                         </a>
                     </p>
                     <p className='about_developers_article-content'>
-                        <strong>Github:</strong>{' '}
+                        <strong>GitHub:</strong>{' '}
                         <a
                             href='https://github.com/DoesNotCompute2745'
                             target='_blank'
@@ -160,13 +160,13 @@ function Apropos() {
                         Stéphane Janson
                     </h1>
                     <p className='about_developers_article-content'>
-                        <strong>Role:</strong> Lead Dev Back
+                        <strong>Rôle:</strong> Lead Dev Back
                     </p>
                     <p className='about_developers_article-content'>
                         <strong>Spé:</strong> Data
                     </p>
                     <p className='about_developers_article-content'>
-                        <strong>Linkedin:</strong>{' '}
+                        <strong>LinkedIn:</strong>{' '}
                         <a
                             href='https://www.linkedin.com/in/stephanejanson/'
                             target='_blank'
@@ -175,7 +175,7 @@ function Apropos() {
                         </a>
                     </p>
                     <p className='about_developers_article-content'>
-                        <strong>Github:</strong>{' '}
+                        <strong>GitHub:</strong>{' '}
                         <a
                             href='https://github.com/StephaneJanson'
                             target='_blank'

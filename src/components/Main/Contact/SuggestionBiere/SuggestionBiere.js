@@ -140,7 +140,7 @@ const SuggestionBiere = ({ user }) => {
                 <h2 className='suggestionBiere_form-subtitle'>Petite soif ?</h2>
                 <p className='suggestionBiere_form-p'>
                     Vous voulez ajouter votre bière préférée sur notre site?
-                    Merci de nous la suggérer en replissant le formulaire
+                    Merci de nous la suggérer en remplissant le formulaire
                     ci-dessous
                 </p>
 

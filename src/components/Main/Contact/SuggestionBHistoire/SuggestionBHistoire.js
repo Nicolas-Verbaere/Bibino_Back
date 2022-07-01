@@ -76,9 +76,9 @@ const SuggestionBHistoire = ({ user, bieres }) => {
                 <h2 className='suggestionBHistoire_form-subtitle'>Raconte-moi une histoire ?</h2>
                 <p className='suggestionBHistoire_form-p'>
                     Vous avez une histoire sur une bière a nous raconter? Merci
-                    de nous la suggerer en replissant le formulaire ci-dessous
+                    de nous la suggérer en remplissant le formulaire ci-dessous
                 </p>
-                <h3 className='suggestionBHistoire_form-subtitle'>Vote histoire:</h3>
+                <h3 className='suggestionBHistoire_form-subtitle'>Votre histoire:</h3>
                 <label className='suggestionBHistoire_form-label' for='title'>
                     Titre de votre histoire:
                 </label>
